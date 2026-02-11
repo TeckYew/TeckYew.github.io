@@ -19,12 +19,10 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true,
     rollupOptions: {
-      output: {
-        manualChunks: undefined,
-      },
+      external: ['@popperjs/core'],
     },
   },
-  optimizeDeps: {
-    include: ['bootstrap', 'bootstrap-vue', 'vue-toastification', '@vuepic/vue-datepicker']
+  ssr: {
+    noExternal: ['bootstrap']
   }
 })

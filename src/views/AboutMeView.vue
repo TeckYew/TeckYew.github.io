@@ -21,7 +21,7 @@
         <!-- Story Section -->
         <div class="story-section">
           <p class="story-text">
-            Love is not just about caring or admiring. For me, love is about human connection. Be it in school, workshops, public spaces, I love to talk to different humans and connect with everyone and anyone. My favourite professor once said, <span class="story-quote">"Sub pondere crescit palma"</span>, which means the palm tree grows under pressure. For me, when I am out of work, I love to explore new experiences, meet interesting people, and find joy in meaningful conversations and creative pursuits.
+            Love is not just about caring or admiring. For me, love is about human connection. Be it in school, workshops, public spaces, I love to talk to different humans and connect with everyone and anyone. One of my favourite professors, Professor Tamas Makany, once said, <span class="story-quote">"Sub pondere crescit palma"</span>, which means the palm tree grows under pressure. For me, when I am out of work, I love to explore new experiences, meet interesting people, and find joy in meaningful conversations and creative pursuits.
           </p>
         </div>
         
@@ -30,19 +30,22 @@
           <div class="interest-card">
             <div class="interest-icon">🌍</div>
             <h3>Explore & Travel</h3>
-            <p>Back in January 2025, I went on a solo travel to United Kingdom (London, Manchester) and Europe (Belgium, Germany and Netherlands). The people, bookstores, food, and experience, all of these changed my point of view of the world.</p>
+            <p>Back in January 2025, I went on a class trip to United Kingdom, London and a solo travel to Manchester and different parts of Europe (Belgium, Germany and Netherlands). The people, bookstores, food, and experience, all of these changed my point of view of the world.</p>
+            <a href="https://www.linkedin.com/posts/smu-scis-technopreneurship-study-mission_tsm-london-2025-activity-7419562776085409794-Q_n6?utm_source=share&utm_medium=member_desktop&rcm=ACoAABPCGQ8BLzk9s9gW5mp8UMP3vihOYV2qCt4" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #0A66C2; color: white; padding: 8px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.3s ease; margin-top: 10px;">
+              LinkedIn Post
+            </a>
           </div>
 
           <div class="interest-card">
             <div class="interest-icon">🎨</div>
             <h3>Design & Create</h3>
-            <p>My love for design began to take shape during my secondary school days, where I enjoyed designing and drawing different artwork, and even managed to score a distinction for my art subject. Since then, exploration of design thinking and user experience has always been part of my journey.</p>
+            <p>My love for design began to take shape during my secondary school days, where I enjoyed designing and drawing different artwork, and even managed to score a distinction for my art subject. Since then, the exploration of design thinking and user experience has always been part of my journey to apply design not just to UI/UX, but to many other fields like Business Analytics.</p>
           </div>
 
           <div class="interest-card">
             <div class="interest-icon">🎯</div>
             <h3>Make an Impact</h3>
-            <p>Creating a platform that contribute positively to society. I love to help out with elderly care and providing children with the necessary support, such as under SMU's SSUpport program, which provide underpriviledge children with tuition. I have recently created a TikTok channel to connect with people as well, and it is still a Work-In-Progress!</p>
+            <p>Creating a platform that contribute positively to society. I love to help out with elderly care and providing children with the necessary support, such as under SMU's SSUpport program, which provide underpriviledge children with tuition. I have recently created a TikTok channel to connect with people as well, and it is still a Work-In-Progress! Who knows, I might even start an official YouTube channel as well!</p>
             <a href="https://www.tiktok.com/@amoretyyyy" target="_blank" rel="noopener noreferrer" class="tiktok-button">
               <svg viewBox="0 0 24 24" class="tiktok-icon">
                 <path fill="currentColor" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.1 1.82 2.9 2.9 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.26 6.26 0 0 0-1-.1A6.15 6.15 0 0 0 5 20.94a6.16 6.16 0 0 0 10.86-4.43v-7a8.13 8.13 0 0 0 4.73 1.44v-3.6a4.75 4.75 0 0 1-.46-.04z" />
@@ -54,19 +57,19 @@
           <div class="interest-card">
             <div class="interest-icon">📚</div>
             <h3>Starting a New Venture</h3>
-            <p>I always have an idea in me to start a business venture, be it a startup or a company. The dream is big, but nothing is ever too big if we put dreams into action.</p>
+            <p>I always have an idea in me to start a business venture, be it a startup or a company. The dream is big, but nothing is ever too big if we put dreams into action. Oh, and I love reading books too!</p>
           </div>
 
           <div class="interest-card">
             <div class="interest-icon">🤝</div>
             <h3>Collaborate & Connect</h3>
-            <p>Working with amazing people and building meaningful connections. Schools, Co-cirricular activity clubs, community service, workshops. All these help shape me into who I am today.</p>
+            <p>Working with amazing people and building meaningful connections. Schools, Co-cirricular activity clubs, community service, workshops. All these help shape me into becoming who I am today.</p>
           </div>
 
           <div class="interest-card">
             <div class="interest-icon">💻</div>
             <h3>Build & Design</h3>
-            <p>Ever since polytechnic, I have always been working with technologies. Building innovative products and solving problems through technology is my passion, and I will always cherish it.</p>
+            <p>Ever since polytechnic, I have always enjoyed working with technologies. Building innovative products and solving problems through technology is my passion, and I will always cherish it.</p>
           </div>
         </div>
       </div>

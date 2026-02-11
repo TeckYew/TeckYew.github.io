@@ -17,7 +17,7 @@
     </div>
     <div v-else style="padding: 20px; text-align: center; cursor: pointer;">
       <p style="color: #999; font-size: 0.9rem; margin: 0;">
-        Hover to play a classic dinosaur game 🦕
+        Hover over with your mouse to play a classic Goo-gly dinosaur game 🦕
       </p>
     </div>
   </footer>

@@ -77,8 +77,8 @@ const isAboutPage = () => route.path === '/about'
         <ul class="navbar-nav mb-md-0 ms-md-0 mb-lg-3 me-lg-3">
           <li class="nav-item mx-2">
             <RouterLink class="nav-link" to="/chess">
-              <span class="d-lg-none">Have Fun?</span>
-              <span class="d-none d-lg-block">Have Fun?</span>
+              <span class="d-lg-none">Have A Little Fun!</span>
+              <span class="d-none d-lg-block">Have A Little Fun!</span>
             </RouterLink>
           </li>
         </ul>
@@ -131,6 +131,32 @@ export default {
 <style>
 .navbar {
   background-color: #f8f9fa;
+  width: 100%;
+}
+
+.nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+  color: #333 !important;
+}
+
+.nav-link:hover {
+  color: #28a745 !important;
+  transform: translateY(-2px);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #28a745;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
   width: 100%;
 }
 </style>
