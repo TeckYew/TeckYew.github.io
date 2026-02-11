@@ -232,14 +232,14 @@ export default {
 .projects-title {
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   font-weight: 300;
+  text-align: center;
 }
 
 /* Project Cards - Responsive Grid */
 .project-card {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: 30px;
   padding: 40px;
   background: #f9f9f9;
   border-radius: 12px;
@@ -249,10 +249,14 @@ export default {
 .project-image {
   position: relative;
   min-width: 0;
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .project-content {
   min-width: 0;
+  text-align: center;
 }
 
 .project-title {
@@ -265,6 +269,7 @@ export default {
   line-height: 1.8;
   color: #555;
   margin-bottom: 20px;
+  text-align: justify;
 }
 
 /* Other Projects Section */
@@ -285,9 +290,8 @@ export default {
 /* Mobile and Tablet Responsiveness */
 @media (max-width: 992px) {
   .project-card {
-    grid-template-columns: 1fr;
-    gap: 30px;
     padding: 30px 20px;
+    gap: 30px;
   }
 
   .hero-section {
