@@ -1,86 +1,146 @@
-# WADePlanetNeeds
+# Teck Yew's Portfolio
 
+Welcome to my personal portfolio website! I'm **Thong Teck Yew**, a passionate UX Designer and Software Developer focused on creating meaningful digital experiences and solving real-world problems through technology.
 
-## Problem Statement
+## 🌐 Live Website
 
-In today’s rapidly evolving world, the importance of sustainability has been overshadowed by pressing global issues. The general population has a lack of awareness towards sustainability issues such as their impact on the environment, sustainable practices. There is a bridge of gap between the informational sustainable activities and user’s knowledge, hence there is an urgent need to fortify their understanding.
+Visit my portfolio: **[teckyew.github.io](https://teckyew.github.io)**
 
-## Our Application
-Our Application aims to give users a chance to find and participate in Sustainability related events, and for organisations to publicise it as well. We also introduce SustainaBot, a chatbot to discuss more on what people can do regarding sustainability
+## 📍 About Me
 
-## The Team
-<table>
-    <thead>
-        <tr>
-            <th>Team Member</th>
-            <th>School Email</th>
-            <th>Email</th>
-        </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>Goh Toh Kit (Nathan)</td>
-        <td>tohkit.goh.2022</td>
-        <td>tohkit.goh.2022@scis.smu.edu.sg</td>
-    </tr>
-    <tr>
-        <td>Toh Zheng Feng</td>
-        <td>zftoh.2022</td>
-        <td>zftoh.2022@scis.smu.edu.sg</td>
-    </tr>
-    <tr>
-        <td>Brannon Cho Kin Feng</td>
-        <td>brannon.cho.2022</td>
-        <td>brannon.cho.2022@scis.smu.edu.sg</td>
-    </tr>
-    <tr>
-        <td>Thong Teck Yew</td>
-        <td>tythong.2022</td>
-        <td>tythong.2022@scis.smu.edu.sg</td>
-    </tr>
-    <tr>
-        <td>Shawn Sin Chuan Qing</td>
-        <td>shawn.sin.2022</td>
-        <td>shawn.sin.2022@scis.smu.edu.sg</td>
-    </tr>
-    </tbody>
-</table>
+I believe in creating a positive impact through design and technology. My journey spans across:
 
+- **UX/UI Design** - Research-driven design thinking and user-centered solutions
+- **Frontend Development** - Building interactive and responsive web applications
+- **Project Leadership** - Driving initiatives with enthusiasm and systems thinking
+- **Community Service** - Supporting elderly care and underprivileged children through education
+- **Entrepreneurship** - Aspiring to start ventures that solve meaningful problems
 
-## Recommended IDE Setup
+### Key Interests:
+- 🌍 Explore & Travel
+- 🎨 Design & Create
+- 💻 Build & Design
+- 🎯 Make an Impact
+- 🤝 Collaborate & Connect
+- 🚀 Starting a New Venture
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## 🎯 Featured Projects
 
-## Customize configuration
+### **HandsUP**
+A user-centered design solution connecting young individuals with similar interests to overcome scheduling conflicts and find people to attend events with.
+- **Role:** UX Designer (Research, Interaction Design, Prototyping)
+- **Duration:** ~12 weeks
+- **Team:** 4 members
+- [View Project](https://drive.google.com/drive/u/1/folders/1n79GfToXoFEP9BKVfejc7VJtgpSvtu40) | [View Figma](https://www.figma.com/design/3TqrvNRyOKK5F2jHAcXEjY/HandsUP)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### **Project Management Experience Hackathon**
+A 48-hour hackathon showcasing systems thinking and strategic coordination across cross-functional teams.
+- **Role:** Project Lead / Strategy & Coordination
+- **Duration:** 48-hour Hackathon
+- **Team:** 4 members
+- **Achievement:** 🏆 First Place
+- [View Presentation](https://www.canva.com/design/DAF9ZSgPvTg/_xYKmIjjbGJRnSQ-CUbG1Q/view) | [Read More](https://www.linkedin.com/posts/teck-yew_dont-design-features-solve-problems-ugcPost-7170242465197740032-zFfc)
 
-## Project Setup
+## 💻 Tech Stack
 
-```sh
+- **Frontend Framework:** Vue.js 3
+- **Build Tool:** Vite
+- **Styling:** Bootstrap, SCSS, CSS
+- **Backend:** Firebase (Firestore, Authentication, Storage)
+- **Additional Libraries:** 
+  - Vue Router (Navigation)
+  - Pinia (State Management)
+  - Vue Toastification (Notifications)
+  - Vue Datepicker
+  - Google Maps Integration
+
+## 🔧 Development Setup
+
+### Prerequisites
+- Node.js (v18+)
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/TeckYew/TeckYew.github.io.git
+cd TeckYew.github.io
+
+# Install dependencies
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Development Server
 
-```sh
+```bash
 npm run dev
 ```
+The site will be available at `http://localhost:5173`
 
-### Compile and Minify for Production
+### Production Build
 
-```sh
+```bash
 npm run build
 ```
+This creates an optimized production build in the `dist/` folder.
 
-### Lint with [ESLint](https://eslint.org/)
+### Preview Production Build
 
-```sh
+```bash
+npm run preview
+```
+
+### Code Quality
+
+```bash
+# Lint and fix files
 npm run lint
+
+# Format code with Prettier
+npm run format
 ```
 
-### Compile Sass on the go
-```sh
-C:\wamp64\www\IS216\Project\WAD2Planet> sass --watch ./css/styles.scss ./css/styles.css
+## 📂 Project Structure
+
 ```
+src/
+├── assets/          # Images, styles, and static files
+├── components/      # Reusable Vue components
+├── views/          # Page components/views
+├── router/         # Vue Router configuration
+├── store/          # Pinia state management
+├── firebase/       # Firebase configuration
+└── main.js         # Application entry point
+
+public/            # Static files served at root
+.github/
+├── workflows/      # GitHub Actions CI/CD
+```
+
+## 🚀 Deployment
+
+This website is deployed on **GitHub Pages** using GitHub Actions for continuous integration and deployment.
+
+### How It Works:
+1. Push changes to the `main` branch
+2. GitHub Actions automatically:
+   - Installs dependencies
+   - Builds the project with Vite
+   - Deploys to GitHub Pages
+3. Site updates automatically (usually within 1-2 minutes)
+
+## 🔗 Connect With Me
+
+- **LinkedIn:** [linkedin.com/in/teck-yew](https://www.linkedin.com/in/teck-yew/)
+- **GitHub:** [github.com/TeckYew](https://github.com/TeckYew)
+- **TikTok:** [@amoretyyyy](https://www.tiktok.com/@amoretyyyy)
+
+## 📝 License
+
+This project is open source and available under the MIT License.
+
+---
+
+**Made with ❤️ by Teck Yew**
 
