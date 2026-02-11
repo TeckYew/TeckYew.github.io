@@ -4,44 +4,46 @@ import EventCard from '../components/Events/EventCard.vue'
 
 <template>
   <div class="container-fluid">
-    <div class="row gx-4 gx-lg-4 align-items-center justify-content-center" style="min-height: 100vh; padding: 40px 20px;">
-      <div class="col-lg-6 d-flex justify-content-center">
+    <div class="row gx-4 gx-lg-4 align-items-center justify-content-center hero-section" style="min-height: 100vh; padding: 40px 20px;">
+      <div class="col-lg-6 d-flex justify-content-center mb-4 mb-lg-0">
         <img
-          class="img-fluid mb-4 mb-lg-0"
+          class="img-fluid"
           src="../assets/hero-profile.jpg"
           alt="Hero Profile"
-          style="border-radius: 50%; width: 90%; margin: 0 auto; display: block; border: 5px solid #28a745; box-shadow: 0 10px 40px rgba(40, 167, 69, 0.3), 0 0 0 15px rgba(40, 167, 69, 0.1); transition: transform 0.3s ease;"
+          style="border-radius: 50%; width: 90%; max-width: 400px; margin: 0 auto; display: block; border: 5px solid #28a745; box-shadow: 0 10px 40px rgba(40, 167, 69, 0.3), 0 0 0 15px rgba(40, 167, 69, 0.1); transition: transform 0.3s ease;"
         />
       </div>
 
       <div class="col-lg-6 col-sm-12">
-        <h1 class="font-weight-light" style="font-size: 3.5rem; line-height: 1.2; margin-bottom: 10px;">Hi, I'm Thong Teck Yew.</h1>
-        <p style="font-size: 1.5rem; margin-bottom: 30px; line-height: 1.6; color: #666;">Welcome to my website!</p>
-        <p style="font-size: 1.3rem; margin-bottom: 30px; line-height: 1.6;">Below are some quick links to get you <a href="https://www.google.com/search?q=thong+teck+yew&rlz=1C5CHFA_enSG1012SG1013&oq=thong+te&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYQDIGCAMQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQRRhB0gEHOTQ3ajBqMagCALACAA&sourceid=chrome&ie=UTF-8" target="_blank" style="text-decoration: underline;"><span style="color: #4285F4;">G</span><span style="color: #EA4335;">o</span><span style="color: #FBBC04;">o</span><span style="color: #4285F4;">g</span><span style="color: #EA4335;">l</span><span style="color: #FBBC04;">i</span><span style="color: #4285F4;">n</span><span style="color: #EA4335;">g</span></a> about me 😁</p>
+        <h1 class="hero-title" style="line-height: 1.2; margin-bottom: 10px;">Hi, I'm Thong Teck Yew.</h1>
+        <p class="hero-subtitle" style="margin-bottom: 30px; line-height: 1.6; color: #666;">Welcome to my website!</p>
+        <p class="hero-description" style="margin-bottom: 30px; line-height: 1.6;">Below are some quick links to get you <a href="https://www.google.com/search?q=thong+teck+yew&rlz=1C5CHFA_enSG1012SG1013&oq=thong+te&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYQDIGCAMQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQRRhB0gEHOTQ3ajBqMagCALACAA&sourceid=chrome&ie=UTF-8" target="_blank" style="text-decoration: underline;"><span style="color: #4285F4;">G</span><span style="color: #EA4335;">o</span><span style="color: #FBBC04;">o</span><span style="color: #4285F4;">g</span><span style="color: #EA4335;">l</span><span style="color: #FBBC04;">i</span><span style="color: #4285F4;">n</span><span style="color: #EA4335;">g</span></a> about me 😁</p>
         <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-          <a class="btn btn-success btn-lg" href="#featuredProjects" style="padding: 12px 40px; font-size: 1.1rem;">My Portfolio</a>
-          <a class="btn btn-lg" href="https://www.linkedin.com/in/teck-yew/" target="_blank" style="padding: 12px 40px; font-size: 1.1rem; background-color: #0A66C2; color: white; border: none;">LinkedIn - Where the magic happens ✨</a>
+          <a class="btn btn-success btn-lg" href="#featuredProjects" style="padding: 12px 30px; font-size: 1rem;">My Portfolio</a>
+          <a class="btn btn-lg" href="https://www.linkedin.com/in/teck-yew/" target="_blank" style="padding: 12px 30px; font-size: 1rem; background-color: #0A66C2; color: white; border: none;">LinkedIn - Where the magic happens ✨</a>
         </div>
       </div>
     </div>
 
     <!-- Projects Showcase Section -->
-    <div id="featuredProjects" style="margin-top: 40px; padding: 60px 20px;">
-      <h2 class="font-weight-light" style="font-size: 2.5rem; margin-bottom: 40px;">Featured Projects</h2>
-      <div style="display: grid; grid-template-columns: 20% 1fr; gap: 40px; align-items: center; padding: 40px; background: #f9f9f9; border-radius: 12px;">
-        <div style="position: relative;">
+    <div id="featuredProjects" style="margin-top: 40px; padding: 40px 20px;">
+      <h2 class="projects-title" style="margin-bottom: 40px;">Featured Projects</h2>
+      
+      <!-- Project 1: HandsUP -->
+      <div class="project-card">
+        <div class="project-image">
           <img 
             src="../assets/idp-handsup.png" 
             alt="Project" 
             style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"
           />
         </div>
-        <div>
-          <h3 style="font-size: 1.8rem; margin-bottom: 15px;">HandsUP - Interaction Design and Prototyping Project</h3>
+        <div class="project-content">
+          <h3 class="project-title">HandsUP - Interaction Design and Prototyping Project</h3>
           <p style="font-size: 0.95rem; line-height: 1.8; color: #555; margin-bottom: 10px;">
             <strong>Duration:</strong> ~12 weeks | <strong>Role:</strong> UX Designer (Research, Interaction Design, Prototyping) | <strong>Team:</strong> 4 members
           </p>
-          <p style="font-size: 1.1rem; line-height: 1.8; color: #555; margin-bottom: 20px;">
+          <p class="project-description">
             Young individuals often struggle to form new social connections outside their existing circles. Through preliminary research, we found that the main barrier was not a lack of interest, but rather, a coordination friction and uncertainty around commitment when attending events with unfamiliar peers.
             <br><br>
             We conducted 10 semi-structured interviews and identified three recurring pain points:
@@ -60,7 +62,7 @@ import EventCard from '../components/Events/EventCard.vue'
             <br><br>
             After iteration, task completion improved from 62% to 94% during testing, and users reported increased confidence in committing to events.
           </p>
-          <div style="display: flex; gap: 15px;">
+          <div style="display: flex; gap: 15px; flex-wrap: wrap;">
             <a class="btn btn-success" href="https://drive.google.com/drive/u/1/folders/1n79GfToXoFEP9BKVfejc7VJtgpSvtu40" target="_blank" style="padding: 10px 30px;">View Project</a>
             <a class="btn" href="https://www.figma.com/design/3TqrvNRyOKK5F2jHAcXEjY/HandsUP?node-id=11-4400&p=f&t=pwWXsKTg5eMDZt9U-0" target="_blank" style="padding: 10px 30px; background-color: #A259FF; color: white; border: none;">View Figma</a>
           </div>
@@ -68,27 +70,27 @@ import EventCard from '../components/Events/EventCard.vue'
       </div>
 
       <!-- Second Project -->
-      <div style="display: grid; grid-template-columns: 20% 1fr; gap: 40px; align-items: center; padding: 40px; background: #f9f9f9; border-radius: 12px; margin-top: 40px;">
-        <div style="position: relative;">
+      <div class="project-card">
+        <div class="project-image">
           <img 
             src="../assets/googlemaps-carspots.png" 
             alt="Project" 
             style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"
           />
         </div>
-        <div>
-          <h3 style="font-size: 1.8rem; margin-bottom: 15px;">Project Management Experience Hackathon</h3>
+        <div class="project-content">
+          <h3 class="project-title">Project Management Experience Hackathon</h3>
           <p style="font-size: 0.95rem; line-height: 1.8; color: #555; margin-bottom: 10px;">
             <strong>Duration:</strong> 48-hour Hackathon | <strong>Role:</strong> Project Lead / Strategy & Coordination | <strong>Team:</strong> 4 members
           </p>
-          <p style="font-size: 1.1rem; line-height: 1.8; color: #555; margin-bottom: 20px;">
+          <p class="project-description">
             In a fast-paced hackathon setting led by Mr. Jason Teo from Trust Bank, along with other instructors from various companies, our team was challenged to develop a scalable solution addressing [insert actual challenge theme if you have it]. With limited time and cross-functional team members, alignment and prioritisation were critical to execution.
             <br><br>
             I applied systems thinking to map out key stakeholders, dependencies, and constraints early in the process. This helped us identify core leverage points instead of attempting to solve peripheral issues.
             <br><br>
             Rather than tackling isolated symptoms, we thought of how we might design a solution that balances feasibility, stakeholder incentives, and long-term scalability within a tight timeline. We implemented stakeholder mapping, task breakdown, and defined a clear solution using design thinking process, ultimately getting first place for our hackathon.
           </p>
-          <div style="display: flex; gap: 15px;">
+          <div style="display: flex; gap: 15px; flex-wrap: wrap;">
             <a class="btn btn-success" href="https://www.canva.com/design/DAF9ZSgPvTg/_xYKmIjjbGJRnSQ-CUbG1Q/view?utm_content=DAF9ZSgPvTg&utm_campaign=designshare&utm_medium=link&utm_source=editor#1" target="_blank" style="padding: 10px 30px;">View Project</a>
             <a class="btn" href="https://www.linkedin.com/posts/teck-yew_dont-design-features-solve-problems-ugcPost-7170242465197740032-zFfc?utm_source=share&utm_medium=member_desktop&rcm=ACoAABPCGQ8BLzk9s9gW5mp8UMP3vihOYV2qCt4" target="_blank" style="padding: 10px 30px; background-color: #0A66C2; color: white; border: none;">View Post</a>
           </div>
@@ -96,35 +98,35 @@ import EventCard from '../components/Events/EventCard.vue'
       </div>
 
       <!-- Third Project -->
-      <div style="display: grid; grid-template-columns: 20% 1fr; gap: 40px; align-items: center; padding: 40px; background: #f9f9f9; border-radius: 12px; margin-top: 40px;">
-        <div style="position: relative;">
+      <div class="project-card">
+        <div class="project-image">
           <img 
             src="../assets/gis-solar-farm.png" 
             alt="GIS Project" 
             style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"
           />
         </div>
-        <div>
-          <h3 style="font-size: 1.8rem; margin-bottom: 15px;">Geographical Information Systems-based Multi-criteria Analysis for Urban Planning</h3>
+        <div class="project-content">
+          <h3 class="project-title">Geographical Information Systems-based Multi-criteria Analysis for Urban Planning</h3>
           <p style="font-size: 0.95rem; line-height: 1.8; color: #555; margin-bottom: 10px;">
             <strong>Duration:</strong> ~12 weeks | <strong>Role:</strong> Spatial Analysis & Systems Strategy Lead | <strong>Team:</strong> 3 members
           </p>
-          <p style="font-size: 1.1rem; line-height: 1.8; color: #555; margin-bottom: 20px;">
+          <p class="project-description">
             As part of a GIS-Enabled Urban Planning Support System initiative led by Dr. Kam Tin Seong, our team was tasked with designing a spatial decision-support model to identify viable solar farm locations in land-scarce Singapore.
             <br><br>
             Singapore's dense urban landscape presents a complex trade-off: renewable energy expansion must compete with housing, agriculture, and environmental conservation. The challenge was not just identifying sunny land — but balancing energy potential, terrain feasibility, urban constraints, and long-term planning alignment under the 2030 Master Plan.
             <br><br>
             Our challenge was how might we design a scalable, data-driven spatial model that balances solar efficiency, land constraints, environmental accessibility. All these need to be considered with energy potential factors like slope, aspect etc. Iterative thinking and validation of potential location using trade-offs and identification of resilient zones are key contributing success of our projects.
           </p>
-          <div style="display: flex; gap: 15px;">
+          <div style="display: flex; gap: 15px; flex-wrap: wrap;">
             <a class="btn btn-success" href="https://smt201-group5-solarfarm.netlify.app/" target="_blank" style="padding: 10px 30px;">View Project</a>
           </div>
         </div>
       </div>
 
       <!-- Other Design Projects Section -->
-      <div style="margin-top: 80px; padding: 40px; background: #f9f9f9; border-radius: 12px;">
-        <h3 style="font-size: 1.6rem; margin-bottom: 30px; color: #1a1a1a; font-weight: 500;">Other Design Projects</h3>
+      <div class="other-projects-section">
+        <h3 class="other-projects-title">Other Design Projects</h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
           <!-- Design Project Card 1 -->
           <div style="padding: 20px; background: white; border-radius: 8px; border: 1px solid #e0e0e0; transition: all 0.3s ease;">
@@ -211,3 +213,158 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+/* Hero Section - Responsive Typography */
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+}
+
+.hero-description {
+  font-size: clamp(1rem, 3vw, 1.3rem);
+}
+
+.projects-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 300;
+}
+
+/* Project Cards - Responsive Grid */
+.project-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 40px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  margin-bottom: 40px;
+}
+
+.project-image {
+  position: relative;
+  min-width: 0;
+}
+
+.project-content {
+  min-width: 0;
+}
+
+.project-title {
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  margin-bottom: 15px;
+}
+
+.project-description {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Other Projects Section */
+.other-projects-section {
+  margin-top: 80px;
+  padding: 40px;
+  background: #f9f9f9;
+  border-radius: 12px;
+}
+
+.other-projects-title {
+  font-size: clamp(1.3rem, 3vw, 1.6rem);
+  margin-bottom: 30px;
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+/* Mobile and Tablet Responsiveness */
+@media (max-width: 992px) {
+  .project-card {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 30px 20px;
+  }
+
+  .hero-section {
+    padding: 30px 20px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .other-projects-section {
+    padding: 20px;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .projects-title {
+    font-size: 1.5rem;
+  }
+
+  .project-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .project-card {
+    padding: 15px;
+    margin-bottom: 30px;
+  }
+
+  .other-projects-section {
+    padding: 15px;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+  }
+
+  .projects-title {
+    font-size: 1.3rem;
+  }
+
+  .other-projects-title {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    font-size: 0.85rem !important;
+    padding: 8px 20px !important;
+  }
+
+  .btn-lg {
+    padding: 10px 20px !important;
+    font-size: 0.95rem !important;
+  }
+}
+</style>
