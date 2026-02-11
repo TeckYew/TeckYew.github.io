@@ -39,7 +39,7 @@
           <div class="interest-card">
             <div class="interest-icon">🎨</div>
             <h3>Design & Create</h3>
-            <p>My love for design took shape during my secondary school days, where I enjoyed designing and drawing different artwork, and even managed to score a distinction for my art subject. Since then, the exploration of design thinking and user experience has always been part of my journey to apply design not just to UI/UX, but to many other fields like Business Analytics.</p>
+            <p>My love for design took shape during my secondary school days, where I enjoyed designing and drawing different artworks, and even managed to score a distinction for my art subject. Since then, the exploration of design thinking and user experience has always been part of my journey to apply design not just to UI/UX, but to many other fields like Business Analytics and Project Management.</p>
           </div>
 
           <div class="interest-card">
