@@ -1,11 +1,5 @@
 <template>
   <footer class="py-5 bg-dark">
-    <div class="container px-4 px-lg-5">
-      <p class="m-0 text-center text-white">Sponsored with love ♡:</p>
-    </div>
-
-    <!-- <div class="container-fluid">
-    <div class="row gx-4 gx-lg-4 align-items-center my-5"> -->
     <div class="image-container">
       <img class="img-fluid rounded-circle" src="../assets/1.jpg" alt="./src/assets/1.jpg" />
       <img class="img-fluid rounded-circle" src="../assets/2.jpg" alt="./src/assets/2.jpg" />
