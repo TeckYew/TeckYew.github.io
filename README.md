@@ -6,41 +6,6 @@ Welcome to my personal portfolio website! I'm **Thong Teck Yew**, a passionate U
 
 Visit my portfolio: **[teckyew.github.io](https://teckyew.github.io)**
 
-## 📍 About Me
-
-I believe in creating a positive impact through design and technology. My journey spans across:
-
-- **UX/UI Design** - Research-driven design thinking and user-centered solutions
-- **Frontend Development** - Building interactive and responsive web applications
-- **Project Leadership** - Driving initiatives with enthusiasm and systems thinking
-- **Community Service** - Supporting elderly care and underprivileged children through education
-- **Entrepreneurship** - Aspiring to start ventures that solve meaningful problems
-
-### Key Interests:
-- 🌍 Explore & Travel
-- 🎨 Design & Create
-- 💻 Build & Design
-- 🎯 Make an Impact
-- 🤝 Collaborate & Connect
-- 🚀 Starting a New Venture
-
-## 🎯 Featured Projects
-
-### **HandsUP**
-A user-centered design solution connecting young individuals with similar interests to overcome scheduling conflicts and find people to attend events with.
-- **Role:** UX Designer (Research, Interaction Design, Prototyping)
-- **Duration:** ~12 weeks
-- **Team:** 4 members
-- [View Project](https://drive.google.com/drive/u/1/folders/1n79GfToXoFEP9BKVfejc7VJtgpSvtu40) | [View Figma](https://www.figma.com/design/3TqrvNRyOKK5F2jHAcXEjY/HandsUP)
-
-### **Project Management Experience Hackathon**
-A 48-hour hackathon showcasing systems thinking and strategic coordination across cross-functional teams.
-- **Role:** Project Lead / Strategy & Coordination
-- **Duration:** 48-hour Hackathon
-- **Team:** 4 members
-- **Achievement:** 🏆 First Place
-- [View Presentation](https://www.canva.com/design/DAF9ZSgPvTg/_xYKmIjjbGJRnSQ-CUbG1Q/view) | [Read More](https://www.linkedin.com/posts/teck-yew_dont-design-features-solve-problems-ugcPost-7170242465197740032-zFfc)
-
 ## 💻 Tech Stack
 
 - **Frontend Framework:** Vue.js 3
@@ -134,7 +99,6 @@ This website is deployed on **GitHub Pages** using GitHub Actions for continuous
 
 - **LinkedIn:** [linkedin.com/in/teck-yew](https://www.linkedin.com/in/teck-yew/)
 - **GitHub:** [github.com/TeckYew](https://github.com/TeckYew)
-- **TikTok:** [@amoretyyyy](https://www.tiktok.com/@amoretyyyy)
 
 ## 📝 License
 
