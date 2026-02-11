@@ -9,14 +9,14 @@
       />
       <div class="hero-overlay"></div>
       <div class="hero-text">
-        <p class="overlay-quote">Love whenever, and wherever</p>
+        <p class="overlay-quote">Love whenever, and wherever.</p>
       </div>
     </div>
 
     <!-- Interests Section -->
     <div class="interests-container">
       <div class="interests-content">
-        <h2 class="section-title">When I'm Free, I Love To...</h2>
+        <h2 class="section-title">When I'm Free, I Love To ...</h2>
         
         <!-- Story Section -->
         <div class="story-section">
@@ -42,7 +42,7 @@
           <div class="interest-card">
             <div class="interest-icon">🎯</div>
             <h3>Make an Impact</h3>
-            <p>Creating a platform that contribute positively to society. I love to help out with elderly care and providing children with the necessary support, such as under my school's SSUpport program, which provide underpriviledge children with tuition. I have recently created a TikTok channel to connect with people as well, and it is still a Work-In-Progress.</p>
+            <p>Creating a platform that contribute positively to society. I love to help out with elderly care and providing children with the necessary support, such as under SMU's SSUpport program, which provide underpriviledge children with tuition. I have recently created a TikTok channel to connect with people as well, and it is still a Work-In-Progress!</p>
             <a href="https://www.tiktok.com/@amoretyyyy" target="_blank" rel="noopener noreferrer" class="tiktok-button">
               <svg viewBox="0 0 24 24" class="tiktok-icon">
                 <path fill="currentColor" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.1 1.82 2.9 2.9 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.26 6.26 0 0 0-1-.1A6.15 6.15 0 0 0 5 20.94a6.16 6.16 0 0 0 10.86-4.43v-7a8.13 8.13 0 0 0 4.73 1.44v-3.6a4.75 4.75 0 0 1-.46-.04z" />
