@@ -18,5 +18,13 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
+  optimizeDeps: {
+    include: ['bootstrap', 'bootstrap-vue', 'vue-toastification', '@vuepic/vue-datepicker']
   }
 })
