@@ -90,8 +90,8 @@ export default {
     },
     getPieceSymbol(piece) {
       const symbols = {
-        'k': '♛', 'K': '♕',
-        'q': '♕', 'Q': '♕',
+        'k': '♚', 'K': '♔',
+        'q': '♛', 'Q': '♕',
         'r': '♜', 'R': '♖',
         'b': '♗', 'B': '♗',
         'n': '♘', 'N': '♘',
