@@ -90,11 +90,11 @@ export default {
     },
     getPieceSymbol(piece) {
       const symbols = {
-        'k': '♚', 'K': '♔',
-        'q': '♛', 'Q': '♕',
+        'k': '♛', 'K': '♕',
+        'q': '♕', 'Q': '♕',
         'r': '♜', 'R': '♖',
-        'b': '♝', 'B': '♗',
-        'n': '♞', 'N': '♘',
+        'b': '♗', 'B': '♗',
+        'n': '♘', 'N': '♘',
         'p': '♟', 'P': '♙'
       }
       return symbols[piece] || ''
@@ -166,7 +166,15 @@ export default {
           break
       }
       
-      return moves
+      // Filter out moves that would leave the king in check
+      return moves.filter(move => {
+        const testBoard = JSON.parse(JSON.stringify(this.board))
+        testBoard[move.row][move.col] = testBoard[row][col]
+        testBoard[row][col] = null
+        
+        const kingPos = type === 'k' ? { row: move.row, col: move.col } : this.findKingInBoard(testBoard, this.isWhitePiece(piece) ? 'white' : 'black')
+        return kingPos && !this.isKingInCheckOnBoard(testBoard, kingPos, this.isWhitePiece(piece) ? 'white' : 'black')
+      })
     },
     getPawnMoves(row, col, piece) {
       const moves = []
@@ -237,6 +245,10 @@ export default {
           const nr = row + dr, nc = col + dc
           if (nr >= 0 && nr < 8 && nc >= 0 && nc < 8) {
             const target = this.board[nr][nc]
+            // King cannot move into a square occupied by opponent's king
+            if (target && target.toLowerCase() === 'k' && this.isWhitePiece(piece) !== this.isWhitePiece(target)) {
+              continue
+            }
             if (!target || this.isWhitePiece(piece) !== this.isWhitePiece(target)) {
               moves.push({ row: nr, col: nc })
             }
@@ -798,6 +810,8 @@ h1 {
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   border-radius: 8px;
   overflow: hidden;
+  will-change: auto;
+  backface-visibility: hidden;
 }
 
 .chess-row {
@@ -810,10 +824,11 @@ h1 {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
   font-size: 2rem;
   user-select: none;
   position: relative;
+  will-change: background-color;
 }
 
 .chess-square.light {
@@ -825,8 +840,9 @@ h1 {
 }
 
 .chess-square.selected {
-  background: #baca44 !important;
-  box-shadow: inset 0 0 0 3px #7cb342;
+  background: #c4d759 !important;
+  box-shadow: inset 0 0 0 3px #6fa82f;
+  transition: background-color 0.1s ease, box-shadow 0.1s ease;
 }
 
 .chess-square.valid-move::after {
@@ -844,6 +860,10 @@ h1 {
   justify-content: center;
   width: 100%;
   height: 100%;
+  font-size: 0.95em;
+  user-select: none;
+  will-change: transform;
+  transition: none;
 }
 
 .game-info {
