@@ -17,7 +17,7 @@
     <div class="about-me-description-container">
       <div class="about-me-description-content">
         <h2 class="about-me-title">Hi, I'm <span class="name-highlight">Teck Yew</span> – also known as 'Take You' ✨</h2>
-        <p class="about-me-description">I'm a final year graduating student at Singapore Management University. I have 4 experiences working with various companies, providing them with my specialised technological skillsets and of course, learning as I grow.</p>
+        <p class="about-me-description">I'm a final year graduating student at Singapore Management University. I have 4 experiences working with various companies, providing them with my specialised technological skillsets and of course, to learn as I continue my venture with them.</p>
       </div>
     </div>
 
@@ -30,7 +30,7 @@
           <div class="work-experience-item">
             <div class="company-name">CapitaLand</div>
             <div class="work-experience-details">
-              <span class="job-title">Digital International (Enterprise Architecture)</span>
+              <a href="https://www.linkedin.com/in/teck-yew/overlay/Position/2648294905/treasury/?profileId=ACoAABPCGQ8BLzk9s9gW5mp8UMP3vihOYV2qCt4" target="_blank" rel="noopener noreferrer" class="job-title">Digital International (Enterprise Architecture)</a>
               <span class="job-duration">2025 – 2025</span>
             </div>
           </div>
@@ -38,7 +38,7 @@
           <div class="work-experience-item">
             <div class="company-name">Far East Organisation</div>
             <div class="work-experience-details">
-              <span class="job-title">Data Management / Digital Lab</span>
+              <a href="https://www.linkedin.com/in/teck-yew/overlay/Position/2393848210/treasury/?profileId=ACoAABPCGQ8BLzk9s9gW5mp8UMP3vihOYV2qCt4" target="_blank" rel="noopener noreferrer" class="job-title">Data Management / Digital Lab</a>
               <span class="job-duration">2024 – 2024</span>
             </div>
           </div>
@@ -46,7 +46,7 @@
           <div class="work-experience-item">
             <div class="company-name">Synapxe</div>
             <div class="work-experience-details">
-              <span class="job-title">Resource Management</span>
+              <a href="https://www.linkedin.com/in/teck-yew/overlay/Position/1432757735/treasury/?profileId=ACoAABPCGQ8BLzk9s9gW5mp8UMP3vihOYV2qCt4" target="_blank" rel="noopener noreferrer" class="job-title">Resource Management</a>
               <span class="job-duration">2019 – 2019</span>
             </div>
           </div>
@@ -54,7 +54,7 @@
           <div class="work-experience-item">
             <div class="company-name">InfoSun Technology</div>
             <div class="work-experience-details">
-              <span class="job-title">Project Management / Part-Time</span>
+              <a href="https://www.linkedin.com/in/teck-yew/overlay/Position/1623326713/treasury/?profileId=ACoAABPCGQ8BLzk9s9gW5mp8UMP3vihOYV2qCt4" target="_blank" rel="noopener noreferrer" class="job-title">Project Management / Part-Time</a>
               <span class="job-duration">2017 – 2018</span>
             </div>
           </div>
@@ -313,6 +313,14 @@ export default {
   font-size: 1.3rem;
   color: #0A66C2;
   font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.job-title:hover {
+  text-decoration: underline;
+  opacity: 0.8;
 }
 
 .job-duration {
