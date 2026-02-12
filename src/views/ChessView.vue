@@ -46,7 +46,6 @@
           <div class="move-controls">
             <button @click="prevMove" :disabled="moveHistory.length === 0" class="btn btn-nav">← Previous</button>
             <button @click="nextMove" :disabled="currentMoveIndex >= moveHistory.length - 1" class="btn btn-nav">Next →</button>
-            <button v-if="isReplaying" @click="backToGame" class="btn btn-nav btn-primary">Back to Game</button>
           </div>
         </div>
       </div>
