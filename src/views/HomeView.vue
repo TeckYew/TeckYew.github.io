@@ -22,6 +22,10 @@ import EventCard from '../components/Events/EventCard.vue'
           <a class="btn btn-success btn-lg" href="#featuredProjects" style="padding: 12px 30px; font-size: 1rem;">My Portfolio</a>
           <a class="btn btn-lg" href="https://www.linkedin.com/in/teck-yew/" target="_blank" style="padding: 12px 30px; font-size: 1rem; background-color: #0A66C2; color: white; border: none;">LinkedIn - Where the magic happens ✨</a>
         </div>
+        <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
+          <a class="btn btn-lg" href="https://github.com/TeckYew" target="_blank" style="padding: 12px 30px; font-size: 1rem; background-color: #333333; color: white; border: none;">Github</a>
+          <a class="btn btn-lg" href="https://public.tableau.com/app/profile/thong.teck.yew/vizzes" target="_blank" style="padding: 12px 30px; font-size: 1rem; background-color: #E97627; color: white; border: none;">Tableau Public</a>
+        </div>
       </div>
     </div>
 

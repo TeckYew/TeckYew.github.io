@@ -32,7 +32,7 @@
             <h3>Explore & Travel</h3>
             <p>Back in January 2025, I went on a class trip to United Kingdom, London and a solo travel to Manchester and different parts of Europe (Belgium, Germany and Netherlands). The people, bookstores, food, and experience, all of these changed my point of view of the world.</p>
             <a href="https://www.linkedin.com/posts/smu-scis-technopreneurship-study-mission_tsm-london-2025-activity-7419562776085409794-Q_n6?utm_source=share&utm_medium=member_desktop&rcm=ACoAABPCGQ8BLzk9s9gW5mp8UMP3vihOYV2qCt4" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #0A66C2; color: white; padding: 8px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.3s ease; margin-top: 10px;">
-              LinkedIn Post
+              Technopreneurship Study Mission (London)
             </a>
           </div>
 
@@ -71,6 +71,19 @@
             <h3>Build & Design</h3>
             <p>Ever since polytechnic, I have always enjoyed working with technologies. Building innovative products and solving problems through technology is my passion, and I will always cherish it.</p>
           </div>
+        </div>
+
+        <!-- Contact Me Section -->
+        <div class="contact-section">
+          <h2 class="contact-title">Get In Touch</h2>
+          <p class="contact-description">Feel free to reach out if you'd like to collaborate, chat about design, or discuss any exciting opportunities!</p>
+          <a href="mailto:teckyew2000@hotmail.com" class="contact-button">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+            Contact Me via Email
+          </a>
         </div>
       </div>
     </div>
@@ -273,6 +286,57 @@ export default {
   height: 20px;
 }
 
+/* Contact Section */
+.contact-section {
+  margin-top: 80px;
+  padding: 60px 40px;
+  text-align: center;
+  background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+  border-radius: 12px;
+  border: 2px solid #28a745;
+}
+
+.contact-title {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+}
+
+.contact-description {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.contact-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #28a745;
+  color: white;
+  padding: 12px 40px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.contact-button:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+  color: white;
+}
+
+.contact-icon {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero-section {
@@ -308,6 +372,24 @@ export default {
   .interest-card h3 {
     font-size: 1.2rem;
   }
+
+  .contact-section {
+    padding: 40px 20px;
+    margin-top: 60px;
+  }
+
+  .contact-title {
+    font-size: 1.6rem;
+  }
+
+  .contact-description {
+    font-size: 1rem;
+  }
+
+  .contact-button {
+    padding: 10px 30px;
+    font-size: 0.95rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -326,6 +408,24 @@ export default {
 
   .interest-card {
     padding: 25px 15px;
+  }
+
+  .contact-section {
+    padding: 30px 15px;
+    margin-top: 50px;
+  }
+
+  .contact-title {
+    font-size: 1.4rem;
+  }
+
+  .contact-description {
+    font-size: 0.95rem;
+  }
+
+  .contact-button {
+    padding: 10px 25px;
+    font-size: 0.9rem;
   }
 }
 </style>
