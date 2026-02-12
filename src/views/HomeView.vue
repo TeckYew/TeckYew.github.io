@@ -5,18 +5,75 @@ import EventCard from '../components/Events/EventCard.vue'
 <template>
   <div class="container-fluid">
     <div class="row gx-4 gx-lg-4 align-items-center justify-content-center hero-section" style="min-height: 100vh; padding: 40px 20px;">
-      <div class="col-lg-6 d-flex justify-content-center mb-4 mb-lg-0">
+      <div class="col-lg-6 d-flex justify-content-center mb-4 mb-lg-0 profile-container">
+        <!-- Decorative SVG Background -->
+        <svg class="profile-decoration" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background circles -->
+          <circle cx="250" cy="250" r="220" fill="none" stroke="#28a745" stroke-width="2" opacity="0.3"/>
+          <circle cx="250" cy="250" r="200" fill="none" stroke="#28a745" stroke-width="1.5" opacity="0.2"/>
+          <circle cx="250" cy="250" r="180" fill="none" stroke="#28a745" stroke-width="1" opacity="0.15"/>
+          
+          <!-- Decorative corner elements -->
+          <!-- Top left -->
+          <g stroke="#C3FF00" stroke-width="3" fill="none" stroke-linecap="round">
+            <path d="M 30 30 L 80 30 L 80 80"/>
+            <path d="M 40 40 L 90 40 L 90 90"/>
+            <circle cx="50" cy="50" r="15" fill="#C3FF00" opacity="0.5"/>
+          </g>
+          
+          <!-- Top right -->
+          <g stroke="#C3FF00" stroke-width="3" fill="none" stroke-linecap="round">
+            <path d="M 470 30 L 420 30 L 420 80"/>
+            <path d="M 460 40 L 410 40 L 410 90"/>
+            <circle cx="450" cy="50" r="15" fill="#C3FF00" opacity="0.5"/>
+          </g>
+          
+          <!-- Bottom left -->
+          <g stroke="#C3FF00" stroke-width="3" fill="none" stroke-linecap="round">
+            <path d="M 30 470 L 80 470 L 80 420"/>
+            <path d="M 40 460 L 90 460 L 90 410"/>
+            <circle cx="50" cy="450" r="15" fill="#C3FF00" opacity="0.5"/>
+          </g>
+          
+          <!-- Bottom right -->
+          <g stroke="#C3FF00" stroke-width="3" fill="none" stroke-linecap="round">
+            <path d="M 470 470 L 420 470 L 420 420"/>
+            <path d="M 460 460 L 410 460 L 410 410"/>
+            <circle cx="450" cy="450" r="15" fill="#C3FF00" opacity="0.5"/>
+          </g>
+          
+          <!-- Side decorative curves -->
+          <path d="M 20 150 Q 50 200 20 250 Q 50 300 20 350" stroke="#28a745" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="5,5"/>
+          <path d="M 480 150 Q 450 200 480 250 Q 450 300 480 350" stroke="#28a745" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="5,5"/>
+          
+          <!-- Diagonal accent lines -->
+          <path d="M 80 80 L 150 150" stroke="#28a745" stroke-width="2" fill="none" opacity="0.3"/>
+          <path d="M 420 80 L 350 150" stroke="#28a745" stroke-width="2" fill="none" opacity="0.3"/>
+          <path d="M 80 420 L 150 350" stroke="#28a745" stroke-width="2" fill="none" opacity="0.3"/>
+          <path d="M 420 420 L 350 350" stroke="#28a745" stroke-width="2" fill="none" opacity="0.3"/>
+          
+          <!-- Floating dots pattern -->
+          <circle cx="100" cy="100" r="4" fill="#28a745" opacity="0.5"/>
+          <circle cx="400" cy="100" r="4" fill="#28a745" opacity="0.5"/>
+          <circle cx="100" cy="400" r="4" fill="#28a745" opacity="0.5"/>
+          <circle cx="400" cy="400" r="4" fill="#28a745" opacity="0.5"/>
+          <circle cx="120" cy="200" r="3" fill="#C3FF00" opacity="0.4"/>
+          <circle cx="380" cy="200" r="3" fill="#C3FF00" opacity="0.4"/>
+          <circle cx="120" cy="300" r="3" fill="#C3FF00" opacity="0.4"/>
+          <circle cx="380" cy="300" r="3" fill="#C3FF00" opacity="0.4"/>
+        </svg>
+        
         <img
-          class="img-fluid"
+          class="img-fluid profile-image"
           src="../assets/hero-profile.jpg"
           alt="Hero Profile"
-          style="border-radius: 50%; width: 90%; max-width: 400px; margin: 0 auto; display: block; border: 5px solid #28a745; box-shadow: 0 10px 40px rgba(40, 167, 69, 0.3), 0 0 0 15px rgba(40, 167, 69, 0.1); transition: transform 0.3s ease;"
+          style="border-radius: 20px; width: 90%; max-width: 400px; margin: 0 auto; display: block; border: 5px solid #28a745; box-shadow: 0 10px 40px rgba(40, 167, 69, 0.3), 0 0 0 15px rgba(40, 167, 69, 0.1); transition: transform 0.3s ease; position: relative; z-index: 2;"
         />
       </div>
 
       <div class="col-lg-6 col-sm-12">
-        <h1 class="hero-title" style="line-height: 1.2; margin-bottom: 10px;">Hi, I'm Thong Teck Yew.</h1>
-        <p class="hero-subtitle" style="margin-bottom: 30px; line-height: 1.6; color: #666;">Welcome to my website!</p>
+        <h1 class="hero-title" style="line-height: 1.2; margin-bottom: 10px; color: #000;">Hi, I'm <span style="color: #28a745; font-weight: bold;">Teck Yew</span>.</h1>
+        <p class="hero-subtitle" style="margin-bottom: 30px; line-height: 1.6; color: #666;">A graduating student from SMU with experiences in Information Systems, User Design Thinking, and Business Analytics.</p>
         <p class="hero-description" style="margin-bottom: 30px; line-height: 1.6;">Below are some quick links to get you <a href="https://www.google.com/search?q=thong+teck+yew&rlz=1C5CHFA_enSG1012SG1013&oq=thong+te&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYQDIGCAMQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQRRhB0gEHOTQ3ajBqMagCALACAA&sourceid=chrome&ie=UTF-8" target="_blank" style="text-decoration: underline;"><span style="color: #4285F4;">G</span><span style="color: #EA4335;">o</span><span style="color: #FBBC04;">o</span><span style="color: #4285F4;">g</span><span style="color: #EA4335;">l</span><span style="color: #FBBC04;">i</span><span style="color: #4285F4;">n</span><span style="color: #EA4335;">g</span></a> about me 😁</p>
         <div style="display: flex; gap: 15px; flex-wrap: wrap;">
           <a class="btn btn-success btn-lg" href="#featuredProjects" style="padding: 12px 30px; font-size: 1rem;">My Portfolio</a>
@@ -231,6 +288,100 @@ export default {
 
 .hero-description {
   font-size: clamp(1rem, 3vw, 1.3rem);
+}
+
+.profile-container {
+  position: relative;
+}
+
+.profile-decoration {
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  max-width: 600px;
+  max-height: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.profile-image {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.profile-image:hover {
+  transform: scale(1.1);
+}
+
+/* SVG Background Animations */
+.profile-decoration {
+  animation: gentleRotate 20s linear infinite;
+}
+
+@keyframes gentleRotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Stagger animation for circles - different speeds */
+.profile-decoration circle:nth-child(10),
+.profile-decoration circle:nth-child(11),
+.profile-decoration circle:nth-child(12),
+.profile-decoration circle:nth-child(13) {
+  animation: pulse-scale 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.profile-decoration circle:nth-child(14),
+.profile-decoration circle:nth-child(15),
+.profile-decoration circle:nth-child(16),
+.profile-decoration circle:nth-child(17) {
+  animation: pulse-scale 4s ease-in-out infinite 1s;
+  transform-origin: center;
+}
+
+@keyframes pulse-scale {
+  0%, 100% {
+    r: 4px;
+    opacity: 0.5;
+  }
+  50% {
+    r: 6px;
+    opacity: 0.8;
+  }
+}
+
+/* Sway animation for the curves */
+.profile-decoration path {
+  animation: gentle-sway 4s ease-in-out infinite;
+  transform-origin: 250px 300px;
+}
+
+.profile-decoration path:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.profile-decoration path:nth-child(3) {
+  animation-delay: 1s;
+}
+
+@keyframes gentle-sway {
+  0%, 100% {
+    opacity: 0.4;
+    stroke-width: 2;
+  }
+  50% {
+    opacity: 0.7;
+    stroke-width: 2.5;
+  }
 }
 
 .projects-title {
