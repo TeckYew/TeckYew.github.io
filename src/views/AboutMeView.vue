@@ -238,7 +238,7 @@ export default {
 .about-me-title {
   font-size: 2.2rem;
   font-weight: 600;
-  color: #000;
+  color: #000 !important;
   margin-bottom: 30px;
   line-height: 1.4;
 }
