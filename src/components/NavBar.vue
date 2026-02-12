@@ -17,9 +17,9 @@ const isAboutPage = () => route.path === '/about'
 <template>
   <div id="grey" class="container-fluid" :class="{ 'navbar-about': isAboutPage() }">
     <nav id="nav" class="navbar navbar-brand navbar-expand-lg navbar-light w-screen" :class="{ 'navbar-about': isAboutPage() }">
-      <RouterLink class="navbar-brand" to="/">
+      <RouterLink class="navbar-brand logo-link" to="/">
         <img
-          class="d-inline-block align-top float-left"
+          class="d-inline-block align-top float-left navbar-logo"
           src="../assets/deckeyew-logo.svg"
           alt="Teck Yew"
           height="50"
@@ -158,6 +158,33 @@ export default {
 
 .nav-link:hover::after {
   width: 100%;
+}
+
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.navbar-logo {
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+}
+
+.logo-link:hover .navbar-logo {
+  animation: coinFlip 0.8s ease-in-out;
+}
+
+@keyframes coinFlip {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
 }
 </style>
 

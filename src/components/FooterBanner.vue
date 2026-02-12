@@ -1,5 +1,12 @@
 <template>
   <footer @mouseenter="showGame = true" @mouseleave="showGame = false" style="position: relative;">
+    <!-- Copyright Footer -->
+    <div style="padding: 15px 20px; background: #ffffff; border-top: 1px solid #e0e0e0;">
+      <p style="margin: 0; color: #999; font-size: 0.85rem; text-align: left;">
+        © Thong Teck Yew 2026 🇸🇬
+      </p>
+    </div>
+    
     <!-- Dinosaur Game -->
     <div v-if="showGame" style="padding: 30px 20px; background: #f0f0f0; border-top: 2px solid #28a745; cursor: pointer;">
       <div style="max-width: 800px; margin: 0 auto; text-align: center;">
