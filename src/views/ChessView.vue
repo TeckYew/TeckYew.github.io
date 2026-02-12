@@ -795,9 +795,7 @@ export default {
         this.loadBoardAtMove()
       } else if (this.currentMoveIndex === -1 && this.moveHistory.length > 0) {
         this.currentMoveIndex = this.moveHistory.length - 1
-        this.$nextTick(() => {
-          this.loadBoardAtMove()
-        })
+        this.loadBoardAtMove()
       }
     },
     nextMove() {
@@ -814,8 +812,11 @@ export default {
         return
       }
       
-      this.$set(this, 'board', JSON.parse(JSON.stringify(this.boardHistory[this.currentMoveIndex])))
-      this.$set(this, 'capturedPieces', JSON.parse(JSON.stringify(this.capturedPiecesHistory[this.currentMoveIndex])))
+      const boardCopy = this.boardHistory[this.currentMoveIndex].map(row => [...row])
+      const capturedCopy = JSON.parse(JSON.stringify(this.capturedPiecesHistory[this.currentMoveIndex]))
+      
+      this.board = boardCopy
+      this.capturedPieces = capturedCopy
       this.selectedSquare = null
       this.validMoves = []
     },
