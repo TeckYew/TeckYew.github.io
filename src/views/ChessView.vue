@@ -18,7 +18,7 @@
               ]"
               @click="selectSquare(rowIndex, colIndex)"
             >
-              <span v-if="square" class="piece">{{ getPieceSymbol(square) }}</span>
+              <span v-if="square" :class="['piece', isBlackPiece(square) ? 'black-piece' : 'white-piece']">{{ getPieceSymbol(square) }}</span>
             </div>
           </div>
         </div>
@@ -40,6 +40,13 @@
             <p><strong>Moves:</strong> {{ moveHistory.length }}</p>
             <p v-if="capturedPieces.white.length > 0"><strong>Captured (Black):</strong> {{ capturedPieces.white.join(' ') }}</p>
             <p v-if="capturedPieces.black.length > 0"><strong>Captured (White):</strong> {{ capturedPieces.black.join(' ') }}</p>
+            <p v-if="isReplaying" class="replay-info">Viewing Move {{ currentMoveIndex + 1 }} of {{ moveHistory.length }}</p>
+          </div>
+          
+          <div class="move-controls">
+            <button @click="prevMove" :disabled="currentMoveIndex < 0" class="btn btn-nav">← Previous</button>
+            <button @click="nextMove" :disabled="currentMoveIndex >= moveHistory.length - 1" class="btn btn-nav">Next →</button>
+            <button v-if="isReplaying" @click="backToGame" class="btn btn-nav btn-primary">Back to Game</button>
           </div>
         </div>
       </div>
@@ -62,7 +69,15 @@ export default {
         white: [],
         black: []
       },
-      aiThinking: false
+      aiThinking: false,
+      currentMoveIndex: -1,
+      boardHistory: [],
+      capturedPiecesHistory: []
+    }
+  },
+  computed: {
+    isReplaying() {
+      return this.currentMoveIndex >= 0 && this.currentMoveIndex < this.moveHistory.length
     }
   },
   created() {
@@ -93,12 +108,12 @@ export default {
         'k': '♚', 'K': '♔',
         'q': '♛', 'Q': '♕',
         'r': '♜', 'R': '♖',
-        'b': '♗', 'B': '♗',
-        'n': '♘', 'N': '♘',
+        'b': '♝', 'B': '♗',
+        'n': '♞', 'N': '♘',
         'p': '♟', 'P': '♙'
       }
       return symbols[piece] || ''
-    },
+    ,
     selectSquare(row, col) {
       if (this.aiThinking) return
       if (this.playerTurn !== 'white') return
@@ -321,6 +336,9 @@ export default {
       this.board[fromRow][fromCol] = null
       
       this.moveHistory.push({ fromRow, fromCol, toRow, toCol, piece, captured: target })
+      this.boardHistory.push(JSON.parse(JSON.stringify(this.board)))
+      this.capturedPiecesHistory.push(JSON.parse(JSON.stringify(this.capturedPieces)))
+      this.currentMoveIndex = -1
       
       this.playerTurn = player === 'white' ? 'black' : 'white'
       this.updateGameStatus()
@@ -768,6 +786,73 @@ export default {
     },
     resetGame() {
       this.initializeBoard()
+      this.currentMoveIndex = -1
+      this.boardHistory = []
+      this.capturedPiecesHistory = []
+    },
+    prevMove() {
+      if (this.currentMoveIndex > 0) {
+        this.currentMoveIndex--
+        this.loadBoardAtMove()
+      } else if (this.currentMoveIndex === -1 && this.moveHistory.length > 0) {
+        this.currentMoveIndex = this.moveHistory.length - 1
+        this.loadBoardAtMove()
+      }
+    },
+    nextMove() {
+      if (this.currentMoveIndex >= 0 && this.currentMoveIndex < this.moveHistory.length - 1) {
+        this.currentMoveIndex++
+        this.loadBoardAtMove()
+      } else if (this.currentMoveIndex === this.moveHistory.length - 1) {
+        this.backToGame()
+      }
+    },
+    loadBoardAtMove() {
+      if (this.currentMoveIndex === -1) {
+        this.backToGame()
+        return
+      }
+      
+      this.board = JSON.parse(JSON.stringify(this.boardHistory[this.currentMoveIndex]))
+      this.capturedPieces = JSON.parse(JSON.stringify(this.capturedPiecesHistory[this.currentMoveIndex]))
+      this.selectedSquare = null
+      this.validMoves = []
+    },
+    backToGame() {
+      this.currentMoveIndex = -1
+      if (this.moveHistory.length > 0) {
+        let board = [
+          ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
+          ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
+          [null, null, null, null, null, null, null, null],
+          [null, null, null, null, null, null, null, null],
+          [null, null, null, null, null, null, null, null],
+          [null, null, null, null, null, null, null, null],
+          ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
+          ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R']
+        ]
+        
+        for (let move of this.moveHistory) {
+          board[move.toRow][move.toCol] = move.piece
+          board[move.fromRow][move.fromCol] = null
+        }
+        
+        this.board = board
+        this.capturedPieces = { white: [], black: [] }
+        
+        for (let move of this.moveHistory) {
+          if (move.captured) {
+            const symbol = this.getPieceSymbol(move.captured)
+            if (this.isWhitePiece(move.piece)) {
+              this.capturedPieces.white.push(symbol)
+            } else {
+              this.capturedPieces.black.push(symbol)
+            }
+          }
+        }
+      }
+      this.selectedSquare = null
+      this.validMoves = []
     }
   }
 }
@@ -864,6 +949,18 @@ h1 {
   user-select: none;
   will-change: transform;
   transition: none;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.piece.white-piece {
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5), 0 0 2px rgba(0,0,0,0.8);
+}
+
+.piece.black-piece {
+  color: #1a1a1a;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.3);
 }
 
 .game-info {
@@ -923,9 +1020,34 @@ h1 {
   background: #5a6268;
 }
 
+.btn-nav {
+  background: #007bff;
+  color: white;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  flex: 1;
+}
+
+.btn-nav:hover:not(:disabled) {
+  background: #0056b3;
+}
+
 .btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.move-controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.replay-info {
+  font-size: 0.85rem;
+  color: #0056b3;
+  margin: 5px 0 0 0 !important;
+  font-weight: bold;
 }
 
 .stats {
