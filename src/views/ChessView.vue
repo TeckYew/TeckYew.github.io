@@ -113,7 +113,7 @@ export default {
         'p': '♟', 'P': '♙'
       }
       return symbols[piece] || ''
-    ,
+    },
     selectSquare(row, col) {
       if (this.aiThinking) return
       if (this.playerTurn !== 'white') return
