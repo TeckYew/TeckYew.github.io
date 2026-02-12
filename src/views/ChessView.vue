@@ -2,6 +2,7 @@
   <div class="chess-container">
     <div class="chess-content">
       <h1 class="text-center mb-5">♟️ Chess Game ♟️</h1>
+      <p class="chess-description">I started to love playing chess a lot since the start of this year, and I am always seeking new ways to improve my openings and gameplay. Have a little go at this simple chess game! Who knows, you might leave this website becoming a Chess Grandmaster :)</p>
       
       <div class="chess-wrapper">
         <div class="chessboard">
@@ -334,13 +335,168 @@ export default {
         return
       }
       
-      const randomPiece = blackPieces[Math.floor(Math.random() * blackPieces.length)]
-      const randomMove = randomPiece.moves[Math.floor(Math.random() * randomPiece.moves.length)]
+      // Find the best move using strategic evaluation
+      let bestMove = null
+      let bestScore = -Infinity
+      
+      for (const {row, col, moves} of blackPieces) {
+        const piece = this.board[row][col]
+        
+        for (const move of moves) {
+          let score = 0
+          
+          // 1. Prioritize captures (especially of high-value pieces)
+          const targetPiece = this.board[move.row][move.col]
+          if (targetPiece && this.isWhitePiece(targetPiece)) {
+            const pieceValues = {
+              'P': 1, 'N': 3, 'B': 3, 'R': 5, 'Q': 9, 'K': 1000
+            }
+            score += pieceValues[targetPiece] * 10
+          }
+          
+          // 2. Prioritize checking the opponent king
+          const testBoard = JSON.parse(JSON.stringify(this.board))
+          testBoard[move.row][move.col] = testBoard[row][col]
+          testBoard[row][col] = null
+          
+          const whiteKingPos = this.findKingInBoard(testBoard, 'white')
+          const canCheck = this.canPieceAttackPosition(testBoard, piece, move.row, move.col, whiteKingPos)
+          if (canCheck) {
+            score += 50
+          }
+          
+          // 3. Prioritize attacking/controlling central squares
+          const centralSquares = [[3,3], [3,4], [4,3], [4,4], [2,3], [2,4], [3,2], [3,5], [4,2], [4,5], [5,3], [5,4]]
+          if (centralSquares.some(sq => sq[0] === move.row && sq[1] === move.col)) {
+            score += 3
+          }
+          
+          // 4. Prioritize moving pieces away from attack
+          const pieceUnderAttack = this.isPieceUnderAttack(this.board, row, col, 'black')
+          if (pieceUnderAttack) {
+            score += 5
+          }
+          
+          // 5. Penalize putting king in check
+          if (whiteKingPos && piece.toLowerCase() !== 'k') {
+            if (this.isKingUnderAttack(testBoard, whiteKingPos, 'white')) {
+              score -= 1000 // Avoid moves that don't escape check
+            }
+          }
+          
+          if (score > bestScore) {
+            bestScore = score
+            bestMove = { fromRow: row, fromCol: col, toRow: move.row, toCol: move.col }
+          }
+        }
+      }
+      
+      if (!bestMove && blackPieces.length > 0) {
+        const randomPiece = blackPieces[Math.floor(Math.random() * blackPieces.length)]
+        const randomMove = randomPiece.moves[Math.floor(Math.random() * randomPiece.moves.length)]
+        bestMove = { fromRow: randomPiece.row, fromCol: randomPiece.col, toRow: randomMove.row, toCol: randomMove.col }
+      }
       
       setTimeout(() => {
-        this.makeMove(randomPiece.row, randomPiece.col, randomMove.row, randomMove.col, 'black')
+        if (bestMove) {
+          this.makeMove(bestMove.fromRow, bestMove.fromCol, bestMove.toRow, bestMove.toCol, 'black')
+        }
         this.aiThinking = false
       }, 500)
+    },
+    findKingInBoard(board, color) {
+      const kingChar = color === 'white' ? 'K' : 'k'
+      for (let r = 0; r < 8; r++) {
+        for (let c = 0; c < 8; c++) {
+          if (board[r][c] === kingChar) {
+            return { row: r, col: c }
+          }
+        }
+      }
+      return null
+    },
+    canPieceAttackPosition(board, piece, fromRow, fromCol, targetPos) {
+      if (!targetPos) return false
+      const tempBoard = JSON.parse(JSON.stringify(board))
+      tempBoard[fromRow][fromCol] = piece
+      const moves = this.calculateMovesForBoard(tempBoard, fromRow, fromCol)
+      return moves.some(m => m.row === targetPos.row && m.col === targetPos.col)
+    },
+    calculateMovesForBoard(board, row, col) {
+      const piece = board[row][col]
+      if (!piece) return []
+      
+      const moves = []
+      const type = piece.toLowerCase()
+      
+      // Simplified move calculation for position testing
+      if (type === 'p') {
+        const direction = this.isWhitePiece(piece) ? -1 : 1
+        const startRow = this.isWhitePiece(piece) ? 6 : 1
+        
+        const newRow = row + direction
+        if (newRow >= 0 && newRow < 8 && !board[newRow][col]) {
+          moves.push({row: newRow, col})
+        }
+        
+        if (newRow >= 0 && newRow < 8) {
+          if (col > 0 && board[newRow][col-1]) moves.push({row: newRow, col: col-1})
+          if (col < 7 && board[newRow][col+1]) moves.push({row: newRow, col: col+1})
+        }
+      } else if (type === 'n') {
+        const knightMoves = [[-2,-1],[-2,1],[-1,-2],[-1,2],[1,-2],[1,2],[2,-1],[2,1]]
+        for (const [dr, dc] of knightMoves) {
+          const nr = row + dr, nc = col + dc
+          if (nr >= 0 && nr < 8 && nc >= 0 && nc < 8) {
+            moves.push({row: nr, col: nc})
+          }
+        }
+      } else if (type === 'b' || type === 'r' || type === 'q') {
+        const directions = type === 'b' ? [[-1,-1],[-1,1],[1,-1],[1,1]] : type === 'r' ? [[-1,0],[1,0],[0,-1],[0,1]] : [[-1,-1],[-1,1],[1,-1],[1,1],[-1,0],[1,0],[0,-1],[0,1]]
+        
+        for (const [dr, dc] of directions) {
+          for (let i = 1; i < 8; i++) {
+            const nr = row + dr * i, nc = col + dc * i
+            if (nr < 0 || nr >= 8 || nc < 0 || nc >= 8) break
+            moves.push({row: nr, col: nc})
+            if (board[nr][nc]) break
+          }
+        }
+      } else if (type === 'k') {
+        for (let dr = -1; dr <= 1; dr++) {
+          for (let dc = -1; dc <= 1; dc++) {
+            if (dr === 0 && dc === 0) continue
+            const nr = row + dr, nc = col + dc
+            if (nr >= 0 && nr < 8 && nc >= 0 && nc < 8) {
+              moves.push({row: nr, col: nc})
+            }
+          }
+        }
+      }
+      
+      return moves
+    },
+    isPieceUnderAttack(board, row, col, color) {
+      const isOwn = color === 'white' ? this.isWhitePiece(board[row][col]) : this.isBlackPiece(board[row][col])
+      if (!isOwn) return false
+      
+      for (let r = 0; r < 8; r++) {
+        for (let c = 0; c < 8; c++) {
+          const piece = board[r][c]
+          if (!piece) continue
+          const isEnemy = color === 'white' ? this.isBlackPiece(piece) : this.isWhitePiece(piece)
+          if (!isEnemy) continue
+          
+          const moves = this.calculateMovesForBoard(board, r, c)
+          if (moves.some(m => m.row === row && m.col === col)) {
+            return true
+          }
+        }
+      }
+      return false
+    },
+    isKingUnderAttack(board, kingPos, color) {
+      return this.isPieceUnderAttack(board, kingPos.row, kingPos.col, color)
     },
     updateGameStatus() {
       this.isCheck = false
@@ -565,6 +721,17 @@ h1 {
   color: #ffc107 !important;
 }
 
+.chess-description {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media (max-width: 800px) {
   .chess-wrapper {
     grid-template-columns: 1fr;
@@ -572,6 +739,12 @@ h1 {
   
   .chessboard {
     max-width: 100%;
+  }
+
+  .chess-description {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    padding: 0 15px;
   }
 }
 </style>
