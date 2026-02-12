@@ -13,6 +13,55 @@
       </div>
     </div>
 
+    <!-- About Me Description Section -->
+    <div class="about-me-description-container">
+      <div class="about-me-description-content">
+        <h2 class="about-me-title">Hi, I'm <span class="name-highlight">Teck Yew</span> – also known as 'Take You' ✨</h2>
+        <p class="about-me-description">I'm a final year graduating student at Singapore Management University. I have 4 experiences working with various companies, providing them with my specialised technological skillsets and of course, learning as I grow.</p>
+      </div>
+    </div>
+
+    <!-- Work Experience Section -->
+    <div class="work-experience-container">
+      <div class="work-experience-content">
+        <h2 class="section-title">Internship Experience</h2>
+        
+        <div class="work-experience-list">
+          <div class="work-experience-item">
+            <div class="company-name">CapitaLand</div>
+            <div class="work-experience-details">
+              <span class="job-title">Digital International (Enterprise Architecture)</span>
+              <span class="job-duration">2025 – 2025</span>
+            </div>
+          </div>
+
+          <div class="work-experience-item">
+            <div class="company-name">Far East Organisation</div>
+            <div class="work-experience-details">
+              <span class="job-title">Data Management / Digital Lab</span>
+              <span class="job-duration">2024 – 2024</span>
+            </div>
+          </div>
+
+          <div class="work-experience-item">
+            <div class="company-name">Synapxe</div>
+            <div class="work-experience-details">
+              <span class="job-title">Resource Management</span>
+              <span class="job-duration">2019 – 2019</span>
+            </div>
+          </div>
+
+          <div class="work-experience-item">
+            <div class="company-name">InfoSun Technology</div>
+            <div class="work-experience-details">
+              <span class="job-title">Project Management / Part-Time</span>
+              <span class="job-duration">2017 – 2018</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Interests Section -->
     <div class="interests-container">
       <div class="interests-content">
@@ -172,6 +221,93 @@ export default {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* About Me Description Section */
+.about-me-description-container {
+  padding: 80px 20px;
+  background: #f9f9f9;
+}
+
+.about-me-description-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-me-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+
+.name-highlight {
+  color: #28a745;
+  font-weight: 700;
+}
+
+.about-me-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Work Experience Section */
+.work-experience-container {
+  padding: 80px 20px;
+  background: #ffffff;
+}
+
+.work-experience-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.work-experience-list {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.work-experience-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 60px;
+  padding: 40px 0;
+  border-bottom: 1px solid #e0e0e0;
+  align-items: center;
+}
+
+.work-experience-item:last-child {
+  border-bottom: none;
+}
+
+.company-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.work-experience-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.job-title {
+  font-size: 1.3rem;
+  color: #0A66C2;
+  font-weight: 500;
+}
+
+.job-duration {
+  font-size: 1.1rem;
+  color: #999;
+  white-space: nowrap;
 }
 
 /* Interests Section */
@@ -350,6 +486,31 @@ export default {
   .section-title {
     font-size: 2rem;
     margin-bottom: 40px;
+  }
+
+  .about-me-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .about-me-description {
+    font-size: 1rem;
+  }
+
+  .work-experience-item {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 30px 0;
+  }
+
+  .work-experience-details {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .job-duration {
+    white-space: normal;
   }
 
   .interests-grid {
