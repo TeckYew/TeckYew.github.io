@@ -795,7 +795,9 @@ export default {
         this.loadBoardAtMove()
       } else if (this.currentMoveIndex === -1 && this.moveHistory.length > 0) {
         this.currentMoveIndex = this.moveHistory.length - 1
-        this.loadBoardAtMove()
+        this.$nextTick(() => {
+          this.loadBoardAtMove()
+        })
       }
     },
     nextMove() {
@@ -812,8 +814,8 @@ export default {
         return
       }
       
-      this.board = JSON.parse(JSON.stringify(this.boardHistory[this.currentMoveIndex]))
-      this.capturedPieces = JSON.parse(JSON.stringify(this.capturedPiecesHistory[this.currentMoveIndex]))
+      this.$set(this, 'board', JSON.parse(JSON.stringify(this.boardHistory[this.currentMoveIndex])))
+      this.$set(this, 'capturedPieces', JSON.parse(JSON.stringify(this.capturedPiecesHistory[this.currentMoveIndex])))
       this.selectedSquare = null
       this.validMoves = []
     },
