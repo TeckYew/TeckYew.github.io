@@ -89,6 +89,17 @@
             <div class="interest-icon">🎨</div>
             <h3>Design & Create</h3>
             <p>My love for design took shape during my secondary school days, where I enjoyed designing and drawing different artworks, and even managed to score a distinction for my art subject. Since then, the exploration of design thinking and user experience has always been part of my journey to apply design not just to UI/UX, but to many other fields like Business Analytics and Project Management.</p>
+            <div class="tools-container">
+              <div class="tool-logo figma">
+                <img src="../assets/figma-logo.png" alt="Figma" />
+              </div>
+              <div class="tool-logo photoshop">
+                <img src="../assets/photoshop-logo.png" alt="Photoshop" />
+              </div>
+              <div class="tool-logo canva">
+                <img src="../assets/canva-logo.png" alt="Canva" />
+              </div>
+            </div>
           </div>
 
           <div class="interest-card">
@@ -394,6 +405,45 @@ export default {
   line-height: 1.6;
   color: #666;
   margin-bottom: 15px;
+}
+
+.tools-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.tool-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.tool-logo:hover {
+  transform: scale(1.1);
+}
+
+.tool-logo img {
+  display: block;
+  width: 60px !important;
+  height: 60px !important;
+  max-width: 60px;
+  max-height: 60px;
+  object-fit: contain;
+}
+
+.tool-logo.canva img {
+  width: 45px !important;
+  height: 45px !important;
+  max-width: 45px;
+  max-height: 45px;
 }
 
 .tiktok-button {
