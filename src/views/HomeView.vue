@@ -90,99 +90,52 @@ import EventCard from '../components/Events/EventCard.vue'
     <div id="featuredProjects" style="margin-top: 40px; padding: 40px 20px;">
       <h2 class="projects-title" style="margin-bottom: 40px;">Featured Projects</h2>
       
+      <!-- Featured Projects Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 60px;">
+      
       <!-- Project 1: HandsUP -->
-      <div class="project-card">
-        <div class="project-image">
+      <!-- First Project -->
+      <RouterLink to="/project/handsup" class="project-card-link">
+        <div class="project-image-wrapper">
           <img 
             src="../assets/idp-handsup.png" 
-            alt="Project" 
-            style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"
+            alt="HandsUP Project" 
           />
         </div>
-        <div class="project-content">
-          <h3 class="project-title">HandsUP - Interaction Design and Prototyping Project</h3>
-          <p style="font-size: 0.95rem; line-height: 1.8; color: #555; margin-bottom: 10px;">
-            <strong>Duration:</strong> ~12 weeks | <strong>Role:</strong> UX Designer (Research, Interaction Design, Prototyping) | <strong>Team:</strong> 4 members
-          </p>
-          <p class="project-description">
-            Young individuals often struggle to form new social connections outside their existing circles. Through preliminary research, we found that the main barrier was not a lack of interest, but rather, a coordination friction and uncertainty around commitment when attending events with unfamiliar peers.
-            <br><br>
-            We conducted 10 semi-structured interviews and identified three recurring pain points:
-            <br>• Difficulty aligning schedules across groups
-            <br>• Social hesitation when attending events alone
-            <br>• Overly complex event platforms that required too many steps
-            <br><br>
-            We reframed the challenge as:
-            <br><br>
-            <strong>How might we reduce coordination friction and lower the psychological barrier to attending interest-based events?</strong>
-            <br><br>
-            Through iterative prototyping and usability testing, we designed a simplified event-matching flow that:
-            <br>• Streamlined scheduling into fewer steps
-            <br>• Displayed mutual interest visibility
-            <br>• Reduced decision fatigue through curated recommendations
-            <br><br>
-            After iteration, task completion improved from 62% to 94% during testing, and users reported increased confidence in committing to events.
-          </p>
-          <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-            <a class="btn btn-success" href="https://drive.google.com/drive/u/1/folders/1n79GfToXoFEP9BKVfejc7VJtgpSvtu40" target="_blank" style="padding: 10px 30px;">View Project</a>
-            <a class="btn" href="https://www.figma.com/design/3TqrvNRyOKK5F2jHAcXEjY/HandsUP?node-id=11-4400&p=f&t=pwWXsKTg5eMDZt9U-0" target="_blank" style="padding: 10px 30px; background-color: #A259FF; color: white; border: none;">View Figma</a>
-          </div>
+        <div class="project-card-overlay">
+          <h3>HandsUP - Interaction Design and Prototyping Project</h3>
+          <p><strong>Duration:</strong> ~12 weeks | <strong>Role:</strong> UX Designer</p>
         </div>
-      </div>
+      </RouterLink>
 
       <!-- Second Project -->
-      <div class="project-card">
-        <div class="project-image">
+      <RouterLink to="/project/hackathon" class="project-card-link">
+        <div class="project-image-wrapper">
           <img 
             src="../assets/googlemaps-carspots.png" 
-            alt="Project" 
-            style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"
+            alt="Hackathon Project" 
           />
         </div>
-        <div class="project-content">
-          <h3 class="project-title">Project Management Experience Hackathon</h3>
-          <p style="font-size: 0.95rem; line-height: 1.8; color: #555; margin-bottom: 10px;">
-            <strong>Duration:</strong> 48-hour Hackathon | <strong>Role:</strong> Project Lead / Strategy & Coordination | <strong>Team:</strong> 4 members
-          </p>
-          <p class="project-description">
-            In a fast-paced hackathon setting led by Mr. Jason Teo from Trust Bank, along with other instructors from various companies, our team was challenged to develop a scalable solution addressing [insert actual challenge theme if you have it]. With limited time and cross-functional team members, alignment and prioritisation were critical to execution.
-            <br><br>
-            I applied systems thinking to map out key stakeholders, dependencies, and constraints early in the process. This helped us identify core leverage points instead of attempting to solve peripheral issues.
-            <br><br>
-            Rather than tackling isolated symptoms, we thought of how we might design a solution that balances feasibility, stakeholder incentives, and long-term scalability within a tight timeline. We implemented stakeholder mapping, task breakdown, and defined a clear solution using design thinking process, ultimately getting first place for our hackathon.
-          </p>
-          <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-            <a class="btn btn-success" href="https://www.canva.com/design/DAF9ZSgPvTg/_xYKmIjjbGJRnSQ-CUbG1Q/view?utm_content=DAF9ZSgPvTg&utm_campaign=designshare&utm_medium=link&utm_source=editor#1" target="_blank" style="padding: 10px 30px;">View Project</a>
-            <a class="btn" href="https://www.linkedin.com/posts/teck-yew_dont-design-features-solve-problems-ugcPost-7170242465197740032-zFfc?utm_source=share&utm_medium=member_desktop&rcm=ACoAABPCGQ8BLzk9s9gW5mp8UMP3vihOYV2qCt4" target="_blank" style="padding: 10px 30px; background-color: #0A66C2; color: white; border: none;">View Post</a>
-          </div>
+        <div class="project-card-overlay">
+          <h3>Project Management Experience Hackathon</h3>
+          <p><strong>Duration:</strong> 48-hour Hackathon | <strong>Role:</strong> Project Lead</p>
         </div>
-      </div>
+      </RouterLink>
 
       <!-- Third Project -->
-      <div class="project-card">
-        <div class="project-image">
+      <RouterLink to="/project/gis-solar" class="project-card-link">
+        <div class="project-image-wrapper">
           <img 
             src="../assets/gis-solar-farm.png" 
-            alt="GIS Project" 
-            style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"
+            alt="GIS Solar Farm Project" 
           />
         </div>
-        <div class="project-content">
-          <h3 class="project-title">Geographical Information Systems-based Multi-criteria Analysis for Urban Planning</h3>
-          <p style="font-size: 0.95rem; line-height: 1.8; color: #555; margin-bottom: 10px;">
-            <strong>Duration:</strong> ~12 weeks | <strong>Role:</strong> Spatial Analysis & Systems Strategy Lead | <strong>Team:</strong> 3 members
-          </p>
-          <p class="project-description">
-            As part of a GIS-Enabled Urban Planning Support System initiative led by Dr. Kam Tin Seong, our team was tasked with designing a spatial decision-support model to identify viable solar farm locations in land-scarce Singapore.
-            <br><br>
-            Singapore's dense urban landscape presents a complex trade-off: renewable energy expansion must compete with housing, agriculture, and environmental conservation. The challenge was not just identifying sunny land — but balancing energy potential, terrain feasibility, urban constraints, and long-term planning alignment under the 2030 Master Plan.
-            <br><br>
-            Our challenge was how might we design a scalable, data-driven spatial model that balances solar efficiency, land constraints, environmental accessibility. All these need to be considered with energy potential factors like slope, aspect etc. Iterative thinking and validation of potential location using trade-offs and identification of resilient zones are key contributing success of our projects.
-          </p>
-          <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-            <a class="btn btn-success" href="https://smt201-group5-solarfarm.netlify.app/" target="_blank" style="padding: 10px 30px;">View Project</a>
-          </div>
+        <div class="project-card-overlay">
+          <h3>GIS-based Multi-criteria Analysis for Urban Planning</h3>
+          <p><strong>Duration:</strong> ~12 weeks | <strong>Role:</strong> Spatial Analysis Lead</p>
         </div>
+      </RouterLink>
+      
       </div>
 
       <!-- Other Design Projects Section -->
@@ -237,8 +190,12 @@ import EventCard from '../components/Events/EventCard.vue'
 </template>
 <script>
 import { db } from '../firebase/index.js'
+import { RouterLink } from 'vue-router'
 
 export default {
+  components: {
+    RouterLink
+  },
   data() {
     return {
       pastEvents: [],
@@ -427,6 +384,67 @@ export default {
   text-align: justify;
 }
 
+/* Featured Project Card Links */
+.project-card-link {
+  display: block;
+  position: relative;
+  margin-bottom: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  height: 200px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.project-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.project-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-card-link:hover .project-image-wrapper img {
+  transform: scale(1.05);
+}
+
+.project-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: white;
+  padding: 40px 40px 30px;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.project-card-link:hover .project-card-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+}
+
+.project-card-overlay h3 {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-weight: 600;
+  margin-bottom: 10px;
+  line-height: 1.3;
+  color: #ffffff !important;
+}
+
+.project-card-overlay p {
+  font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+  margin: 0;
+  opacity: 0.95;
+}
+
 /* Other Projects Section */
 .other-projects-section {
   margin-top: 80px;
@@ -449,6 +467,10 @@ export default {
     gap: 30px;
   }
 
+  .project-card-link {
+    height: 180px;
+  }
+
   .hero-section {
     padding: 30px 20px !important;
   }
@@ -458,6 +480,19 @@ export default {
   .project-card {
     padding: 20px;
     gap: 20px;
+  }
+
+  .project-card-link {
+    height: 160px;
+    margin-bottom: 0;
+  }
+
+  .project-card-overlay {
+    padding: 40px 20px 20px;
+  }
+
+  .project-card-overlay h3 {
+    font-size: 1.3rem;
   }
 
   .other-projects-section {
@@ -489,6 +524,14 @@ export default {
   .project-card {
     padding: 15px;
     margin-bottom: 30px;
+  }
+
+  .project-card-link {
+    height: 150px;
+  }
+
+  .project-card-overlay {
+    padding: 30px 20px 20px;
   }
 
   .other-projects-section {

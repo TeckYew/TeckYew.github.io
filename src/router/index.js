@@ -44,6 +44,9 @@ import ChessView from '../views/ChessView.vue'
 // About Me View
 import AboutMeView from '../views/AboutMeView.vue'
 
+// Project Detail View
+import ProjectDetailView from '../views/ProjectDetailView.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -140,6 +143,11 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: AboutMeView
+    },
+    {
+      path: '/project/:id',
+      name: 'projectDetail',
+      component: ProjectDetailView
     },
     {
       path: '/profile',
