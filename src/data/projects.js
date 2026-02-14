@@ -63,5 +63,27 @@ Our challenge was how might we design a scalable, data-driven spatial model that
     links: [
       { text: 'View Project', url: 'https://smt201-group5-solarfarm.netlify.app/', color: 'success' }
     ]
+  },
+  {
+    id: 'kunyah',
+    category: 'Interaction Design & Accessibility',
+    title: 'Kunyah Bites Cafe POS System',
+    duration: '~18 weeks',
+    role: 'UX Designer (Research, Interaction Design, Prototyping)',
+    team: '2 members',
+    image: 'kunyah-project.png',
+    description: `This design project is an external project that involved collaborating with Kunyah Cafe, a local food kiosk run by a social enterprise. The project involves redesigning an accessible food ordering system for the staff to use.
+
+The staff members are visually impaired, and various components have to be designed with heuristic and accessibility functions in mind. This required a deep understanding of accessibility best practices and user-centered design principles tailored specifically to the needs of visually impaired users.
+
+Through careful research, iterative prototyping, and extensive usability testing with the actual users, we designed a system that prioritized accessibility without compromising functionality. The final outcome of this project helped us achieve:
+
+• 30% increase in productivity
+• 50% improvement in accuracy in selection of items
+
+This project demonstrates the power of inclusive design and how thoughtful UX design can have a tangible, positive impact on real users' daily workflows.`,
+    links: [
+      { text: 'View Figma', url: 'https://www.figma.com/design/Tc5A7cGJd3ZvPsHkwdyHzQ/Kunyah-Project?node-id=0-1&p=f&t=GE6sYi3JZkNkqCLc-0', color: '#A259FF' }
+    ]
   }
 ]

@@ -91,7 +91,7 @@ import EventCard from '../components/Events/EventCard.vue'
       <h2 class="projects-title" style="margin-bottom: 40px;">Featured Projects</h2>
       
       <!-- Featured Projects Grid -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 60px;">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 60px;">
       
       <!-- Project 1: HandsUP -->
       <!-- First Project -->
@@ -133,6 +133,20 @@ import EventCard from '../components/Events/EventCard.vue'
         <div class="project-card-overlay">
           <h3>GIS-based Multi-criteria Analysis for Urban Planning</h3>
           <p><strong>Duration:</strong> ~12 weeks | <strong>Role:</strong> Spatial Analysis Lead</p>
+        </div>
+      </RouterLink>
+
+      <!-- Fourth Project -->
+      <RouterLink to="/project/kunyah" class="project-card-link">
+        <div class="project-image-wrapper">
+          <img 
+            src="../assets/kunyah-project.png" 
+            alt="Kunyah Bites Cafe POS System" 
+          />
+        </div>
+        <div class="project-card-overlay">
+          <h3>Kunyah Bites Cafe POS System</h3>
+          <p><strong>Duration:</strong> ~18 weeks | <strong>Role:</strong> UX Designer</p>
         </div>
       </RouterLink>
       
