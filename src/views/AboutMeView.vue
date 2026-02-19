@@ -17,7 +17,7 @@
     <div class="about-me-description-container">
       <div class="about-me-description-content">
         <h2 class="about-me-title">Hi, I'm <span class="name-highlight">Teck Yew</span> – also known as 'Take You' ✨</h2>
-        <p class="about-me-description">I'm a final year graduating student at Singapore Management University. I have 4 experiences working with various companies, providing them with my specialised technological skillsets and also learning along the way.</p>
+        <p class="about-me-description">I am a final-year student at Singapore Management University with four professional experiences across diverse organisations. Throughout these roles, I applied my specialised technological skill sets to real-world challenges while strengthening my analytical thinking, adaptability, and collaboration skills. I am driven by curiosity and a desire to create meaningful impact through technology as I transition into the professional world.</p>
       </div>
     </div>
 
