@@ -31,7 +31,7 @@
             <div class="company-name">CapitaLand</div>
             <div class="work-experience-details">
               <a href="https://www.linkedin.com/in/teck-yew/overlay/Position/2648294905/treasury/?profileId=ACoAABPCGQ8BLzk9s9gW5mp8UMP3vihOYV2qCt4" target="_blank" rel="noopener noreferrer" class="job-title">Digital International (Enterprise Architecture)</a>
-              <span class="job-duration">2025 – 2025</span>
+              <span class="job-duration">May 2025 - Jul 2025</span>
             </div>
           </div>
 
@@ -39,7 +39,7 @@
             <div class="company-name">Far East Organisation</div>
             <div class="work-experience-details">
               <a href="https://www.linkedin.com/in/teck-yew/overlay/Position/2393848210/treasury/?profileId=ACoAABPCGQ8BLzk9s9gW5mp8UMP3vihOYV2qCt4" target="_blank" rel="noopener noreferrer" class="job-title">Data Management / Digital Lab</a>
-              <span class="job-duration">2024 – 2024</span>
+              <span class="job-duration">May 2024 - Aug 2024</span>
             </div>
           </div>
 
@@ -47,7 +47,7 @@
             <div class="company-name">Synapxe</div>
             <div class="work-experience-details">
               <a href="https://www.linkedin.com/in/teck-yew/overlay/Position/1432757735/treasury/?profileId=ACoAABPCGQ8BLzk9s9gW5mp8UMP3vihOYV2qCt4" target="_blank" rel="noopener noreferrer" class="job-title">Resource Management</a>
-              <span class="job-duration">2019 – 2019</span>
+              <span class="job-duration">Mar 2019 - Aug 2019</span>
             </div>
           </div>
 
@@ -55,7 +55,7 @@
             <div class="company-name">InfoSun Technology</div>
             <div class="work-experience-details">
               <a href="https://www.linkedin.com/in/teck-yew/overlay/Position/1623326713/treasury/?profileId=ACoAABPCGQ8BLzk9s9gW5mp8UMP3vihOYV2qCt4" target="_blank" rel="noopener noreferrer" class="job-title">Project Management / Part-Time</a>
-              <span class="job-duration">2017 – 2018</span>
+              <span class="job-duration">Sep 2017 – Apr 2018</span>
             </div>
           </div>
         </div>
