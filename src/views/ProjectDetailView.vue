@@ -31,30 +31,93 @@
       />
     </div>
 
-    <!-- Project Description -->
+    <!-- Main Content Sections -->
     <div class="project-description-container">
-      <div class="description-content">
-        <h2 class="section-header">Overview</h2>
-        <div class="description-text" v-html="formattedDescription"></div>
+      <!-- Opportunity Section -->
+      <div v-if="project.opportunity" class="opportunity-section">
+        <div class="opportunity-label">Opportunity</div>
+        <p class="opportunity-text">{{ project.opportunity }}</p>
         
-        <!-- Project Links -->
-        <div v-if="project.links && project.links.length > 0" class="project-links">
-          <a 
-            v-for="(link, index) in project.links" 
-            :key="index"
-            :href="link.url" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            :class="['btn', 'btn-lg', `btn-${getLinkColor(link.color)}`]"
-            :style="{ 
-              backgroundColor: link.color && !link.color.includes('success') ? link.color : undefined,
-              color: link.color && !link.color.includes('success') ? 'white' : undefined,
-              border: link.color && !link.color.includes('success') ? 'none' : undefined
-            }"
-          >
-            {{ link.text }}
-          </a>
+        <div v-if="project.challenge" class="challenge-box">
+          <div class="challenge-label">Design Challenge</div>
+          <p class="challenge-text">{{ project.challenge }}</p>
         </div>
+      </div>
+
+      <!-- Research Section -->
+      <div v-if="project.research" class="research-section">
+        <h2 class="section-header">Understanding the Problem</h2>
+        <div class="research-content">
+          <div class="research-method">
+            <h3>Research Method</h3>
+            <p>{{ project.research.method }}</p>
+          </div>
+          <div v-if="project.research.painPoints" class="pain-points">
+            <h3>Key Pain Points</h3>
+            <ul>
+              <li v-for="(point, index) in project.research.painPoints" :key="index">
+                {{ point }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Role & Contributions Section -->
+      <div class="role-contributions-section">
+        <div class="role-box">
+          <h3 class="section-header">My Role</h3>
+          <ul class="role-list">
+            <li v-for="(item, index) in project.roleDetails" :key="index">
+              {{ item }}
+            </li>
+          </ul>
+        </div>
+        <div class="contributions-box">
+          <h3 class="section-header">Key Contributions</h3>
+          <ul class="contributions-list">
+            <li v-for="(item, index) in project.contributions" :key="index">
+              {{ item }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Impact Section -->
+      <div v-if="project.impact && project.impact.length > 0" class="impact-section">
+        <h2 class="section-header">Impact & Results</h2>
+        <div class="impact-cards">
+          <div v-for="(item, index) in project.impact" :key="index" class="impact-card">
+            <div class="impact-icon">{{ item.icon }}</div>
+            <div class="impact-metric">{{ item.metric }}</div>
+            <div class="impact-label">{{ item.label }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Insight Section -->
+      <div v-if="project.keyInsight" class="insight-section">
+        <h2 class="section-header">Key Insight</h2>
+        <p class="insight-text">{{ project.keyInsight }}</p>
+      </div>
+      
+      <!-- Project Links -->
+      <div v-if="project.links && project.links.length > 0" class="project-links">
+        <a 
+          v-for="(link, index) in project.links" 
+          :key="index"
+          :href="link.url" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          :class="['btn', 'btn-lg', `btn-${getLinkColor(link.color)}`]"
+          :style="{ 
+            backgroundColor: link.color && !link.color.includes('success') ? link.color : undefined,
+            color: link.color && !link.color.includes('success') ? 'white' : undefined,
+            border: link.color && !link.color.includes('success') ? 'none' : undefined
+          }"
+        >
+          {{ link.text }}
+        </a>
       </div>
     </div>
 
@@ -75,6 +138,7 @@
     </div>
   </div>
 </template>
+
 
 <script>
 import { RouterLink } from 'vue-router'
@@ -97,24 +161,6 @@ export default {
     },
     otherProjects() {
       return this.projects.filter(p => p.id !== this.currentProjectId)
-    },
-    formattedDescription() {
-      if (!this.project.description) return ''
-      return this.project.description
-        .split('\n')
-        .map(line => line.trim())
-        .filter(line => line.length > 0)
-        .map(line => {
-          if (line.startsWith('•')) {
-            return `<li>${line.substring(1).trim()}</li>`
-          } else if (line.startsWith('**') && line.endsWith('**')) {
-            return `<p><strong>${line.substring(2, line.length - 2)}</strong></p>`
-          } else {
-            return `<p>${line}</p>`
-          }
-        })
-        .join('')
-        .replace(/<li>/g, '<li style="margin-left: 20px; margin-bottom: 8px;">')
     }
   },
   methods: {
@@ -232,11 +278,250 @@ export default {
   padding: 0 20px 100px;
 }
 
-.description-content {
-  max-width: 800px;
-  margin: 0 auto;
+/* Opportunity Section */
+.opportunity-section {
+  max-width: 900px;
+  margin: 0 auto 60px;
+  background: #e3f2fd;
+  border-radius: 12px;
+  padding: 40px;
+  color: #1565c0;
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.15);
+  border-left: 5px solid #1976d2;
 }
 
+.opportunity-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  color: #1565c0;
+}
+
+.opportunity-text {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  color: #1565c0;
+}
+
+.challenge-box {
+  background: rgba(25, 118, 210, 0.1);
+  border-left: 4px solid #1976d2;
+  padding: 20px;
+  border-radius: 6px;
+  margin-top: 20px;
+}
+
+.challenge-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 10px;
+  color: #1565c0;
+}
+
+.challenge-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-weight: 500;
+  margin: 0;
+  color: #1565c0;
+}
+
+/* Research Section */
+.research-section {
+  max-width: 900px;
+  margin: 0 auto 60px;
+}
+
+.research-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.research-method,
+.pain-points {
+  padding: 25px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #28a745;
+}
+
+.research-method h3,
+.pain-points h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #1a1a1a;
+}
+
+.research-method p {
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.pain-points ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: none;
+}
+
+.pain-points li {
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 12px;
+  padding-left: 8px;
+  position: relative;
+}
+
+.pain-points li:before {
+  content: '•';
+  position: absolute;
+  left: -8px;
+  color: #28a745;
+  font-weight: bold;
+}
+
+/* Role & Contributions Section */
+.role-contributions-section {
+  max-width: 900px;
+  margin: 0 auto 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.role-box,
+.contributions-box {
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-top: 3px solid #28a745;
+}
+
+.role-box h3,
+.contributions-box h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+.role-list,
+.contributions-list {
+  margin: 0;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.role-list li,
+.contributions-list li {
+  padding: 12px 0;
+  padding-left: 25px;
+  color: #555;
+  line-height: 1.6;
+  position: relative;
+  font-size: 0.95rem;
+}
+
+.role-list li:before,
+.contributions-list li:before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #28a745;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Impact Section */
+.impact-section {
+  max-width: 900px;
+  margin: 0 auto 60px;
+}
+
+.impact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+  justify-items: center;
+}
+
+.impact-cards:has(.impact-card:only-child) {
+  grid-template-columns: 1fr;
+  max-width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.impact-card {
+  background: linear-gradient(135deg, #d4f946 0%, #bcf246 100%);
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 250px;
+}
+
+.impact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.impact-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.impact-metric {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.impact-label {
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Key Insight Section */
+.insight-section {
+  max-width: 900px;
+  margin: 0 auto 60px;
+  padding: 35px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-radius: 12px;
+  border-left: 5px solid #d97706;
+}
+
+.insight-section .section-header {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #92400e;
+}
+
+.insight-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #78350f;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Section Header */
 .section-header {
   font-size: 1.8rem;
   font-weight: 600;
@@ -245,32 +530,16 @@ export default {
   color: #000000 !important;
 }
 
-.description-text {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #555;
-  margin-bottom: 50px;
-}
-
-.description-text p {
-  margin-bottom: 20px;
-}
-
-.description-text strong {
-  color: #1a1a1a;
-  font-weight: 600;
-}
-
-.description-text li {
-  margin-bottom: 8px;
-  color: #555;
-}
-
+/* Project Links */
 .project-links {
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
   margin-top: 40px;
+  justify-content: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .btn {
@@ -304,6 +573,7 @@ export default {
   transform: translateY(-2px);
 }
 
+/* Other Projects Navigation */
 .other-projects-nav {
   background: #f9f9f9;
   padding: 80px 20px;
@@ -390,12 +660,42 @@ export default {
     padding: 0 20px 60px;
   }
 
-  .description-text {
+  .section-header {
+    font-size: 1.4rem;
+  }
+
+  .opportunity-section {
+    padding: 25px;
+  }
+
+  .opportunity-text {
     font-size: 1rem;
   }
 
-  .section-header {
-    font-size: 1.4rem;
+  .challenge-text {
+    font-size: 1rem;
+  }
+
+  .research-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .role-contributions-section {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .impact-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .insight-section {
+    padding: 20px;
+  }
+
+  .insight-text {
+    font-size: 1rem;
   }
 
   .other-projects-nav {

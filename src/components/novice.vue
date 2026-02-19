@@ -7,8 +7,9 @@ defineProps({
 <template>
   <div class="background">
     <div class="slope"></div>
-    <img id="seed" v-if="userPoints < 250" src="../assets/trees/seed.png" />
-    <img id="sapling" v-if="userPoints >= 250" src="../assets/trees/sapling.png" />
+    <!-- Tree images temporarily disabled -->
+    <!-- <img id="seed" v-if="userPoints < 250" src="../assets/trees/seed.png" /> -->
+    <!-- <img id="sapling" v-if="userPoints >= 250" src="../assets/trees/sapling.png" /> -->
   </div>
 </template>
 

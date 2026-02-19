@@ -4,7 +4,7 @@
     <div v-show="!startQuiz" class="landingPage">
       <div class="landingPage-contents">
         <div class="landingPage-img">
-          <img src="../../assets/wad2logo.jpg" alt="icon" />
+          <!-- WAD2 logo image removed -->
         </div>
         <div class="landingPage-text">
           <h1>QUIZ APP</h1>

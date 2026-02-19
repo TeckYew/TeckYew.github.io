@@ -3,12 +3,8 @@ defineProps(['recList'])
 
 // Define the computed property to determine the theme based on the recEvent
 const theme = (recEvent) => {
-  if (recEvent.hasOwnProperty('cat') && recEvent.cat !== undefined) {
-    const types = recEvent.cat
-    const firstItem = String(types.slice(0, 1)[0])
-    return `../../assets/themes/${firstItem.toLowerCase()}.jpg`
-  }
-  return '../../assets/themes/education.jpg'
+  // Theme images have been removed
+  return null
 }
 
 const description = (recEvent) => {
@@ -29,7 +25,8 @@ const description = (recEvent) => {
     <div class="d-flex flex-row flex-nowrap scrollContent">
       <div v-for="(recEvent, idx) in recList" class="card" :key="idx">
         <!-- style="height: 75vh;" -->
-        <img class="img-fluid" :src="theme(recEvent)" alt="100%x280" />
+        <div v-if="!theme(recEvent)" style="height: 150px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+        <img v-else class="img-fluid" :src="theme(recEvent)" alt="100%x280" />
         <!-- style="height: 40vh;"-->
         <div class="card-body flex-column">
           <h5 class="title">{{ recEvent.name }}</h5>

@@ -10,7 +10,8 @@ defineProps({
 <template>
   <div class="col animated fadeInUp">
     <div class="card mx-auto my-4" style="height: 500px;">
-      <img class="card-img-top" :src="theme" :alt="eventData.eventTitle" style="height: 200px" />
+      <div v-if="!theme" class="card-img-top" style="height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+      <img v-else class="card-img-top" :src="theme" :alt="eventData.eventTitle" style="height: 200px" />
       <div class="card-body">
         <h5 class="card-title">{{ eventData.eventTitle }}</h5>
         <h6 class="card-title">{{ formattedDate }}</h6>
@@ -70,15 +71,8 @@ export default {
 
   computed: {
     theme() {
-      if (this.eventData.hasOwnProperty('eventType')) {
-        if (this.eventData.eventType !== undefined) {
-          let types = this.eventData.eventType
-          let firstItem = String(types.slice(0, 1)[0])
-          console.log(firstItem)
-          return `../../assets/themes/${firstItem.toLowerCase()}.jpg`
-        }
-      }
-      return '../../assets/themes/education.jpg'
+      // Theme images have been removed
+      return null
     }
   }
 }

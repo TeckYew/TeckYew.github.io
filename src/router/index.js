@@ -8,12 +8,6 @@ import HomeView from '../views/HomeView.vue'
 // Error View
 import ErrorView from '../views/ErrorVue.vue'
 
-// Quiz Related Views
-// import QuizView from '../views/QuizView.vue'
-// import QuizIndex from '../components/Challenges/QuizIndex.vue'
-// import QuizResults from '../components/Challenges/QuizResults.vue'
-// import QuizAttempt from '../components/Challenges/QuizAttempt.vue'
-
 // User Related Views
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
@@ -32,10 +26,8 @@ import EventsIndex from '../components/Events/EventsIndex.vue'
 import EventDetails from '../components/Events/EventDetails.vue'
 import ManageParticipants from '../components/Events/ManageParticipants.vue'
 
-// Preference Related Views
+// User Profile & Chat Views
 import Profile from '../views/Profile.vue'
-
-// Preference Related Views
 import Chatbot from '../components/chatbot/Chatbot.vue'
 
 // Chess Game View
@@ -68,31 +60,6 @@ const router = createRouter({
       name: '/OrgHome',
       component: OrgHomeView
     },
-    // {
-    //   path: '/quiz',
-    //   name: 'quiz',
-    //   component: QuizView,
-    //   children: [
-    //     {
-    //       path: '/Index',
-    //       component: QuizIndex
-    //     },
-    //     {
-    //       path: '/results',
-    //       name: 'results',
-    //       component: QuizResults
-    //     },
-    //     {
-    //       path: '/attempt/:id/', //:id refers to quizId
-    //       name: 'attempt',
-    //       component: QuizAttempt
-    //     }
-    //   ]
-    // route level code-splitting
-    // this generates a separate chunk (About.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    // component: () => import('../views/AboutView.vue')
-    // },
     {
       path: '/login',
       name: 'login',
@@ -186,14 +153,6 @@ const router = createRouter({
       path: '/:pathMatch(.*)*',
       redirect: '/Error'
     }
-    // {
-    //   path: '/create',
-    //   name: 'create',
-    //   component: CreateEventView,
-    //   meta: {
-    //     authReq: true
-    //   }
-    // }
   ],
   linkExactActiveClass: 'is-active'
 })

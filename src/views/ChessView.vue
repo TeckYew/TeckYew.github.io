@@ -71,7 +71,18 @@ export default {
       aiThinking: false,
       currentMoveIndex: -1,
       boardHistory: [],
-      capturedPiecesHistory: []
+      capturedPiecesHistory: [],
+      // Track if pieces have moved (for castling rules)
+      kingMoved: {
+        white: false,
+        black: false
+      },
+      rookMoved: {
+        white: { kingside: false, queenside: false },
+        black: { kingside: false, queenside: false }
+      },
+      kingMovedHistory: [],
+      rookMovedHistory: []
     }
   },
   computed: {
@@ -101,6 +112,13 @@ export default {
       this.gameStatus = 'playing'
       this.isCheck = false
       this.capturedPieces = { white: [], black: [] }
+      this.kingMoved = { white: false, black: false }
+      this.rookMoved = {
+        white: { kingside: false, queenside: false },
+        black: { kingside: false, queenside: false }
+      }
+      this.kingMovedHistory = []
+      this.rookMovedHistory = []
     },
     getPieceSymbol(piece) {
       const symbols = {
@@ -253,6 +271,9 @@ export default {
     },
     getKingMoves(row, col, piece) {
       const moves = []
+      const isWhite = this.isWhitePiece(piece)
+      
+      // Regular king moves (one square in any direction)
       for (let dr = -1; dr <= 1; dr++) {
         for (let dc = -1; dc <= 1; dc++) {
           if (dr === 0 && dc === 0) continue
@@ -269,6 +290,67 @@ export default {
           }
         }
       }
+      
+      // Add castling moves
+      const castlingMoves = this.getCastlingMoves(row, col, piece)
+      moves.push(...castlingMoves)
+      
+      return moves
+    },
+    getCastlingMoves(row, col, piece) {
+      const moves = []
+      const isWhite = this.isWhitePiece(piece)
+      const color = isWhite ? 'white' : 'black'
+      
+      // Castling can only occur from starting positions
+      const expectedRow = isWhite ? 7 : 0
+      if (row !== expectedRow || col !== 4) return moves
+      
+      // King must not have moved
+      if (this.kingMoved[color]) return moves
+      
+      // King must not be in check
+      const kingPos = { row, col }
+      if (this.isKingInCheckOnBoard(this.board, kingPos, color)) return moves
+      
+      // Kingside castling (O-O)
+      if (!this.rookMoved[color].kingside) {
+        const rookCol = 7
+        const rook = this.board[expectedRow][rookCol]
+        // Rook must be in place and not moved
+        if (rook && rook.toLowerCase() === 'r' && this.isWhitePiece(rook) === isWhite) {
+          // Squares between must be empty
+          if (!this.board[expectedRow][5] && !this.board[expectedRow][6]) {
+            // King cannot move through check
+            const throughSquare = { row: expectedRow, col: 5 }
+            const endSquare = { row: expectedRow, col: 6 }
+            if (!this.isKingInCheckOnBoard(this.board, throughSquare, color) &&
+                !this.isKingInCheckOnBoard(this.board, endSquare, color)) {
+              moves.push({ row: expectedRow, col: 6, isCastling: true, castleType: 'kingside' })
+            }
+          }
+        }
+      }
+      
+      // Queenside castling (O-O-O)
+      if (!this.rookMoved[color].queenside) {
+        const rookCol = 0
+        const rook = this.board[expectedRow][rookCol]
+        // Rook must be in place and not moved
+        if (rook && rook.toLowerCase() === 'r' && this.isWhitePiece(rook) === isWhite) {
+          // Squares between must be empty
+          if (!this.board[expectedRow][1] && !this.board[expectedRow][2] && !this.board[expectedRow][3]) {
+            // King cannot move through check
+            const throughSquare = { row: expectedRow, col: 3 }
+            const endSquare = { row: expectedRow, col: 2 }
+            if (!this.isKingInCheckOnBoard(this.board, throughSquare, color) &&
+                !this.isKingInCheckOnBoard(this.board, endSquare, color)) {
+              moves.push({ row: expectedRow, col: 2, isCastling: true, castleType: 'queenside' })
+            }
+          }
+        }
+      }
+      
       return moves
     },
     getLinearMoves(row, col, piece) {
@@ -322,6 +404,15 @@ export default {
       const piece = this.board[fromRow][fromCol]
       const target = this.board[toRow][toCol]
       
+      // Check if this is a castling move
+      let isCastling = false
+      let castleType = null
+      
+      if (piece.toLowerCase() === 'k' && Math.abs(toCol - fromCol) === 2) {
+        isCastling = true
+        castleType = toCol > fromCol ? 'kingside' : 'queenside'
+      }
+      
       if (target) {
         const symbol = this.getPieceSymbol(target)
         if (player === 'white') {
@@ -331,12 +422,60 @@ export default {
         }
       }
       
+      // Save current castling state before making the move
+      const kingMovedBefore = JSON.parse(JSON.stringify(this.kingMoved))
+      const rookMovedBefore = JSON.parse(JSON.stringify(this.rookMoved))
+      
+      // Make the main move
       this.board[toRow][toCol] = piece
       this.board[fromRow][fromCol] = null
       
-      this.moveHistory.push({ fromRow, fromCol, toRow, toCol, piece, captured: target })
+      // Handle castling: move the rook
+      if (isCastling) {
+        if (castleType === 'kingside') {
+          const rookFromCol = 7
+          const rookToCol = 5
+          this.board[toRow][rookToCol] = this.board[toRow][rookFromCol]
+          this.board[toRow][rookFromCol] = null
+        } else if (castleType === 'queenside') {
+          const rookFromCol = 0
+          const rookToCol = 3
+          this.board[toRow][rookToCol] = this.board[toRow][rookFromCol]
+          this.board[toRow][rookFromCol] = null
+        }
+      }
+      
+      // Track piece movements
+      const isWhite = player === 'white'
+      if (piece.toLowerCase() === 'k') {
+        this.kingMoved[player] = true
+      } else if (piece.toLowerCase() === 'r') {
+        if (fromCol === 0) {
+          this.rookMoved[player].queenside = true
+        } else if (fromCol === 7) {
+          this.rookMoved[player].kingside = true
+        }
+      }
+      
+      // If opponent's rook is captured at its starting position, mark castling as unavailable
+      if (target && target.toLowerCase() === 'r') {
+        const opponent = player === 'white' ? 'black' : 'white'
+        // Check if captured at starting position
+        const startRow = opponent === 'white' ? 7 : 0
+        if (toRow === startRow) {
+          if (toCol === 0) {
+            this.rookMoved[opponent].queenside = true
+          } else if (toCol === 7) {
+            this.rookMoved[opponent].kingside = true
+          }
+        }
+      }
+      
+      this.moveHistory.push({ fromRow, fromCol, toRow, toCol, piece, captured: target, isCastling, castleType })
       this.boardHistory.push(JSON.parse(JSON.stringify(this.board)))
       this.capturedPiecesHistory.push(JSON.parse(JSON.stringify(this.capturedPieces)))
+      this.kingMovedHistory.push(kingMovedBefore)
+      this.rookMovedHistory.push(rookMovedBefore)
       this.currentMoveIndex = -1
       
       this.playerTurn = player === 'white' ? 'black' : 'white'
@@ -768,7 +907,24 @@ export default {
       this.board[lastMove.fromRow][lastMove.fromCol] = lastMove.piece
       this.board[lastMove.toRow][lastMove.toCol] = lastMove.captured
       
+      // Handle castling undo: restore the rook
+      if (lastMove.isCastling) {
+        if (lastMove.castleType === 'kingside') {
+          this.board[lastMove.toRow][7] = this.board[lastMove.toRow][5]
+          this.board[lastMove.toRow][5] = null
+        } else if (lastMove.castleType === 'queenside') {
+          this.board[lastMove.toRow][0] = this.board[lastMove.toRow][3]
+          this.board[lastMove.toRow][3] = null
+        }
+      }
+      
       this.playerTurn = this.playerTurn === 'white' ? 'black' : 'white'
+      
+      // Restore castling rights
+      const lastKingMovedState = this.kingMovedHistory.pop()
+      const lastRookMovedState = this.rookMovedHistory.pop()
+      this.kingMoved = lastKingMovedState
+      this.rookMoved = lastRookMovedState
       
       if (lastMove.captured) {
         const symbol = this.getPieceSymbol(lastMove.captured)
@@ -779,6 +935,9 @@ export default {
         }
       }
       
+      this.boardHistory.pop()
+      this.capturedPiecesHistory.pop()
+      
       this.selectedSquare = null
       this.validMoves = []
       this.updateGameStatus()
@@ -788,6 +947,8 @@ export default {
       this.currentMoveIndex = -1
       this.boardHistory = []
       this.capturedPiecesHistory = []
+      this.kingMovedHistory = []
+      this.rookMovedHistory = []
     },
     prevMove() {
       if (this.currentMoveIndex > 0) {
@@ -834,9 +995,55 @@ export default {
           ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R']
         ]
         
+        // Reset castling rights
+        this.kingMoved = { white: false, black: false }
+        this.rookMoved = {
+          white: { kingside: false, queenside: false },
+          black: { kingside: false, queenside: false }
+        }
+        
         for (let move of this.moveHistory) {
-          board[move.toRow][move.toCol] = move.piece
-          board[move.fromRow][move.fromCol] = null
+          // Handle castling moves specially when replaying
+          if (move.isCastling) {
+            board[move.toRow][move.toCol] = move.piece
+            board[move.fromRow][move.fromCol] = null
+            
+            if (move.castleType === 'kingside') {
+              board[move.toRow][5] = board[move.toRow][7]
+              board[move.toRow][7] = null
+            } else if (move.castleType === 'queenside') {
+              board[move.toRow][3] = board[move.toRow][0]
+              board[move.toRow][0] = null
+            }
+          } else {
+            board[move.toRow][move.toCol] = move.piece
+            board[move.fromRow][move.fromCol] = null
+          }
+          
+          // Track castling rights
+          const player = this.isWhitePiece(move.piece) ? 'white' : 'black'
+          if (move.piece.toLowerCase() === 'k') {
+            this.kingMoved[player] = true
+          } else if (move.piece.toLowerCase() === 'r') {
+            if (move.fromCol === 0) {
+              this.rookMoved[player].queenside = true
+            } else if (move.fromCol === 7) {
+              this.rookMoved[player].kingside = true
+            }
+          }
+          
+          // Mark opponent's rook as moved if captured at starting position
+          if (move.captured && move.captured.toLowerCase() === 'r') {
+            const opponent = player === 'white' ? 'black' : 'white'
+            const startRow = opponent === 'white' ? 7 : 0
+            if (move.toRow === startRow) {
+              if (move.toCol === 0) {
+                this.rookMoved[opponent].queenside = true
+              } else if (move.toCol === 7) {
+                this.rookMoved[opponent].kingside = true
+              }
+            }
+          }
         }
         
         this.board = board
