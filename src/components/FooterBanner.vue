@@ -1,29 +1,29 @@
 <template>
   <footer @mouseenter="showGame = true" @mouseleave="showGame = false" style="position: relative;">
     <!-- Copyright Footer -->
-    <div style="padding: 15px 20px; background: #ffffff; border-top: 1px solid #e0e0e0;">
-      <p style="margin: 0; color: #999; font-size: 0.85rem; text-align: left;">
+    <div style="padding: 15px 20px; background: var(--footer-bg, #ffffff); border-top: 1px solid var(--footer-border, #e0e0e0);">
+      <p style="margin: 0; color: var(--footer-text, #999); font-size: 0.85rem; text-align: left;">
         © Thong Teck Yew 2026 🇸🇬
       </p>
     </div>
     
     <!-- Dinosaur Game -->
-    <div v-if="showGame" style="padding: 30px 20px; background: #f0f0f0; border-top: 2px solid #28a745; cursor: pointer;">
+    <div v-if="showGame" style="padding: 30px 20px; background: var(--game-bg, #f0f0f0); border-top: 2px solid #17a2b8; cursor: pointer;">
       <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-        <p style="margin-bottom: 20px; color: #666; font-size: 0.95rem;">
+        <p style="margin-bottom: 20px; color: var(--game-text, #666); font-size: 0.95rem;">
           🎮 Press SPACEBAR to jump! Avoid obstacles! (Press ESC to exit)
         </p>
         <canvas 
           ref="gameCanvas" 
-          style="display: block; margin: 0 auto; border: 1px solid #ddd; background: white; max-width: 100%; height: auto;"
+          style="display: block; margin: 0 auto; border: 1px solid var(--game-border, #ddd); max-width: 100%; height: auto;"
           @keydown="handleKeyDown"
           @keyup="handleKeyUp"
           tabindex="1"
         ></canvas>
       </div>
     </div>
-    <div v-else style="padding: 20px; text-align: center; cursor: pointer;">
-      <p style="color: #999; font-size: 0.9rem; margin: 0;">
+    <div v-else style="padding: 20px; text-align: center; cursor: pointer; background: var(--game-hover-bg, transparent);">
+      <p style="color: var(--game-hover-text, #999); font-size: 0.9rem; margin: 0;">
         Hover over with your mouse to play a classic Goo-gly dinosaur game 🦕
       </p>
     </div>
@@ -102,12 +102,21 @@ export default {
     gameLoop() {
       if (!this.gameRunning) return
       
+      // Detect dark mode
+      const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark'
+      const bgColor = isDarkMode ? '#3a3a3a' : 'white'
+      const groundColor = isDarkMode ? '#e0e0e0' : '#000'
+      const dinoColor = isDarkMode ? '#17a2b8' : '#2ecc71'
+      const eyeColor = isDarkMode ? '#1a1a1a' : '#000'
+      const obstacleColor = isDarkMode ? '#ff6b7a' : '#e74c3c'
+      const textColor = isDarkMode ? '#e0e0e0' : '#000'
+      
       // Clear canvas
-      this.ctx.fillStyle = 'white'
+      this.ctx.fillStyle = bgColor
       this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
       
       // Draw ground
-      this.ctx.strokeStyle = '#000'
+      this.ctx.strokeStyle = groundColor
       this.ctx.lineWidth = 2
       this.ctx.beginPath()
       this.ctx.moveTo(0, this.canvas.height - 10)
@@ -131,10 +140,10 @@ export default {
       }
       
       // Draw dinosaur
-      this.ctx.fillStyle = '#2ecc71'
+      this.ctx.fillStyle = dinoColor
       this.ctx.fillRect(this.dino.x, this.dino.y, this.dino.width, this.dino.height)
       // Draw eyes
-      this.ctx.fillStyle = '#000'
+      this.ctx.fillStyle = eyeColor
       this.ctx.fillRect(this.dino.x + 10, this.dino.y + 10, 5, 5)
       this.ctx.fillRect(this.dino.x + 20, this.dino.y + 10, 5, 5)
       
@@ -153,7 +162,7 @@ export default {
         this.obstacles[i].x -= this.gameSpeed
         
         // Draw obstacle
-        this.ctx.fillStyle = '#e74c3c'
+        this.ctx.fillStyle = obstacleColor
         this.ctx.fillRect(this.obstacles[i].x, this.obstacles[i].y, this.obstacles[i].width, this.obstacles[i].height)
         
         // Collision detection
@@ -174,15 +183,19 @@ export default {
       this.obstacleChance = 0.02 + (this.score * 0.001)
       
       // Draw score
-      this.ctx.fillStyle = '#000'
+      this.ctx.fillStyle = textColor
       this.ctx.font = '20px Arial'
       this.ctx.fillText(`Score: ${this.score}`, 10, 30)
       
       // Draw game over
       if (this.gameOver) {
-        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.5)'
+        const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark'
+        const overlayColor = isDarkMode ? 'rgba(0, 0, 0, 0.7)' : 'rgba(0, 0, 0, 0.5)'
+        const textColor = isDarkMode ? '#ffffff' : '#fff'
+        
+        this.ctx.fillStyle = overlayColor
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
-        this.ctx.fillStyle = '#fff'
+        this.ctx.fillStyle = textColor
         this.ctx.font = 'bold 30px Arial'
         this.ctx.textAlign = 'center'
         this.ctx.fillText('GAME OVER!', this.canvas.width / 2, this.canvas.height / 2 - 20)

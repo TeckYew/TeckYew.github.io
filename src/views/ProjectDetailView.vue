@@ -202,7 +202,7 @@ export default {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #28a745;
+  color: #17a2b8;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -230,7 +230,7 @@ export default {
   margin: 0 auto 30px;
   max-width: 900px;
   line-height: 1.3;
-  color: #000000 !important;
+  color: var(--color-heading, #000000);
   padding: 0 20px;
 }
 
@@ -349,7 +349,7 @@ export default {
   padding: 25px;
   background: #f8f9fa;
   border-radius: 8px;
-  border-left: 4px solid #28a745;
+  border-left: 4px solid #17a2b8;
 }
 
 .research-method h3,
@@ -385,7 +385,7 @@ export default {
   content: '•';
   position: absolute;
   left: -8px;
-  color: #28a745;
+  color: #17a2b8;
   font-weight: bold;
 }
 
@@ -403,7 +403,7 @@ export default {
   padding: 30px;
   background: #f8f9fa;
   border-radius: 8px;
-  border-top: 3px solid #28a745;
+  border-top: 3px solid #17a2b8;
 }
 
 .role-box h3,
@@ -437,7 +437,7 @@ export default {
   content: '✓';
   position: absolute;
   left: 0;
-  color: #28a745;
+  color: #17a2b8;
   font-weight: bold;
   font-size: 1.1rem;
 }
@@ -527,7 +527,7 @@ export default {
   font-weight: 600;
   margin-bottom: 30px;
   margin-top: 0;
-  color: #000000 !important;
+  color: var(--color-heading, #000000);
 }
 
 /* Project Links */
@@ -553,12 +553,12 @@ export default {
 }
 
 .btn-success {
-  background-color: #28a745;
+  background-color: #17a2b8;
   color: white;
 }
 
 .btn-success:hover {
-  background-color: #218838;
+  background-color: #138496;
   transform: translateY(-2px);
 }
 
@@ -584,7 +584,7 @@ export default {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 50px;
-  color: #28a745 !important;
+  color: #17a2b8 !important;
 }
 
 .projects-grid {

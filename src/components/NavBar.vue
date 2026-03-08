@@ -2,8 +2,10 @@
 import { RouterLink, useRoute } from 'vue-router'
 import { getAuth, signOut } from 'firebase/auth'
 import { useToast } from 'vue-toastification'
+import { ref, onMounted } from 'vue'
 // import { auth } from 'firebase'
 const route = useRoute()
+const isDarkMode = ref(false)
 
 defineProps({
   loggedInObj: {
@@ -12,6 +14,18 @@ defineProps({
 })
 
 const isAboutPage = () => route.path === '/about'
+
+const toggleDarkMode = () => {
+  isDarkMode.value = !isDarkMode.value
+  localStorage.setItem('darkMode', isDarkMode.value)
+  document.documentElement.setAttribute('data-theme', isDarkMode.value ? 'dark' : 'light')
+}
+
+onMounted(() => {
+  const savedDarkMode = localStorage.getItem('darkMode') === 'true'
+  isDarkMode.value = savedDarkMode
+  document.documentElement.setAttribute('data-theme', savedDarkMode ? 'dark' : 'light')
+})
 </script>
 
 <template>
@@ -75,6 +89,29 @@ const isAboutPage = () => route.path === '/about'
           </li>
         </ul>
         <ul class="navbar-nav mb-md-0 ms-md-0 mb-lg-3 me-lg-3">
+          <li class="nav-item mx-2 d-flex align-items-center">
+            <button
+              @click="toggleDarkMode"
+              class="dark-mode-toggle"
+              :title="isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
+              aria-label="Toggle dark mode"
+            >
+              <svg v-if="!isDarkMode" class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+              <svg v-else class="toggle-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </button>
+          </li>
           <li class="nav-item mx-2">
             <RouterLink class="nav-link" to="/chess">
               <span class="d-lg-none">Have A Little Fun!</span>
@@ -141,7 +178,7 @@ export default {
 }
 
 .nav-link:hover {
-  color: #28a745 !important;
+  color: #17a2b8 !important;
   transform: translateY(-2px);
 }
 
@@ -152,7 +189,7 @@ export default {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #28a745;
+  background-color: #17a2b8;
   transition: width 0.3s ease;
 }
 
@@ -185,6 +222,38 @@ export default {
   to {
     transform: rotateY(360deg);
   }
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+  background: none;
+  border: 2px solid #17a2b8;
+  color: #17a2b8;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.dark-mode-toggle:hover {
+  background-color: rgba(23, 162, 184, 0.1);
+  transform: scale(1.1) rotate(20deg);
+  box-shadow: 0 4px 12px rgba(23, 162, 184, 0.2);
+}
+
+.toggle-icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.dark-mode-toggle:active .toggle-icon {
+  transform: rotate(180deg);
 }
 </style>
 

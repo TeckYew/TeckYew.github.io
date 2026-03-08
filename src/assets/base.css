@@ -95,3 +95,1314 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* Elegant Scrollbar Styling for Light Background */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0d6efd 0%, #00bcd4 100%);
+  border-radius: 10px;
+  border: 2px solid #f5f5f5;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #0a58ca 0%, #0097a7 100%);
+  border-color: #fff;
+  box-shadow: 0 0 10px rgba(13, 110, 253, 0.3);
+}
+
+/* Light Mode Variables - Default */
+:root {
+  --footer-bg: #ffffff;
+  --footer-border: #e0e0e0;
+  --footer-text: #999;
+  --game-bg: #f0f0f0;
+  --game-text: #666;
+  --game-border: #ddd;
+  --game-hover-bg: transparent;
+  --game-hover-text: #999;
+}
+
+/* Dark Mode Styles - Override light mode variables */
+[data-theme="dark"] {
+  --color-background: #1a1a1a;
+  --color-background-soft: #252525;
+  --color-background-mute: #2d2d2d;
+  --color-border: rgba(255, 255, 255, 0.2);
+  --color-border-hover: rgba(255, 255, 255, 0.3);
+  --color-heading: #ffffff;
+  --color-text: #e0e0e0;
+  --footer-bg: #252525;
+  --footer-border: rgba(23, 162, 184, 0.2);
+  --footer-text: #b0b0b0;
+  --game-bg: #2d2d2d;
+  --game-text: #d0d0d0;
+  --game-border: #444;
+  --game-hover-bg: #252525;
+  --game-hover-text: #a0a0a0;
+}
+
+[data-theme="dark"] body,
+[data-theme="dark"] #app {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .navbar {
+  background-color: #252525 !important;
+  border-bottom: 1px solid rgba(23, 162, 184, 0.2);
+}
+
+[data-theme="dark"] .nav-link {
+  color: #b0b0b0 !important;
+}
+
+[data-theme="dark"] .nav-link:hover {
+  color: #17a2b8 !important;
+}
+
+[data-theme="dark"] .container-fluid {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: #ffffff;
+}
+
+[data-theme="dark"] p {
+  color: #c0c0c0;
+}
+
+[data-theme="dark"] a {
+  color: #17a2b8;
+}
+
+[data-theme="dark"] a:hover {
+  color: #0e7a94;
+}
+
+[data-theme="dark"] .projects-title {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .project-card {
+  background: #252525 !important;
+}
+
+[data-theme="dark"] .project-card-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.85) 50%, transparent) !important;
+}
+
+[data-theme="dark"] .other-projects-section {
+  background: #252525 !important;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: #252525;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #17a2b8 0%, #0e7a94 100%);
+  border-color: #252525;
+}
+
+[data-theme="dark"] button {
+  color: inherit;
+}
+
+[data-theme="dark"] .card,
+[data-theme="dark"] .hero-section {
+  background: #252525;
+}
+
+[data-theme="dark"] .dark-mode-toggle {
+  color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+[data-theme="dark"] .dark-mode-toggle:hover {
+  background-color: rgba(23, 162, 184, 0.2);
+}
+
+/* Comprehensive Dark Mode Styling for All Elements */
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background-color: #2d2d2d;
+  color: #e0e0e0;
+  border: 1px solid #444;
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] select:focus {
+  border-color: #17a2b8;
+  background-color: #333;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .modal-content {
+  background-color: #252525;
+  color: #e0e0e0;
+  border-color: #444;
+}
+
+[data-theme="dark"] .modal-header,
+[data-theme="dark"] .modal-footer {
+  background-color: #2d2d2d;
+  border-color: #444;
+}
+
+[data-theme="dark"] .btn-primary {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+[data-theme="dark"] .btn-primary:hover {
+  background-color: #0e7a94;
+  border-color: #0e7a94;
+}
+
+[data-theme="dark"] .btn-outline-primary {
+  color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+[data-theme="dark"] .btn-outline-primary:hover {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  color: #1a1a1a;
+}
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+  background-color: #2d2d2d;
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+  background-color: #333;
+  border-color: #17a2b8;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .form-control::placeholder {
+  color: #999;
+}
+
+[data-theme="dark"] .navbar-brand {
+  color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] .navbar-nav {
+  background-color: transparent;
+}
+
+[data-theme="dark"] .navbar-nav .nav-link {
+  color: #b0b0b0 !important;
+  transition: color 0.3s ease;
+}
+
+[data-theme="dark"] .navbar-nav .nav-link:hover {
+  color: #17a2b8 !important;
+}
+
+[data-theme="dark"] .profile-decoration {
+  filter: invert(0);
+}
+
+[data-theme="dark"] .hero-title {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .hero-subtitle,
+[data-theme="dark"] .hero-description {
+  color: #d0d0d0 !important;
+}
+
+[data-theme="dark"] .other-projects-title {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .project-card-link {
+  background-color: #252525 !important;
+}
+
+[data-theme="dark"] .project-title {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .project-description {
+  color: #c0c0c0 !important;
+}
+
+/* About Page Dark Mode */
+[data-theme="dark"] .about-me-description,
+[data-theme="dark"] .work-experience-item,
+[data-theme="dark"] .interest-card {
+  background-color: #252525 !important;
+  color: #d0d0d0;
+  border-color: #444;
+}
+
+[data-theme="dark"] .about-me-description p,
+[data-theme="dark"] .work-experience-item p {
+  color: #c0c0c0;
+}
+
+[data-theme="dark"] .company-name,
+[data-theme="dark"] .job-title {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .job-duration {
+  color: #a0a0a0;
+}
+
+[data-theme="dark"] .interest-card {
+  border-color: #444;
+}
+
+[data-theme="dark"] .interest-card:hover {
+  background-color: #2d2d2d !important;
+  border-color: #17a2b8;
+}
+
+[data-theme="dark"] .interest-card h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .interest-card p {
+  color: #c0c0c0;
+}
+
+/* Project Detail Page Dark Mode */
+[data-theme="dark"] .project-page-title {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .project-meta-info {
+  color: #b0b0b0;
+}
+
+[data-theme="dark"] .project-meta-info span {
+  color: #c0c0c0;
+}
+
+[data-theme="dark"] .opportunity-section,
+[data-theme="dark"] .research-section,
+[data-theme="dark"] .role-contributions-section,
+[data-theme="dark"] .impact-section,
+[data-theme="dark"] .insight-section {
+  background-color: transparent !important;
+}
+
+[data-theme="dark"] .opportunity-label,
+[data-theme="dark"] .challenge-label,
+[data-theme="dark"] .research-method,
+[data-theme="dark"] .section-header,
+[data-theme="dark"] .role-box h3,
+[data-theme="dark"] .contributions-box h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .opportunity-text,
+[data-theme="dark"] .challenge-text,
+[data-theme="dark"] .research-content,
+[data-theme="dark"] .role-list,
+[data-theme="dark"] .contributions-list {
+  color: #c0c0c0;
+}
+
+[data-theme="dark"] .role-box,
+[data-theme="dark"] .contributions-box {
+  background-color: rgba(45, 45, 45, 0.5);
+  border-color: #444;
+}
+
+[data-theme="dark"] .role-list li,
+[data-theme="dark"] .contributions-list li {
+  color: #c0c0c0;
+}
+
+[data-theme="dark"] .impact-card {
+  background: linear-gradient(135deg, #1b4d2b 0%, #0d3217 100%) !important;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid #2a6342 !important;
+}
+
+[data-theme="dark"] .impact-card:hover {
+  box-shadow: 0 8px 25px rgba(23, 162, 184, 0.3) !important;
+}
+
+[data-theme="dark"] .impact-icon {
+  color: inherit;
+}
+
+[data-theme="dark"] .impact-metric,
+[data-theme="dark"] .impact-label {
+  color: #e0e0e0;
+}
+
+/* Contact Section Dark Mode */
+[data-theme="dark"] .contact-section {
+  background: linear-gradient(135deg, #2d2d2d 0%, #252525 100%) !important;
+  border-color: #17a2b8;
+}
+
+[data-theme="dark"] .contact-title,
+[data-theme="dark"] .contact-description {
+  color: #ffffff !important;
+}
+
+/* Chess View Dark Mode */
+[data-theme="dark"] .game-info {
+  background: #252525 !important;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .status h3 {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .status p {
+  color: #b0b0b0;
+}
+
+[data-theme="dark"] .controls {
+  background-color: transparent;
+}
+
+[data-theme="dark"] .board {
+  background-color: #2d2d2d;
+}
+
+/* Footer and Game Dark Mode */
+[data-theme="dark"] footer {
+  background-color: transparent;
+}
+
+[data-theme="dark"] canvas {
+  background: #3a3a3a !important;
+  border-color: #555 !important;
+}
+
+/* Text Selection Dark Mode */
+[data-theme="dark"] ::selection {
+  background-color: #17a2b8;
+  color: #1a1a1a;
+}
+
+[data-theme="dark"] ::-moz-selection {
+  background-color: #17a2b8;
+  color: #1a1a1a;
+}
+
+/* Link Colors Dark Mode */
+[data-theme="dark"] .link-primary {
+  color: #17a2b8;
+}
+
+[data-theme="dark"] .link-primary:hover {
+  color: #0e7a94;
+}
+
+/* Logo SVG Light Mode - Dark color for visibility */
+svg .logo-text-teck {
+  fill: #0e7a94 !important;
+}
+
+/* Logo SVG Dark Mode - Handle fill colors */
+[data-theme="dark"] svg .logo-text-teck {
+  fill: #e0e0e0 !important;
+}
+
+/* Chess View Dark Mode */
+[data-theme="dark"] .chess-container {
+  background: #1a1a1a !important;
+}
+
+[data-theme="dark"] .chess-container h1 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .chess-description {
+  color: #c0c0c0 !important;
+}
+
+[data-theme="dark"] .chess-square.light {
+  background: #8a7a5f !important;
+}
+
+[data-theme="dark"] .chess-square.dark {
+  background: #564d38 !important;
+}
+
+[data-theme="dark"] .game-info {
+  background: #252525 !important;
+  color: #e0e0e0;
+  border: 1px solid #444;
+}
+
+[data-theme="dark"] .status h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .status p {
+  color: #b0b0b0 !important;
+}
+
+[data-theme="dark"] .stats {
+  color: #c0c0c0 !important;
+}
+
+[data-theme="dark"] .stats p {
+  color: #c0c0c0 !important;
+}
+
+[data-theme="dark"] .move-controls {
+  color: #c0c0c0 !important;
+}
+
+/* About Me View Dark Mode */
+[data-theme="dark"] .about-me-container {
+  background: #1a1a1a !important;
+}
+
+[data-theme="dark"] .hero-overlay {
+  background: rgba(0, 0, 0, 0.6) !important;
+}
+
+[data-theme="dark"] .hero-text .overlay-quote {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .about-me-description-container {
+  background: #1a1a1a !important;
+  color: #e0e0e0;
+  padding: 40px 20px !important;
+}
+
+[data-theme="dark"] .about-me-description-content {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+html[data-theme="dark"] .about-me-title {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .about-me-title {
+  color: #ffffff !important;
+}
+
+/* Override scoped style specificity */
+html[data-theme="dark"] .about-me-title,
+[data-theme="dark"] .about-me-description-container .about-me-title {
+  color: #ffffff !important;
+}
+
+/* Target h2 elements in dark mode directly */
+[data-theme="dark"] .about-me-description-container > div > h2 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .name-highlight {
+  color: #17a2b8 !important;
+}
+
+[data-theme="dark"] .about-me-description {
+  color: #c0c0c0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+[data-theme="dark"] .work-experience-container {
+  background: #1a1a1a !important;
+}
+
+[data-theme="dark"] .section-title {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .work-experience-item {
+  background: transparent !important;
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .company-name {
+  color: #17a2b8 !important;
+}
+
+[data-theme="dark"] .job-title {
+  color: #b0b0b0 !important;
+}
+
+[data-theme="dark"] .job-duration {
+  color: #888 !important;
+}
+
+[data-theme="dark"] .interests-container {
+  background: #1a1a1a !important;
+}
+
+[data-theme="dark"] .interests-content {
+  background: #1a1a1a !important;
+}
+
+[data-theme="dark"] .story-text {
+  color: #c0c0c0 !important;
+}
+
+[data-theme="dark"] .story-quote {
+  background: rgba(23, 162, 184, 0.2);
+  color: #17a2b8;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+/* Comprehensive scan: Catch any remaining light backgrounds on major containers */
+[data-theme="dark"] .project-card {
+  background: #252525 !important;
+}
+
+[data-theme="dark"] .project-description-container {
+  background: #1a1a1a;
+}
+
+/* Ensure all section backgrounds adapt */
+[data-theme="dark"] [style*="background: #f5f5f5"],
+[data-theme="dark"] [style*="background: #f8f9fa"],
+[data-theme="dark"] [style*="background: #f9f9f9"],
+[data-theme="dark"] [style*="background: #fafafa"],
+[data-theme="dark"] [style*="background: #ffffff"] {
+  background-color: #252525 !important;
+  background-image: none !important;
+}
+
+/* Ensure text colors are visible on dark backgrounds */
+[data-theme="dark"] [style*="color: #000"],
+[data-theme="dark"] [style*="color: #1a1a1a"],
+[data-theme="dark"] [style*="color: #333"],
+[data-theme="dark"] [style*="color: #333333"] {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .interest-card {
+  background: #252525 !important;
+  border-color: #444 !important;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .interest-card h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .interest-card p {
+  color: #c0c0c0 !important;
+}
+
+/* HomeView Dark Mode */
+[data-theme="dark"] .hero-section {
+  background: #1a1a1a !important;
+}
+
+[data-theme="dark"] .hero-title {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .hero-subtitle {
+  color: #b0b0b0 !important;
+}
+
+[data-theme="dark"] .hero-description {
+  color: #a0a0a0 !important;
+}
+
+[data-theme="dark"] .projects-title {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .other-projects-section {
+  background: #252525 !important;
+  border-color: #444;
+}
+
+[data-theme="dark"] .other-projects-title {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .project-card {
+  background: #252525 !important;
+  border-color: #444;
+}
+
+[data-theme="dark"] .project-title {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .project-description {
+  color: #b0b0b0 !important;
+}
+
+/* Home Page Sections - Dark Mode */
+[data-theme="dark"] #featuredProjects {
+  background: #1a1a1a !important;
+}
+
+/* Footer Game Instruction Text - Dark Mode */
+[data-theme="dark"] footer > div[style*="padding: 30px 20px"] {
+  background: #252525 !important;
+}
+
+[data-theme="dark"] footer p {
+  color: #c0c0c0 !important;
+}
+
+/* Inline Styled Elements Dark Mode Fixes */
+[data-theme="dark"] [style*="background: #f9f9f9"],
+[data-theme="dark"] [style*="background: #ffffff"],
+[data-theme="dark"] [style*="background: white"] {
+  background-color: #252525 !important;
+  background-image: none !important;
+  color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] [style*="color: #333"],
+[data-theme="dark"] [style*="color: #1a1a1a"],
+[data-theme="dark"] [style*="color: #666"],
+[data-theme="dark"] [style*="color: #999"] {
+  color: #c0c0c0 !important;
+}
+
+/* Specific Dark Mode Overrides for Inline Styles */
+[data-theme="dark"] [style*="background: linear-gradient(135deg, #ffffff"],
+[data-theme="dark"] [style*="background: #f8f9fa"],
+[data-theme="dark"] [style*="background: #f0f0f0"],
+[data-theme="dark"] [style*="background: #f9f9f9"] {
+  background: #252525 !important;
+  background-image: none !important;
+  color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] [style*="border: 1px solid #e8eaed"],
+[data-theme="dark"] [style*="border-color: #e8eaed"],
+[data-theme="dark"] [style*="border: 1px solid #ddd"],
+[data-theme="dark"] [style*="border-color: #ddd"] {
+  border-color: #444 !important;
+}
+
+[data-theme="dark"] [style*="color: #202124"],
+[data-theme="dark"] [style*="color: #5f6368"] {
+  color: #c0c0c0 !important;
+}
+
+/* Project Cards in Featured Section */
+[data-theme="dark"] .project-card-link {
+  background: #252525;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .project-card-link:hover {
+  box-shadow: 0 12px 28px rgba(23, 162, 184, 0.3);
+}
+
+/* Hero Section Text - Dark Mode */
+[data-theme="dark"] .hero-section {
+  background: #1a1a1a !important;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .hero-title {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .hero-subtitle,
+[data-theme="dark"] .hero-description {
+  color: #b0b0b0 !important;
+}
+
+/* Ensure all text is readable in dark mode */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] p {
+  color: #c0c0c0 !important;
+}
+
+[data-theme="dark"] span,
+[data-theme="dark"] div {
+  /* Don't override span/div colors globally as it might break styling */
+}
+
+/* Modal styling for dark mode */
+[data-theme="dark"] .modal {
+  background-color: #252525;
+}
+
+[data-theme="dark"] .toast {
+  background-color: #252525;
+  color: #e0e0e0;
+}
+
+/* Alert styling */
+[data-theme="dark"] .alert-info {
+  background-color: rgba(23, 162, 184, 0.1);
+  color: #b0b0b0;
+  border-color: #17a2b8;
+}
+
+[data-theme="dark"] .alert-warning {
+  background-color: rgba(255, 193, 7, 0.1);
+  color: #d4af37;
+  border-color: #ffc107;
+}
+
+[data-theme="dark"] .alert-danger {
+  background-color: rgba(220, 53, 69, 0.1);
+  color: #ff6b7a;
+  border-color: #dc3545;
+}
+
+[data-theme="dark"] .alert-success {
+  background-color: rgba(52, 168, 83, 0.1);
+  color: #5ec876;
+  border-color: #34a853;
+}
+
+/* Other Design Projects Cards - Dark Mode */
+[data-theme="dark"] .other-projects-section > div > div[style*="background: linear-gradient(135deg, #ffffff"] {
+  background: linear-gradient(135deg, #2d2d2d 0%, #252525 100%) !important;
+}
+
+[data-theme="dark"] .other-projects-section div[style*="#ffffff"][style*="background"] {
+  background: linear-gradient(135deg, #2d2d2d 0%, #252525 100%) !important;
+  background-image: linear-gradient(135deg, #2d2d2d 0%, #252525 100%) !important;
+}
+
+[data-theme="dark"] [style*="background: linear-gradient(135deg, #ffffff"] {
+  background: linear-gradient(135deg, #2d2d2d 0%, #252525 100%) !important;
+  background-image: linear-gradient(135deg, #2d2d2d 0%, #252525 100%) !important;
+}
+
+[data-theme="dark"] [style*="border: 1px solid #e8eaed"] {
+  border-color: #444 !important;
+}
+
+/* Ensure card styling for other project cards in dark mode */
+[data-theme="dark"] .other-projects-section > div > div {
+  background: linear-gradient(135deg, #2d2d2d 0%, #252525 100%) !important;
+  border-color: #444 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Text color overrides in project cards */
+[data-theme="dark"] [style*="color: #202124"] {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] [style*="color: #5f6368"] {
+  color: #c0c0c0 !important;
+}
+
+/* Story Section - Dark Mode */
+[data-theme="dark"] .story-section {
+  background: #252525 !important;
+  border-left-color: #17a2b8;
+}
+
+[data-theme="dark"] .story-text {
+  color: #c0c0c0 !important;
+}
+
+[data-theme="dark"] .story-quote {
+  color: #17a2b8;
+}
+
+/* Footer Copyright Section - Dark Mode Explicit Override */
+[data-theme="dark"] footer > div:first-child {
+  background-color: #252525 !important;
+  border-top-color: rgba(23, 162, 184, 0.2) !important;
+}
+
+[data-theme="dark"] footer > div:first-child p {
+  color: #b0b0b0 !important;
+}
+
+[data-theme="dark"] footer > div[style*="background: var(--footer-bg"] {
+  background: var(--footer-bg, #252525) !important;
+}
+
+[data-theme="dark"] footer > div[style*="background: var(--footer-bg"] p {
+  color: var(--footer-text, #c0c0c0) !important;
+}
+
+/* Hero Title Color - Ensure Light Mode Compatibility */
+.hero-title {
+  color: #202124;
+}
+
+[data-theme="dark"] .hero-title {
+  color: #ffffff !important;
+}
+
+/* Interest Cards - Dark Mode */
+[data-theme="dark"] .interest-card {
+  background: #252525 !important;
+  border-color: #444 !important;
+}
+
+[data-theme="dark"] .interest-card h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .interest-card p {
+  color: #c0c0c0 !important;
+}
+
+[data-theme="dark"] .interest-card:hover {
+  background: #2d2d2d !important;
+  box-shadow: 0 12px 30px rgba(23, 162, 184, 0.2) !important;
+}
+
+/* Project Card Headings - Dark Mode */
+[data-theme="dark"] h4[style*="color: #202124"] {
+  color: #ffffff !important;
+}
+
+/* Project Detail View - Dark Mode */
+[data-theme="dark"] .project-detail-container {
+  background: #1a1a1a !important;
+}
+
+[data-theme="dark"] .back-button {
+  color: #17a2b8 !important;
+}
+
+[data-theme="dark"] .back-button:hover {
+  color: #0e7a94 !important;
+}
+
+[data-theme="dark"] .project-category-label {
+  color: #64b5f6 !important;
+}
+
+[data-theme="dark"] .project-page-title {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .project-meta-info {
+  color: #a0a0a0 !important;
+}
+
+[data-theme="dark"] .project-meta-info span {
+  color: #b0b0b0 !important;
+}
+
+[data-theme="dark"] .project-header {
+  background-color: transparent !important;
+}
+
+[data-theme="dark"] .project-header-image {
+  background: #252525;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Opportunity Section - Dark Mode */
+[data-theme="dark"] .opportunity-section {
+  background: rgba(25, 118, 210, 0.1) !important;
+  color: #64b5f6 !important;
+}
+
+[data-theme="dark"] .opportunity-label,
+[data-theme="dark"] .opportunity-text {
+  color: #64b5f6 !important;
+}
+
+[data-theme="dark"] .challenge-box {
+  background: rgba(25, 118, 210, 0.15) !important;
+  border-left-color: #1976d2 !important;
+}
+
+[data-theme="dark"] .challenge-label,
+[data-theme="dark"] .challenge-text {
+  color: #64b5f6 !important;
+}
+
+/* Research Section - Dark Mode */
+[data-theme="dark"] .research-method,
+[data-theme="dark"] .pain-points {
+  background: #252525 !important;
+  border-left-color: #17a2b8 !important;
+}
+
+[data-theme="dark"] .research-method h3,
+[data-theme="dark"] .pain-points h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .research-method p,
+[data-theme="dark"] .pain-points li {
+  color: #c0c0c0 !important;
+}
+
+[data-theme="dark"] .pain-points li:before {
+  color: #17a2b8;
+}
+
+/* Role & Contributions Section - Dark Mode */
+[data-theme="dark"] .role-box,
+[data-theme="dark"] .contributions-box {
+  background: #252525 !important;
+  border-top-color: #17a2b8 !important;
+}
+
+[data-theme="dark"] .role-box h3,
+[data-theme="dark"] .contributions-box h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .role-list li,
+[data-theme="dark"] .contributions-list li {
+  color: #c0c0c0 !important;
+}
+
+[data-theme="dark"] .role-list li:before,
+[data-theme="dark"] .contributions-list li:before {
+  color: #17a2b8;
+}
+
+/* Hero Title Gradient - Light Mode */
+.hero-title span {
+  background: linear-gradient(135deg, #1f71b8, #1e8e41) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* Hero Title Gradient - Dark Mode */
+[data-theme="dark"] .hero-title span {
+  background: linear-gradient(135deg, #4fa3f5, #58d754) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* Impact Section - Dark Mode */
+[data-theme="dark"] .impact-card {
+  background: linear-gradient(135deg, #1b4d2b 0%, #0d3217 100%) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid #2a6342 !important;
+}
+
+[data-theme="dark"] .impact-card:hover {
+  box-shadow: 0 8px 25px rgba(23, 162, 184, 0.3) !important;
+}
+
+[data-theme="dark"] .impact-metric {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .impact-label {
+  color: #c0c0c0 !important;
+}
+
+/* Key Insight Section - Dark Mode */
+[data-theme="dark"] .insight-section {
+  background: linear-gradient(135deg, #3d2817 0%, #2a1f12 100%) !important;
+  border-left-color: #d97706 !important;
+}
+
+[data-theme="dark"] .insight-section .section-header {
+  color: #fcd34d !important;
+}
+
+[data-theme="dark"] .insight-text {
+  color: #f3e8d8 !important;
+}
+
+/* Section Header - Dark Mode */
+[data-theme="dark"] .section-header {
+  color: #ffffff !important;
+}
+
+/* Buttons - Dark Mode */
+[data-theme="dark"] .btn-success {
+  background-color: #17a2b8;
+  color: white;
+}
+
+[data-theme="dark"] .btn-success:hover {
+  background-color: #0e7a94;
+}
+
+[data-theme="dark"] .btn-light {
+  background-color: #2d2d2d;
+  color: #e0e0e0;
+  border: 1px solid #444;
+}
+
+[data-theme="dark"] .btn-light:hover {
+  background-color: #3d3d3d;
+}
+
+/* Other Projects Navigation - Dark Mode */
+[data-theme="dark"] .other-projects-nav {
+  background: #252525 !important;
+}
+
+[data-theme="dark"] .other-projects-nav h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .project-card-link:hover p {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+/* Text Color Overrides for Dark Mode - ProjectDetailView */
+[data-theme="dark"] .opportunity-section p,
+[data-theme="dark"] .research-section p,
+[data-theme="dark"] .role-contributions-section p,
+[data-theme="dark"] .impact-section p,
+[data-theme="dark"] .insight-section p {
+  color: inherit !important;
+}
+
+[data-theme="dark"] .research-method p,
+[data-theme="dark"] .pain-points li,
+[data-theme="dark"] .role-list li,
+[data-theme="dark"] .contributions-list li {
+  color: #c0c0c0 !important;
+}
+
+/* Override all paragraphs in dark mode to be light text */
+[data-theme="dark"] .project-description-container p {
+  color: #c0c0c0 !important;
+}
+
+[data-theme="dark"] .project-description-container h2,
+[data-theme="dark"] .project-description-container h3 {
+  color: #ffffff !important;
+}
+
+/* Ensure all text elements adapt */
+[data-theme="dark"] [style*="color: #1a1a1a"],
+[data-theme="dark"] [style*="color: #333"],
+[data-theme="dark"] [style*="color: #555"],
+[data-theme="dark"] [style*="color: #666"] {
+  color: #c0c0c0 !important;
+}
+
+/* Override specific color values in project detail */
+[data-theme="dark"] .project-page-title,
+[data-theme="dark"] .section-header {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .opportunity-text,
+[data-theme="dark"] .challenge-text {
+  color: #64b5f6 !important;
+}
+
+[data-theme="dark"] .research-method h3,
+[data-theme="dark"] .pain-points h3,
+[data-theme="dark"] .role-box h3,
+[data-theme="dark"] .contributions-box h3,
+[data-theme="dark"] .impact-section h2,
+[data-theme="dark"] .insight-section h2 {
+  color: #ffffff !important;
+}
+
+/* Impact cards text */
+[data-theme="dark"] .impact-icon {
+  color: inherit;
+}
+
+[data-theme="dark"] .impact-metric,
+[data-theme="dark"] .impact-label {
+  color: #ffffff !important;
+}
+
+/* Comprehensive dark mode text fixes for all elements */
+[data-theme="dark"] body,
+[data-theme="dark"] div,
+[data-theme="dark"] p,
+[data-theme="dark"] span,
+[data-theme="dark"] li,
+[data-theme="dark"] a {
+  /* Ensure no inherited light background colors interfere */
+}
+
+/* Specific paragraph text fixes */
+[data-theme="dark"] .opportunity-section > p,
+[data-theme="dark"] .challenge-box > p,
+[data-theme="dark"] .research-method > p,
+[data-theme="dark"] .pain-points > ul > li,
+[data-theme="dark"] .role-list > li,
+[data-theme="dark"] .contributions-list > li {
+  color: #c0c0c0 !important;
+  background: transparent !important;
+}
+
+/* Title adaptations */
+[data-theme="dark"] .project-detail-container > h1,
+[data-theme="dark"] .project-detail-container .section-header,
+[data-theme="dark"] .research-section h2,
+[data-theme="dark"] .role-contributions-section h3,
+[data-theme="dark"] .impact-section h2,
+[data-theme="dark"] .insight-section h2 {
+  color: #ffffff !important;
+}
+
+/* Ensure all list items have correct text color */
+[data-theme="dark"] ul li,
+[data-theme="dark"] ol li {
+  color: #c0c0c0 !important;
+}
+
+/* Background overrides for light colored elements */
+[data-theme="dark"] [style*="background: #e3f2fd"],
+[data-theme="dark"] [style*="background: #f8f9fa"],
+[data-theme="dark"] [style*="background: rgba(25, 118, 210, 0.1)"],
+[data-theme="dark"] [style*="background: linear-gradient(135deg, #fef3c7"],
+[data-theme="dark"] [style*="background: linear-gradient(135deg, #d4f946"] {
+  background: transparent !important;
+}
+
+/* ProjectDetailView - All section text adaptations */
+[data-theme="dark"] .opportunity-section {
+  color: #c0c0c0;
+}
+
+[data-theme="dark"] .opportunity-section .opportunity-label {
+  color: #64b5f6 !important;
+}
+
+[data-theme="dark"] .opportunity-section .opportunity-text {
+  color: #64b5f6 !important;
+}
+
+[data-theme="dark"] .challenge-box .challenge-label {
+  color: #64b5f6 !important;
+}
+
+[data-theme="dark"] .challenge-box .challenge-text {
+  color: #64b5f6 !important;
+}
+
+[data-theme="dark"] .research-section {
+  color: #c0c0c0;
+}
+
+[data-theme="dark"] .research-section .section-header {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .research-method {
+  color: #c0c0c0;
+}
+
+[data-theme="dark"] .research-method h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .research-method p {
+  color: #c0c0c0 !important;
+}
+
+[data-theme="dark"] .pain-points {
+  color: #c0c0c0;
+}
+
+[data-theme="dark"] .pain-points h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .pain-points li {
+  color: #c0c0c0 !important;
+}
+
+[data-theme="dark"] .role-contributions-section {
+  color: #c0c0c0;
+}
+
+[data-theme="dark"] .role-box {
+  color: #c0c0c0;
+}
+
+[data-theme="dark"] .role-box h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .role-box li {
+  color: #c0c0c0 !important;
+}
+
+[data-theme="dark"] .contributions-box {
+  color: #c0c0c0;
+}
+
+[data-theme="dark"] .contributions-box h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .contributions-box li {
+  color: #c0c0c0 !important;
+}
+
+[data-theme="dark"] .impact-section {
+  color: #c0c0c0;
+}
+
+[data-theme="dark"] .impact-section > .section-header {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .insight-section {
+  color: #c0c0c0;
+}
+
+[data-theme="dark"] .insight-section > .section-header {
+  color: #fcd34d !important;
+}
+
+/* Ensure all font weights and styles are visible */
+[data-theme="dark"] strong {
+  color: inherit !important;
+}
+
+[data-theme="dark"] em {
+  color: inherit !important;
+}
+
+[data-theme="dark"] .insight-text {
+  color: #f3e8d8 !important;
+}

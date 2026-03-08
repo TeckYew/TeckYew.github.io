@@ -6,82 +6,59 @@ import EventCard from '../components/Events/EventCard.vue'
   <div class="container-fluid">
     <div class="row gx-4 gx-lg-4 align-items-center justify-content-center hero-section" style="min-height: 100vh; padding: 40px 20px;">
       <div class="col-lg-6 d-flex justify-content-center mb-4 mb-lg-0 profile-container">
-        <!-- Decorative SVG Background -->
+        <!-- Decorative SVG Background - Clean with Color -->
         <svg class="profile-decoration" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-          <!-- Background circles -->
-          <circle cx="250" cy="250" r="220" fill="none" stroke="#28a745" stroke-width="2" opacity="0.3"/>
-          <circle cx="250" cy="250" r="200" fill="none" stroke="#28a745" stroke-width="1.5" opacity="0.2"/>
-          <circle cx="250" cy="250" r="180" fill="none" stroke="#28a745" stroke-width="1" opacity="0.15"/>
+          <defs>
+            <linearGradient id="orbitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#17a2b8;stop-opacity:0.3" />
+              <stop offset="100%" style="stop-color:#0dcaf0;stop-opacity:0.1" />
+            </linearGradient>
+          </defs>
           
-          <!-- Decorative corner elements -->
-          <!-- Top left -->
-          <g stroke="#C3FF00" stroke-width="3" fill="none" stroke-linecap="round">
-            <path d="M 30 30 L 80 30 L 80 80"/>
-            <path d="M 40 40 L 90 40 L 90 90"/>
-            <circle cx="50" cy="50" r="15" fill="#C3FF00" opacity="0.5"/>
-          </g>
+          <!-- Concentric circles - main structure -->
+          <circle cx="250" cy="250" r="240" fill="none" stroke="#17a2b8" stroke-width="1" opacity="0.2"/>
+          <circle cx="250" cy="250" r="200" fill="none" stroke="#17a2b8" stroke-width="1.5" opacity="0.3"/>
+          <circle cx="250" cy="250" r="160" fill="none" stroke="#17a2b8" stroke-width="1" opacity="0.2"/>
           
-          <!-- Top right -->
-          <g stroke="#C3FF00" stroke-width="3" fill="none" stroke-linecap="round">
-            <path d="M 470 30 L 420 30 L 420 80"/>
-            <path d="M 460 40 L 410 40 L 410 90"/>
-            <circle cx="450" cy="50" r="15" fill="#C3FF00" opacity="0.5"/>
-          </g>
+          <!-- Colored orbit paths -->
+          <circle cx="250" cy="250" r="180" fill="none" stroke="url(#orbitGradient)" stroke-width="2" opacity="0.4" stroke-dasharray="8,4"/>
           
-          <!-- Bottom left -->
-          <g stroke="#C3FF00" stroke-width="3" fill="none" stroke-linecap="round">
-            <path d="M 30 470 L 80 470 L 80 420"/>
-            <path d="M 40 460 L 90 460 L 90 410"/>
-            <circle cx="50" cy="450" r="15" fill="#C3FF00" opacity="0.5"/>
-          </g>
+          <!-- Orbiting colored dots - primary -->
+          <circle class="orbit-dot orbit-dot-1" cx="250" cy="80" r="8" fill="#17a2b8" opacity="0.8"/>
+          <circle class="orbit-dot orbit-dot-2" cx="420" cy="250" r="8" fill="#0dcaf0" opacity="0.8"/>
+          <circle class="orbit-dot orbit-dot-3" cx="250" cy="420" r="8" fill="#ffc107" opacity="0.8"/>
+          <circle class="orbit-dot orbit-dot-4" cx="80" cy="250" r="8" fill="#dc3545" opacity="0.8"/>
           
-          <!-- Bottom right -->
-          <g stroke="#C3FF00" stroke-width="3" fill="none" stroke-linecap="round">
-            <path d="M 470 470 L 420 470 L 420 420"/>
-            <path d="M 460 460 L 410 460 L 410 410"/>
-            <circle cx="450" cy="450" r="15" fill="#C3FF00" opacity="0.5"/>
-          </g>
+          <!-- Secondary orbiting dots - smaller -->
+          <circle class="orbit-dot-small orbit-small-1" cx="250" cy="130" r="4" fill="#17a2b8" opacity="0.5"/>
+          <circle class="orbit-dot-small orbit-small-2" cx="370" cy="250" r="4" fill="#0dcaf0" opacity="0.5"/>
+          <circle class="orbit-dot-small orbit-small-3" cx="250" cy="370" r="4" fill="#ffc107" opacity="0.5"/>
+          <circle class="orbit-dot-small orbit-small-4" cx="130" cy="250" r="4" fill="#dc3545" opacity="0.5"/>
           
-          <!-- Side decorative curves -->
-          <path d="M 20 150 Q 50 200 20 250 Q 50 300 20 350" stroke="#28a745" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="5,5"/>
-          <path d="M 480 150 Q 450 200 480 250 Q 450 300 480 350" stroke="#28a745" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="5,5"/>
-          
-          <!-- Diagonal accent lines -->
-          <path d="M 80 80 L 150 150" stroke="#28a745" stroke-width="2" fill="none" opacity="0.3"/>
-          <path d="M 420 80 L 350 150" stroke="#28a745" stroke-width="2" fill="none" opacity="0.3"/>
-          <path d="M 80 420 L 150 350" stroke="#28a745" stroke-width="2" fill="none" opacity="0.3"/>
-          <path d="M 420 420 L 350 350" stroke="#28a745" stroke-width="2" fill="none" opacity="0.3"/>
-          
-          <!-- Floating dots pattern -->
-          <circle cx="100" cy="100" r="4" fill="#28a745" opacity="0.5"/>
-          <circle cx="400" cy="100" r="4" fill="#28a745" opacity="0.5"/>
-          <circle cx="100" cy="400" r="4" fill="#28a745" opacity="0.5"/>
-          <circle cx="400" cy="400" r="4" fill="#28a745" opacity="0.5"/>
-          <circle cx="120" cy="200" r="3" fill="#C3FF00" opacity="0.4"/>
-          <circle cx="380" cy="200" r="3" fill="#C3FF00" opacity="0.4"/>
-          <circle cx="120" cy="300" r="3" fill="#C3FF00" opacity="0.4"/>
-          <circle cx="380" cy="300" r="3" fill="#C3FF00" opacity="0.4"/>
+          <!-- Center accent -->
+          <circle class="center-glow" cx="250" cy="250" r="6" fill="#17a2b8" opacity="0.6"/>
+          <circle class="center-pulse-ring" cx="250" cy="250" r="1" fill="none" stroke="#17a2b8" stroke-width="1" opacity="0.8"/>
         </svg>
         
         <img
           class="img-fluid profile-image"
           src="../assets/hero-profile.jpg"
           alt="Hero Profile"
-          style="border-radius: 20px; width: 90%; max-width: 400px; margin: 0 auto; display: block; border: 5px solid #28a745; box-shadow: 0 10px 40px rgba(40, 167, 69, 0.3), 0 0 0 15px rgba(40, 167, 69, 0.1); transition: transform 0.3s ease; position: relative; z-index: 2;"
+          style="border-radius: 20px; width: 90%; max-width: 400px; margin: 0 auto; display: block; border: 5px solid #17a2b8; box-shadow: 0 10px 40px rgba(23, 162, 184, 0.3), 0 0 0 15px rgba(23, 162, 184, 0.1); transition: transform 0.3s ease; position: relative; z-index: 2;"
         />
       </div>
 
       <div class="col-lg-6 col-sm-12">
-        <h1 class="hero-title" style="line-height: 1.2; margin-bottom: 10px; color: #000;">Hi, I'm <span style="color: #28a745; font-weight: bold;">Teck Yew</span>.</h1>
-        <p class="hero-subtitle" style="margin-bottom: 30px; line-height: 1.6; color: #666;">A graduating student from SMU with experiences in Information Systems, User Design Thinking, and Business Analytics.</p>
-        <p class="hero-description" style="margin-bottom: 30px; line-height: 1.6;">Below are some quick links to get you <a href="https://www.google.com/search?q=thong+teck+yew&rlz=1C5CHFA_enSG1012SG1013&oq=thong+te&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYQDIGCAMQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQRRhB0gEHOTQ3ajBqMagCALACAA&sourceid=chrome&ie=UTF-8" target="_blank" style="text-decoration: underline;"><span style="color: #4285F4;">G</span><span style="color: #EA4335;">o</span><span style="color: #FBBC04;">o</span><span style="color: #4285F4;">g</span><span style="color: #EA4335;">l</span><span style="color: #FBBC04;">i</span><span style="color: #4285F4;">n</span><span style="color: #EA4335;">g</span></a> about me 😁</p>
+        <h1 class="hero-title" style="line-height: 1.2; margin-bottom: 10px; color: #202124;">Hi, I'm <span style="background: linear-gradient(135deg, #4285F4, #34A853); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: bold; display: inline-block; padding-right: 3px;">Teck Yew</span>.</h1>
+        <p class="hero-subtitle" style="margin-bottom: 30px; line-height: 1.6; color: #5f6368; font-weight: 500;">A graduating student from SMU with experiences in Information Systems, User Design Thinking, and Business Analytics.</p>
+        <p class="hero-description" style="margin-bottom: 30px; line-height: 1.6; color: #5f6368;">Below are some quick links to get you <a href="https://www.google.com/search?q=thong+teck+yew&rlz=1C5CHFA_enSG1012SG1013&oq=thong+te&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYQDIGCAMQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQRRhB0gEHOTQ3ajBqMagCALACAA&sourceid=chrome&ie=UTF-8" target="_blank" style="text-decoration: none; font-weight: 600;"><span style="color: #4285F4;">G</span><span style="color: #EA4335;">o</span><span style="color: #FBBC04;">o</span><span style="color: #4285F4;">g</span><span style="color: #EA4335;">l</span><span style="color: #FBBC04;">i</span><span style="color: #4285F4;">n</span><span style="color: #EA4335;">g</span></a> about me 😁</p>
         <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-          <a class="btn btn-success btn-lg" href="#featuredProjects" style="padding: 12px 30px; font-size: 1rem;">My Portfolio</a>
-          <a class="btn btn-lg" href="https://www.linkedin.com/in/teck-yew/" target="_blank" style="padding: 12px 30px; font-size: 1rem; background-color: #0A66C2; color: white; border: none;">LinkedIn - Where the magic happens ✨</a>
+          <a class="btn btn-lg hero-btn-primary" href="#featuredProjects" style="padding: 12px 32px; font-size: 1rem; background: linear-gradient(135deg, #4285F4, #1f71b8); color: white; border: none; border-radius: 24px; font-weight: 600; box-shadow: 0 4px 12px rgba(66, 133, 244, 0.35); transition: all 0.3s ease;">My Portfolio</a>
+          <a class="btn btn-lg hero-btn-secondary" href="https://www.linkedin.com/in/teck-yew/" target="_blank" style="padding: 12px 32px; font-size: 1rem; background: linear-gradient(135deg, #0A66C2, #005a9c); color: white; border: none; border-radius: 24px; font-weight: 600; box-shadow: 0 4px 12px rgba(10, 102, 194, 0.35); transition: all 0.3s ease;">LinkedIn</a>
         </div>
         <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
-          <a class="btn btn-lg" href="https://github.com/TeckYew" target="_blank" style="padding: 12px 30px; font-size: 1rem; background-color: #333333; color: white; border: none;">Github</a>
-          <a class="btn btn-lg" href="https://public.tableau.com/app/profile/thong.teck.yew/vizzes" target="_blank" style="padding: 12px 30px; font-size: 1rem; background-color: #E97627; color: white; border: none;">Tableau Public</a>
+          <a class="btn btn-lg hero-btn-tertiary" href="https://github.com/TeckYew" target="_blank" style="padding: 12px 32px; font-size: 1rem; background: linear-gradient(135deg, #333333, #1f2937); color: white; border: none; border-radius: 24px; font-weight: 600; box-shadow: 0 4px 12px rgba(51, 51, 51, 0.35); transition: all 0.3s ease;">Github</a>
+          <a class="btn btn-lg hero-btn-accent" href="https://public.tableau.com/app/profile/thong.teck.yew/vizzes" target="_blank" style="padding: 12px 32px; font-size: 1rem; background: linear-gradient(135deg, #FBBC04, #f57f17); color: white; border: none; border-radius: 24px; font-weight: 600; box-shadow: 0 4px 12px rgba(251, 188, 4, 0.35); transition: all 0.3s ease;">Tableau</a>
         </div>
       </div>
     </div>
@@ -154,15 +131,15 @@ import EventCard from '../components/Events/EventCard.vue'
 
       <!-- Other Design Projects Section -->
       <div class="other-projects-section">
-        <h3 class="other-projects-title">Other Design Projects</h3>
+        <h3 class="other-projects-title" style="font-size: 1.8rem; font-weight: 600; color: #202124; margin-bottom: 40px; text-align: center;">Other Design Projects</h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
           <!-- Design Project Card 1 -->
-          <div style="padding: 20px; background: white; border-radius: 8px; border: 1px solid #e0e0e0; transition: all 0.3s ease;">
+          <div style="padding: 24px; background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border-radius: 16px; border: 1px solid #e8eaed; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.boxShadow='0 8px 24px rgba(0,0,0,0.12)'; this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'; this.style.transform='translateY(0)'">
             <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 12px;">
               <img src="../assets/ellipsis.png" alt="SMU Ellipsis" style="width: 40px; height: 40px; object-fit: contain;">
-              <h4 style="font-size: 1.1rem; font-weight: 600; color: #1a1a1a; margin: 0;">SMU Ellipsis Marketing design project</h4>
+              <h4 style="font-size: 1.1rem; font-weight: 600; color: #202124; margin: 0;">SMU Ellipsis Marketing</h4>
             </div>
-            <p style="font-size: 0.95rem; line-height: 1.5; color: #666; margin-bottom: 15px;">
+            <p style="font-size: 0.95rem; line-height: 1.5; color: #5f6368; margin-bottom: 15px;">
               As part of the Singapore Management University's biggest club representing the Information Systems faculty, also known as SMU Ellipsis, I was placed in charge of the Tech Series event, one of the biggest technology event that we organise in SMU, inviting guest speakers from various companies for networking sessions with the students. The event include workshops, coffee chats, networking night, and hackathon.
               <br><br>
               Another design project is the launch of our new School of Computing and Information Systems (SCIS) shirts.
@@ -170,29 +147,29 @@ import EventCard from '../components/Events/EventCard.vue'
               These Instagram posts have been designed by me (more can be viewed on SMU Ellipsis profile), along with the planning and execution of the programs.
             </p>
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-              <a href="https://www.instagram.com/p/CvyWet7O45H/" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #28a745; color: white; padding: 8px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.3s ease;">
-                Tech Series event
+              <a href="https://www.instagram.com/p/CvyWet7O45H/" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: linear-gradient(135deg, #17a2b8, #0e7a94); color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.2s ease;" onmouseover="this.style.boxShadow='0 4px 12px rgba(23,162,184,0.4)'" onmouseout="this.style.boxShadow='none'">
+                Tech Series
               </a>
-              <a href="https://www.instagram.com/p/CvwkaR-vxZk/?img_index=1" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #9C27B0; color: white; padding: 8px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.3s ease;">
-                SCIS shirt launch
+              <a href="https://www.instagram.com/p/CvwkaR-vxZk/?img_index=1" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: linear-gradient(135deg, #9C27B0, #7B1FA2); color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.2s ease;" onmouseover="this.style.boxShadow='0 4px 12px rgba(156,39,176,0.4)'" onmouseout="this.style.boxShadow='none'">
+                SCIS launch
               </a>
             </div>
           </div>
 
           <!-- Design Project Card 2 - Tableau Projects -->
-          <div style="padding: 20px; background: white; border-radius: 8px; border: 1px solid #e0e0e0; transition: all 0.3s ease;">
+          <div style="padding: 24px; background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border-radius: 16px; border: 1px solid #e8eaed; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.boxShadow='0 8px 24px rgba(0,0,0,0.12)'; this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'; this.style.transform='translateY(0)'">
             <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 12px;">
               <img src="../assets/tableau-projects.png" alt="Tableau Projects" style="width: 40px; height: 40px; object-fit: contain;">
-              <h4 style="font-size: 1.1rem; font-weight: 600; color: #1a1a1a; margin: 0;">Tableau Projects</h4>
+              <h4 style="font-size: 1.1rem; font-weight: 600; color: #202124; margin: 0;">Tableau Projects</h4>
             </div>
-            <p style="font-size: 0.95rem; line-height: 1.5; color: #666; margin-bottom: 15px;">
+            <p style="font-size: 0.95rem; line-height: 1.5; color: #5f6368; margin-bottom: 15px;">
               Being a part of the wider Tableau community, I was elected as the Tableau Academic Ambassador representing Singapore Management University. I had the chance to visit several schools to introduce Tableau to the students, along with attending Tableau workshops hosted by the Tableau community. I also post my dashboards on Tableau Public whenever I get the chance to.
             </p>
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-              <a href="https://www.linkedin.com/posts/wenbin-y_datafam-activity-7342050561489256448-OnTe?utm_source=share&utm_medium=member_desktop&rcm=ACoAABPCGQ8BLzk9s9gW5mp8UMP3vihOYV2qCt4" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #0A66C2; color: white; padding: 8px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.3s ease;">
+              <a href="https://www.linkedin.com/posts/wenbin-y_datafam-activity-7342050561489256448-OnTe?utm_source=share&utm_medium=member_desktop&rcm=ACoAABPCGQ8BLzk9s9gW5mp8UMP3vihOYV2qCt4" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: linear-gradient(135deg, #0A66C2, #005a9c); color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.2s ease;" onmouseover="this.style.boxShadow='0 4px 12px rgba(10,102,194,0.4)'" onmouseout="this.style.boxShadow='none'">
                 LinkedIn Post
               </a>
-              <a href="https://public.tableau.com/app/profile/thong.teck.yew/vizzes" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #E97627; color: white; padding: 8px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.3s ease;">
+              <a href="https://public.tableau.com/app/profile/thong.teck.yew/vizzes" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: linear-gradient(135deg, #FBBC04, #f57f17); color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.2s ease;" onmouseover="this.style.boxShadow='0 4px 12px rgba(251,188,4,0.4)'" onmouseout="this.style.boxShadow='none'">
                 Tableau Public
               </a>
             </div>
@@ -250,7 +227,8 @@ export default {
 /* Hero Section - Responsive Typography */
 .hero-title {
   font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 300;
+  font-weight: 400;
+  letter-spacing: -1px;
 }
 
 .hero-subtitle {
@@ -267,10 +245,10 @@ export default {
 
 .profile-decoration {
   position: absolute;
-  width: 150%;
-  height: 150%;
-  max-width: 600px;
-  max-height: 600px;
+  width: 170%;
+  height: 170%;
+  max-width: 750px;
+  max-height: 750px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -288,9 +266,9 @@ export default {
   transform: scale(1.1);
 }
 
-/* SVG Background Animations */
+/* SVG Background Animations - Colored & Clean */
 .profile-decoration {
-  animation: gentleRotate 20s linear infinite;
+  animation: gentleRotate 50s linear infinite;
 }
 
 @keyframes gentleRotate {
@@ -302,57 +280,124 @@ export default {
   }
 }
 
-/* Stagger animation for circles - different speeds */
-.profile-decoration circle:nth-child(10),
-.profile-decoration circle:nth-child(11),
-.profile-decoration circle:nth-child(12),
-.profile-decoration circle:nth-child(13) {
-  animation: pulse-scale 3s ease-in-out infinite;
-  transform-origin: center;
+/* Primary Orbit dots - colored and pulsing */
+.orbit-dot {
+  animation: orbitGlow 3s ease-in-out infinite;
+  transform-origin: 250px 250px;
 }
 
-.profile-decoration circle:nth-child(14),
-.profile-decoration circle:nth-child(15),
-.profile-decoration circle:nth-child(16),
-.profile-decoration circle:nth-child(17) {
-  animation: pulse-scale 4s ease-in-out infinite 1s;
-  transform-origin: center;
+.orbit-dot-1 {
+  animation-delay: 0s;
 }
 
-@keyframes pulse-scale {
+.orbit-dot-2 {
+  animation-delay: 0.75s;
+}
+
+.orbit-dot-3 {
+  animation-delay: 1.5s;
+}
+
+.orbit-dot-4 {
+  animation-delay: 2.25s;
+}
+
+@keyframes orbitGlow {
   0%, 100% {
-    r: 4px;
+    r: 10px;
+    opacity: 0.7;
+    filter: drop-shadow(0 0 5px currentColor);
+  }
+  50% {
+    r: 14px;
+    opacity: 0.95;
+    filter: drop-shadow(0 0 12px currentColor);
+  }
+}
+
+/* Secondary smaller orbit dots */
+.orbit-dot-small {
+  animation: orbitSmallGlow 3s ease-in-out infinite;
+}
+
+.orbit-small-1 {
+  animation-delay: 0.3s;
+}
+
+.orbit-small-2 {
+  animation-delay: 1.05s;
+}
+
+.orbit-small-3 {
+  animation-delay: 1.8s;
+}
+
+.orbit-small-4 {
+  animation-delay: 2.55s;
+}
+
+@keyframes orbitSmallGlow {
+  0%, 100% {
+    r: 5px;
     opacity: 0.5;
   }
   50% {
-    r: 6px;
+    r: 9px;
     opacity: 0.8;
   }
 }
 
-/* Sway animation for the curves */
-.profile-decoration path {
-  animation: gentle-sway 4s ease-in-out infinite;
-  transform-origin: 250px 300px;
+/* Center glow effect */
+.center-glow {
+  animation: centerGlow 2.5s ease-in-out infinite;
 }
 
-.profile-decoration path:nth-child(2) {
-  animation-delay: 0.5s;
-}
-
-.profile-decoration path:nth-child(3) {
-  animation-delay: 1s;
-}
-
-@keyframes gentle-sway {
+@keyframes centerGlow {
   0%, 100% {
-    opacity: 0.4;
-    stroke-width: 2;
+    r: 5px;
+    opacity: 0.5;
   }
   50% {
-    opacity: 0.7;
-    stroke-width: 2.5;
+    r: 8px;
+    opacity: 0.8;
   }
+}
+
+/* Center pulse ring expansion */
+.center-pulse-ring {
+  animation: pulseRing 2s ease-out infinite;
+}
+
+@keyframes pulseRing {
+  0% {
+    r: 1px;
+    opacity: 0.8;
+  }
+  100% {
+    r: 30px;
+    opacity: 0;
+  }
+}
+
+/* Hero Button Styles with Hover Effects */
+.hero-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(66, 133, 244, 0.5) !important;
+}
+
+.hero-btn-secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(10, 102, 194, 0.5) !important;
+}
+
+.hero-btn-tertiary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(51, 51, 51, 0.5) !important;
+}
+
+.hero-btn-accent:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(251, 188, 4, 0.5) !important;
 }
 
 .projects-title {
@@ -403,12 +448,18 @@ export default {
   display: block;
   position: relative;
   margin-bottom: 0;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
   text-decoration: none;
   height: 200px;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-card-link:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
 }
 
 .project-image-wrapper {
@@ -434,7 +485,7 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4) 50%, transparent);
   color: white;
   padding: 40px 40px 30px;
   transition: all 0.3s ease;

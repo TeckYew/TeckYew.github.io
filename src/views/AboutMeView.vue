@@ -249,20 +249,20 @@ export default {
 .about-me-title {
   font-size: 2.2rem;
   font-weight: 600;
-  color: #000 !important;
+  color: var(--color-heading, #000);
   margin-bottom: 30px;
   line-height: 1.4;
 }
 
 .name-highlight {
-  color: #28a745;
+  color: var(--color-primary, #17a2b8);
   font-weight: 700;
 }
 
 .about-me-description {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #666;
+  color: var(--color-text, #666);
   max-width: 800px;
   margin: 0 auto;
 }
@@ -356,7 +356,7 @@ export default {
   padding: 40px;
   background: #f9f9f9;
   border-radius: 12px;
-  border-left: 4px solid #28a745;
+  border-left: 4px solid #17a2b8;
 }
 
 .story-text {
@@ -369,7 +369,7 @@ export default {
 
 .story-quote {
   font-style: italic;
-  color: #28a745;
+  color: #17a2b8;
   font-weight: 500;
 }
 
@@ -392,7 +392,7 @@ export default {
 .interest-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-  border-color: #28a745;
+  border-color: #17a2b8;
 }
 
 .interest-icon {
@@ -487,7 +487,7 @@ export default {
   text-align: center;
   background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
   border-radius: 12px;
-  border: 2px solid #28a745;
+  border: 2px solid #17a2b8;
 }
 
 .contact-title {
@@ -508,7 +508,7 @@ export default {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background-color: #28a745;
+  background-color: #17a2b8;
   color: white;
   padding: 12px 40px;
   border-radius: 6px;
@@ -519,9 +519,9 @@ export default {
 }
 
 .contact-button:hover {
-  background-color: #218838;
+  background-color: #138496;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+  box-shadow: 0 8px 20px rgba(23, 162, 184, 0.3);
   color: white;
 }
 

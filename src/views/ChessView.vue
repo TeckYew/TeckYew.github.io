@@ -1212,12 +1212,12 @@ h1 {
 }
 
 .btn-primary {
-  background: #28a745;
+  background: #17a2b8;
   color: white;
 }
 
 .btn-primary:hover {
-  background: #218838;
+  background: #138496;
 }
 
 .btn-secondary {

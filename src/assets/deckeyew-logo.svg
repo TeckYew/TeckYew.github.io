@@ -1,14 +1,33 @@
 <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle for initials with gradient -->
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#17a2b8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0e7a94;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
   <!-- Background circle for initials -->
-  <circle cx="30" cy="30" r="25" fill="#28a745" opacity="0.1" stroke="#28a745" stroke-width="2"/>
+  <circle cx="30" cy="30" r="25" fill="url(#logoGradient)" opacity="0.15" stroke="#17a2b8" stroke-width="2.5"/>
   
-  <!-- Initials TY -->
-  <text x="30" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#28a745">TY</text>
+  <!-- Initials TY with bold styling -->
+  <text x="30" y="39" font-family="Arial, sans-serif" font-size="28" font-weight="800" text-anchor="middle" fill="#17a2b8">TY</text>
   
-  <!-- Name text -->
-  <text x="70" y="25" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#1a1a1a">Teck</text>
-  <text x="70" y="42" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#28a745">Yew</text>
+  <!-- Name text with modern spacing - teal for both in light mode -->
+  <text x="70" y="25" font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#17a2b8" class="logo-text-teck">Teck</text>
+  <text x="70" y="43" font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#17a2b8">Yew</text>
   
-  <!-- Decorative accent line -->
-  <line x1="70" y1="48" x2="155" y2="48" stroke="#28a745" stroke-width="2"/>
+  <!-- Decorative accent line with enhanced styling -->
+  <line x1="70" y1="50" x2="155" y2="50" stroke="#17a2b8" stroke-width="2.5" stroke-linecap="round"/>
+  
+  <style>
+    .logo-text-teck {
+      fill: #17a2b8;
+    }
+    @media (prefers-color-scheme: dark) {
+      .logo-text-teck {
+        fill: #e0e0e0;
+      }
+    }
+  </style>
 </svg>
