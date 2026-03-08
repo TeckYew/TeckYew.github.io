@@ -85,6 +85,31 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Light Mode - Ensure text visibility */
+.about-me-description {
+  color: #2c3e50 !important;
+}
+
+.story-text {
+  color: #2c3e50 !important;
+}
+
+.interest-card p {
+  color: #333333 !important;
+}
+
+.work-experience-item {
+  color: #333333 !important;
+}
+
+.job-duration {
+  color: #666666 !important;
+}
+
+.project-description {
+  color: #333333 !important;
+}
+
 .dialog {
   width: 300px;
   padding: 20px;
