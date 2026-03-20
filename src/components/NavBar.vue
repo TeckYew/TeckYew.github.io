@@ -220,9 +220,10 @@ export default {
   backdrop-filter: blur(50px) saturate(240%);
   border-radius: 50px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  padding: 12px 16px;
+  padding: 14px 16px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: visible;
 }
 
 /* Dark mode - navbar background */
@@ -317,6 +318,7 @@ html[data-theme='dark'] .navbar-brand-text {
 .nav-links-container.active {
   max-width: 550px;
   opacity: 1;
+  overflow: visible;
 }
 
 /* Navigation Menu Lists */
@@ -498,7 +500,7 @@ html[data-theme='dark'] .nav-link:hover {
   }
 
   .navbar-expanded {
-    padding: 10px 12px;
+    padding: 12px 12px;
     gap: 3px;
   }
 
@@ -546,7 +548,7 @@ html[data-theme='dark'] .nav-link:hover {
   }
 
   .navbar-expanded {
-    padding: 8px 8px;
+    padding: 10px 8px;
     gap: 2px;
   }
 
