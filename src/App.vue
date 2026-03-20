@@ -1,23 +1,39 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import NavBar from './components/NavBar.vue'
-import Footer from './components/FooterBanner.vue'
-</script>
-
 <template>
-  <div class="d-flex flex-column min-vh-100">
+  <div class="d-flex flex-column min-vh-100 app-container">
     <NavBar :loggedInObj="userLogin" />
     <!-- need to update navbar with props / if else -->
-    <RouterView class="mt-auto" />
+    <RouterView :class="{ 'has-top-padding': shouldAddPadding }" class="mt-auto" />
     <Footer class="mt-auto" />
   </div>
 </template>
 
 <script>
+import { RouterLink, RouterView } from 'vue-router'
 import { query, collection, addDoc, getDocs, where } from 'firebase/firestore'
 import { db } from './firebase/index.js'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { useRoute } from 'vue-router'
+import NavBar from './components/NavBar.vue'
+import Footer from './components/FooterBanner.vue'
+
 export default {
+  components: {
+    NavBar,
+    Footer,
+    RouterLink,
+    RouterView
+  },
+  setup() {
+    return {
+      route: useRoute()
+    }
+  },
+  computed: {
+    shouldAddPadding() {
+      // Add padding to all pages EXCEPT About Me page
+      return this.route.name !== 'about'
+    }
+  },
   data() {
     return {
       events: [],
@@ -105,6 +121,14 @@ export default {
 header {
   line-height: 1.5;
   max-height: 100vh;
+}
+
+.app-container {
+  /* No global padding */
+}
+
+.has-top-padding {
+  padding-top: 100px;
 }
 
 body {

@@ -1,7 +1,7 @@
 <template>
   <div class="chess-container">
     <div class="chess-content">
-      <h1 class="text-center mb-5">♟️ Chess Game ♟️</h1>
+      <h1 class="text-center mb-5">Chess Game</h1>
       <p class="chess-description">I started to love playing chess a lot since the start of this year, and I am always seeking new ways to improve my openings and gameplay. Have a little go at this simple chess game! Who knows, you might leave this website becoming a Chess Grandmaster :)</p>
       
       <div class="chess-wrapper">
@@ -1070,7 +1070,7 @@ export default {
 <style scoped>
 .chess-container {
   min-height: 100vh;
-  padding: 40px 20px;
+  padding: 120px 20px 40px 20px;
   background: #f5f5f5;
 }
 
