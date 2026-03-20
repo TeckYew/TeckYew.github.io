@@ -1,5 +1,5 @@
 // Necessary utility imports
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 // Home View
@@ -40,7 +40,7 @@ import AboutMeView from '../views/AboutMeView.vue'
 import ProjectDetailView from '../views/ProjectDetailView.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
