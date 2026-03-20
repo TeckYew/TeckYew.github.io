@@ -577,11 +577,15 @@ html[data-theme='dark'] .nav-link:hover {
   }
 
   .nav-links-container.active {
-    max-width: 280px;
+    max-width: 320px;
   }
 
   .navbar-brand {
     margin-right: 8px;
+  }
+
+  .dark-mode-toggle {
+    flex-shrink: 0;
   }
 }
 </style>

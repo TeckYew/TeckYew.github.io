@@ -68,7 +68,7 @@ import EventCard from '../components/Events/EventCard.vue'
       <h2 class="projects-title" style="margin-bottom: 40px;">Featured Projects</h2>
       
       <!-- Featured Projects Grid -->
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 60px;">
+      <div class="featured-projects-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 60px;">
       
       <!-- Project 1: HandsUP -->
       <!-- First Project -->
@@ -592,11 +592,35 @@ export default {
   }
 
   .project-card-link {
-    height: 150px;
+    height: 200px;
+    margin-bottom: 15px;
   }
 
   .project-card-overlay {
-    padding: 30px 20px 20px;
+    padding: 30px 15px 15px;
+  }
+
+  .project-card-overlay h3 {
+    font-size: 1.1rem;
+  }
+
+  .project-card-overlay p {
+    font-size: 0.8rem;
+  }
+}
+
+/* Responsive Grid for Featured Projects */
+@media (max-width: 768px) {
+  .featured-projects-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .featured-projects-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
   }
 
   .other-projects-section {

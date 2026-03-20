@@ -30,8 +30,8 @@ export default {
   },
   computed: {
     shouldAddPadding() {
-      // Add padding to all pages EXCEPT About Me page
-      return this.route.name !== 'about'
+      // Add padding to all pages EXCEPT About Me and Home pages
+      return this.route.name !== 'about' && this.route.name !== 'home'
     }
   },
   data() {
