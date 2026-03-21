@@ -41,6 +41,22 @@ import ProjectDetailView from '../views/ProjectDetailView.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else if (to.hash) {
+      // Scroll to element with ID matching the hash
+      const element = document.querySelector(to.hash)
+      if (element) {
+        return {
+          el: to.hash,
+          behavior: 'smooth'
+        }
+      }
+    }
+    // Default: scroll to top
+    return { top: 0 }
+  },
   routes: [
     {
       path: '/',

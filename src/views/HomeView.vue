@@ -44,7 +44,6 @@ import EventCard from '../components/Events/EventCard.vue'
           class="img-fluid profile-image"
           src="../assets/hero-profile.jpg"
           alt="Hero Profile"
-          style="border-radius: 20px; width: 90%; max-width: 400px; margin: 0 auto; display: block; border: 5px solid #17a2b8; box-shadow: 0 10px 40px rgba(23, 162, 184, 0.3), 0 0 0 15px rgba(23, 162, 184, 0.1); transition: transform 0.3s ease; position: relative; z-index: 2;"
         />
       </div>
 
@@ -53,7 +52,7 @@ import EventCard from '../components/Events/EventCard.vue'
         <p class="hero-subtitle" style="margin-bottom: 30px; line-height: 1.6; color: #5f6368; font-weight: 500;">A graduating student from SMU with experiences in Information Systems, User Design Thinking, and Business Analytics.</p>
         <p class="hero-description" style="margin-bottom: 30px; line-height: 1.6; color: #5f6368;">Below are some quick links to get you <a href="https://www.google.com/search?q=thong+teck+yew&rlz=1C5CHFA_enSG1012SG1013&oq=thong+te&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYQDIGCAMQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQRRhB0gEHOTQ3ajBqMagCALACAA&sourceid=chrome&ie=UTF-8" target="_blank" style="text-decoration: none; font-weight: 600;"><span style="color: #4285F4;">G</span><span style="color: #EA4335;">o</span><span style="color: #FBBC04;">o</span><span style="color: #4285F4;">g</span><span style="color: #EA4335;">l</span><span style="color: #FBBC04;">i</span><span style="color: #4285F4;">n</span><span style="color: #EA4335;">g</span></a> about me 😁</p>
         <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-          <a class="btn btn-lg hero-btn-primary" href="#featuredProjects" style="padding: 12px 32px; font-size: 1rem; background: linear-gradient(135deg, #4285F4, #1f71b8); color: white; border: none; border-radius: 24px; font-weight: 600; box-shadow: 0 4px 12px rgba(66, 133, 244, 0.35); transition: all 0.3s ease;">My Portfolio</a>
+          <button class="btn btn-lg hero-btn-primary" @click="scrollToProjects" style="padding: 12px 32px; font-size: 1rem; background: linear-gradient(135deg, #4285F4, #1f71b8); color: white; border: none; border-radius: 24px; font-weight: 600; box-shadow: 0 4px 12px rgba(66, 133, 244, 0.35); transition: all 0.3s ease; cursor: pointer;">My Portfolio</button>
           <a class="btn btn-lg hero-btn-secondary" href="https://www.linkedin.com/in/teck-yew/" target="_blank" style="padding: 12px 32px; font-size: 1rem; background: linear-gradient(135deg, #0A66C2, #005a9c); color: white; border: none; border-radius: 24px; font-weight: 600; box-shadow: 0 4px 12px rgba(10, 102, 194, 0.35); transition: all 0.3s ease;">LinkedIn</a>
         </div>
         <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
@@ -219,6 +218,14 @@ export default {
           }
         })
       })
+  },
+  methods: {
+    scrollToProjects() {
+      const element = document.getElementById('featuredProjects')
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
   }
 }
 </script>
@@ -260,10 +267,28 @@ export default {
   position: relative;
   z-index: 2;
   cursor: pointer;
+  border-radius: 20px;
+  border: 5px solid #17a2b8;
+  box-shadow: 0 10px 40px rgba(23, 162, 184, 0.3), 0 0 0 15px rgba(23, 162, 184, 0.1);
+  transition: transform 0.3s ease;
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: block;
 }
 
 .profile-image:hover {
   transform: scale(1.1);
+}
+
+/* Responsive profile image for mobile */
+@media (max-width: 768px) {
+  .profile-image {
+    width: 85%;
+    max-width: 280px;
+    border: 4px solid #17a2b8;
+    box-shadow: 0 8px 24px rgba(23, 162, 184, 0.25);
+  }
 }
 
 /* SVG Background Animations - Colored & Clean */

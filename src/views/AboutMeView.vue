@@ -137,13 +137,21 @@
         <div class="contact-section">
           <h2 class="contact-title">Get In Touch</h2>
           <p class="contact-description">Feel free to reach out if you'd like to collaborate, chat about design, or discuss any exciting opportunities!</p>
-          <a href="mailto:teckyew2000@hotmail.com" class="contact-button">
-            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-            </svg>
-            Contact Me via Email
-          </a>
+          <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+            <a href="https://t.me/teckkkyewww" target="_blank" class="contact-button telegram-button">
+              <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16.6915026,12.4744748 L3.50612381,13.2599618 C3.19218622,13.2599618 3.03521743,13.4170592 3.03521743,13.5741566 L1.15159189,20.0151496 C0.8376543,20.8006365 0.99,21.89 1.77946707,22.52 C2.41,22.99 3.50612381,23.1 4.13399899,22.99 L21.714504,14.0454487 C22.6563168,13.5741566 23.1272231,12.6315722 22.9702544,11.6889879 L4.13399899,1.16115711 C3.34915502,0.9 2.40734225,1.00636533 1.77946707,1.4776575 C0.994623095,2.10604706 0.837654326,3.0486314 1.15159189,3.97788574 L3.03521743,10.5388787 C3.03521743,10.6959761 3.19218622,10.8530735 3.50612381,10.8530735 L16.6915026,11.6385604 C16.6915026,11.6385604 17.1624089,11.6385604 17.1624089,12.0598513 C17.1624089,12.4811422 16.6915026,12.4744748 16.6915026,12.4744748 Z"/>
+              </svg>
+              Message me
+            </a>
+            <a href="mailto:teckyew2000@hotmail.com" class="contact-button">
+              <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+              Contact Me via Email
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -523,6 +531,16 @@ export default {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(23, 162, 184, 0.3);
   color: white;
+}
+
+.contact-button.telegram-button {
+  background: linear-gradient(135deg, #0088cc, #006290);
+  background-color: #0088cc;
+}
+
+.contact-button.telegram-button:hover {
+  background: linear-gradient(135deg, #005a9e, #004472);
+  box-shadow: 0 8px 20px rgba(0, 136, 204, 0.3);
 }
 
 .contact-icon {
