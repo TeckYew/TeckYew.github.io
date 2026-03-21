@@ -64,7 +64,7 @@ import EventCard from '../components/Events/EventCard.vue'
 
     <!-- Projects Showcase Section -->
     <div id="featuredProjects" style="margin-top: 40px; padding: 40px 20px;">
-      <h2 class="projects-title" style="margin-bottom: 40px;">Featured Projects</h2>
+      <h2 class="projects-title" style="font-size: 1.8rem; font-weight: 600; color: #202124; margin-bottom: 40px; text-align: center;">Featured Projects</h2>
       
       <!-- Featured Projects Grid -->
       <div class="featured-projects-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 60px;">
@@ -133,18 +133,26 @@ import EventCard from '../components/Events/EventCard.vue'
         <h3 class="other-projects-title" style="font-size: 1.8rem; font-weight: 600; color: #202124; margin-bottom: 40px; text-align: center;">Other Design Projects</h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
           <!-- Design Project Card 1 -->
-          <div style="padding: 24px; background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border-radius: 16px; border: 1px solid #e8eaed; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.boxShadow='0 8px 24px rgba(0,0,0,0.12)'; this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'; this.style.transform='translateY(0)'">
+          <div class="design-project-card" :class="{ mobileExpanded: expandedCards[0] }" style="padding: 24px; background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border-radius: 16px; border: 1px solid #e8eaed; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: all 0.3s ease;" onmouseover="!this.classList.contains('mobileExpanded') && (this.style.boxShadow='0 8px 24px rgba(0,0,0,0.12)', this.style.transform='translateY(-4px)')" onmouseout="!this.classList.contains('mobileExpanded') && (this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)', this.style.transform='translateY(0)')">
             <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 12px;">
               <img src="../assets/ellipsis.png" alt="SMU Ellipsis" style="width: 40px; height: 40px; object-fit: contain;">
               <h4 style="font-size: 1.1rem; font-weight: 600; color: #202124; margin: 0;">SMU Ellipsis Marketing</h4>
             </div>
-            <p style="font-size: 0.95rem; line-height: 1.5; color: #5f6368; margin-bottom: 15px;">
+            <p class="design-description" style="font-size: 0.95rem; line-height: 1.5; color: #5f6368; margin-bottom: 15px;">
               As part of the Singapore Management University's biggest club representing the Information Systems faculty, also known as SMU Ellipsis, I was placed in charge of the Tech Series event, one of the biggest technology event that we organise in SMU, inviting guest speakers from various companies for networking sessions with the students. The event include workshops, coffee chats, networking night, and hackathon.
               <br><br>
               Another design project is the launch of our new School of Computing and Information Systems (SCIS) shirts.
               <br><br>
               These Instagram posts have been designed by me (more can be viewed on SMU Ellipsis profile), along with the planning and execution of the programs.
             </p>
+            <div style="text-align: center; margin: 18px 0 24px 0;">
+              <button class="read-more-btn" :class="{ expanded: expandedCards[0] }" @click="toggleCard(0)">
+                <span>{{ expandedCards[0] ? 'Show less' : 'Show more' }}</span>
+                <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
               <a href="https://www.instagram.com/p/CvyWet7O45H/" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: linear-gradient(135deg, #17a2b8, #0e7a94); color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.2s ease;" onmouseover="this.style.boxShadow='0 4px 12px rgba(23,162,184,0.4)'" onmouseout="this.style.boxShadow='none'">
                 Tech Series
@@ -156,14 +164,22 @@ import EventCard from '../components/Events/EventCard.vue'
           </div>
 
           <!-- Design Project Card 2 - Tableau Projects -->
-          <div style="padding: 24px; background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border-radius: 16px; border: 1px solid #e8eaed; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.boxShadow='0 8px 24px rgba(0,0,0,0.12)'; this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'; this.style.transform='translateY(0)'">
+          <div class="design-project-card" :class="{ mobileExpanded: expandedCards[1] }" style="padding: 24px; background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border-radius: 16px; border: 1px solid #e8eaed; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: all 0.3s ease;" onmouseover="!this.classList.contains('mobileExpanded') && (this.style.boxShadow='0 8px 24px rgba(0,0,0,0.12)', this.style.transform='translateY(-4px)')" onmouseout="!this.classList.contains('mobileExpanded') && (this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)', this.style.transform='translateY(0)')">
             <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 12px;">
               <img src="../assets/tableau-projects.png" alt="Tableau Projects" style="width: 40px; height: 40px; object-fit: contain;">
               <h4 style="font-size: 1.1rem; font-weight: 600; color: #202124; margin: 0;">Tableau Projects</h4>
             </div>
-            <p style="font-size: 0.95rem; line-height: 1.5; color: #5f6368; margin-bottom: 15px;">
+            <p class="design-description" style="font-size: 0.95rem; line-height: 1.5; color: #5f6368; margin-bottom: 15px;">
               Being a part of the wider Tableau community, I was elected as the Tableau Academic Ambassador representing Singapore Management University. I had the chance to visit several schools to introduce Tableau to the students, along with attending Tableau workshops hosted by the Tableau community. I also post my dashboards on Tableau Public whenever I get the chance to.
             </p>
+            <div style="text-align: center; margin: 18px 0 24px 0;">
+              <button class="read-more-btn" :class="{ expanded: expandedCards[1] }" @click="toggleCard(1)">
+                <span>{{ expandedCards[1] ? 'Show less' : 'Show more' }}</span>
+                <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
               <a href="https://www.linkedin.com/posts/wenbin-y_datafam-activity-7342050561489256448-OnTe?utm_source=share&utm_medium=member_desktop&rcm=ACoAABPCGQ8BLzk9s9gW5mp8UMP3vihOYV2qCt4" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: linear-gradient(135deg, #0A66C2, #005a9c); color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.2s ease;" onmouseover="this.style.boxShadow='0 4px 12px rgba(10,102,194,0.4)'" onmouseout="this.style.boxShadow='none'">
                 LinkedIn Post
@@ -189,7 +205,8 @@ export default {
   data() {
     return {
       pastEvents: [],
-      upcomingEvents: []
+      upcomingEvents: [],
+      expandedCards: [false, false]
     }
   },
   created() {
@@ -225,6 +242,9 @@ export default {
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' })
       }
+    },
+    toggleCard(index) {
+      this.expandedCards[index] = !this.expandedCards[index]
     }
   }
 }
@@ -261,6 +281,22 @@ export default {
   transform: translate(-50%, -50%);
   z-index: 0;
   pointer-events: none;
+  animation: gentleRotateDesktop 50s linear infinite;
+  will-change: transform;
+}
+
+/* Mobile adjustment for animation alignment */
+@media (max-width: 768px) {
+  .profile-decoration {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    top: 0;
+    left: 0;
+    transform: none;
+    animation: gentleRotateMobile 50s linear infinite;
+  }
 }
 
 .profile-image {
@@ -292,16 +328,21 @@ export default {
 }
 
 /* SVG Background Animations - Colored & Clean */
-.profile-decoration {
-  animation: gentleRotate 50s linear infinite;
-}
-
-@keyframes gentleRotate {
+@keyframes gentleRotateDesktop {
   from {
     transform: translate(-50%, -50%) rotate(0deg);
   }
   to {
     transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes gentleRotateMobile {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -550,6 +591,37 @@ export default {
   font-weight: 500;
 }
 
+/* Design Cards - Default (Desktop) */
+.design-description {
+  display: block;
+  -webkit-line-clamp: unset;
+  max-height: none;
+  overflow: visible;
+}
+
+.read-more-btn {
+  display: none;
+}
+
+.chevron-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: #17a2b8;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.read-more-btn:hover .chevron-icon {
+  color: #0e7a94;
+}
+
+.read-more-btn.expanded .chevron-icon {
+  transform: rotate(180deg);
+}
+
 /* Mobile and Tablet Responsiveness */
 @media (max-width: 992px) {
   .project-card {
@@ -587,6 +659,72 @@ export default {
 
   .other-projects-section {
     padding: 20px;
+  }
+
+  .design-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .design-project-card.mobileExpanded .design-description {
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
+
+  .read-more-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: rgba(23, 162, 184, 0.08);
+    border: 1px solid rgba(23, 162, 184, 0.2);
+    border-radius: 8px;
+    color: #17a2b8;
+    font-weight: 500;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .read-more-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(23, 162, 184, 0.12);
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+  }
+
+  .read-more-btn:hover {
+    background: rgba(23, 162, 184, 0.12);
+    border-color: rgba(23, 162, 184, 0.35);
+    color: #0e7a94;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(23, 162, 184, 0.15);
+  }
+
+  .read-more-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(23, 162, 184, 0.1);
+  }
+
+  .read-more-btn span {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .read-more-btn:hover span {
+    color: #0e7a94;
   }
 
   .hero-title {
