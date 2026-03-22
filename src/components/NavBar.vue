@@ -5,7 +5,24 @@ import { useToast } from 'vue-toastification'
 import { ref, onMounted } from 'vue'
 // import { auth } from 'firebase'
 const route = useRoute()
-const isDarkMode = ref(false)
+
+// Determine theme synchronously at script load time
+const getInitialTheme = () => {
+  if (typeof window === 'undefined') return false
+  
+  const savedDarkMode = localStorage.getItem('darkMode')
+  
+  if (savedDarkMode !== null) {
+    return savedDarkMode === 'true'
+  } else {
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    // Lock in the system preference
+    localStorage.setItem('darkMode', systemDark ? 'true' : 'false')
+    return systemDark
+  }
+}
+
+const isDarkMode = ref(getInitialTheme())
 const isNavExpanded = ref(false)
 
 defineProps({
@@ -18,7 +35,7 @@ const isAboutPage = () => route.path === '/about'
 
 const toggleDarkMode = () => {
   isDarkMode.value = !isDarkMode.value
-  localStorage.setItem('darkMode', isDarkMode.value)
+  localStorage.setItem('darkMode', isDarkMode.value ? 'true' : 'false')
   document.documentElement.setAttribute('data-theme', isDarkMode.value ? 'dark' : 'light')
 }
 
@@ -31,9 +48,8 @@ const handleNavMouseLeave = () => {
 }
 
 onMounted(() => {
-  const savedDarkMode = localStorage.getItem('darkMode') === 'true'
-  isDarkMode.value = savedDarkMode
-  document.documentElement.setAttribute('data-theme', savedDarkMode ? 'dark' : 'light')
+  // Apply the theme to the DOM
+  document.documentElement.setAttribute('data-theme', isDarkMode.value ? 'dark' : 'light')
 })
 </script>
 

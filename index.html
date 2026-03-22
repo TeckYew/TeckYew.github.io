@@ -13,7 +13,24 @@
         #user-email, #user-name, #user-type, #user-id {
           display: none;
         }
-      </style>
+    </style>
+    
+    <!-- Set theme immediately before any rendering -->
+    <script>
+        (function() {
+            const savedDarkMode = localStorage.getItem('darkMode');
+            let isDark;
+            
+            if (savedDarkMode !== null) {
+                isDark = savedDarkMode === 'true';
+            } else {
+                isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                localStorage.setItem('darkMode', isDark ? 'true' : 'false');
+            }
+            
+            document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+        })();
+    </script>
 </head>
 
 <body>

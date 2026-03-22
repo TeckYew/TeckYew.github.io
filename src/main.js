@@ -11,6 +11,24 @@ import 'vue-toastification/dist/index.css'
 import store from './store/index'
 import VueSweetalert2 from 'vue-sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
+
+// Set theme immediately before app mounts
+const setInitialTheme = () => {
+  const savedDarkMode = localStorage.getItem('darkMode')
+  
+  let isDark
+  if (savedDarkMode !== null) {
+    isDark = savedDarkMode === 'true'
+  } else {
+    isDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    localStorage.setItem('darkMode', isDark ? 'true' : 'false')
+  }
+  
+  document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light')
+}
+
+setInitialTheme()
+
 const app = createApp(App)
 
 app.use(Toast, {
