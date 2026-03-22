@@ -52,11 +52,11 @@ import EventCard from '../components/Events/EventCard.vue'
         <p class="hero-subtitle" style="margin-bottom: 30px; line-height: 1.6; color: #5f6368; font-weight: 500;">A graduating student from SMU with experiences in Information Systems, User Design Thinking, and Business Analytics.</p>
         <p class="hero-description" style="margin-bottom: 30px; line-height: 1.6; color: #5f6368;">Below are some quick links to get you <a href="https://www.google.com/search?q=thong+teck+yew&rlz=1C5CHFA_enSG1012SG1013&oq=thong+te&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYQDIGCAMQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQRRhB0gEHOTQ3ajBqMagCALACAA&sourceid=chrome&ie=UTF-8" target="_blank" style="text-decoration: none; font-weight: 600;"><span style="color: #4285F4;">G</span><span style="color: #EA4335;">o</span><span style="color: #FBBC04;">o</span><span style="color: #4285F4;">g</span><span style="color: #EA4335;">l</span><span style="color: #FBBC04;">i</span><span style="color: #4285F4;">n</span><span style="color: #EA4335;">g</span></a> about me 😁</p>
         <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-          <button class="btn btn-lg hero-btn-primary" @click="scrollToProjects" style="padding: 12px 32px; font-size: 1rem; background: linear-gradient(135deg, #4285F4, #1f71b8); color: white; border: none; border-radius: 24px; font-weight: 600; box-shadow: 0 4px 12px rgba(66, 133, 244, 0.35); transition: all 0.3s ease; cursor: pointer;">My Portfolio</button>
+          <button class="btn btn-lg hero-btn-primary glass-portfolio-btn" @click="scrollToProjects">My Portfolio</button>
           <a class="btn btn-lg hero-btn-secondary" href="https://www.linkedin.com/in/teck-yew/" target="_blank" style="padding: 12px 32px; font-size: 1rem; background: linear-gradient(135deg, #0A66C2, #005a9c); color: white; border: none; border-radius: 24px; font-weight: 600; box-shadow: 0 4px 12px rgba(10, 102, 194, 0.35); transition: all 0.3s ease;">LinkedIn</a>
         </div>
         <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
-          <a class="btn btn-lg hero-btn-tertiary" href="https://github.com/TeckYew" target="_blank" style="padding: 12px 32px; font-size: 1rem; background: linear-gradient(135deg, #333333, #1f2937); color: white; border: none; border-radius: 24px; font-weight: 600; box-shadow: 0 4px 12px rgba(51, 51, 51, 0.35); transition: all 0.3s ease;">Github</a>
+          <a class="btn btn-lg hero-btn-tertiary" href="https://github.com/TeckYew" target="_blank" style="padding: 12px 32px; font-size: 1rem; background: linear-gradient(135deg, #1f6feb, #0969da); color: white; border: none; border-radius: 24px; font-weight: 600; box-shadow: 0 4px 12px rgba(31, 111, 235, 0.35); transition: all 0.3s ease;">Github</a>
           <a class="btn btn-lg hero-btn-accent" href="https://public.tableau.com/app/profile/thong.teck.yew/vizzes" target="_blank" style="padding: 12px 32px; font-size: 1rem; background: linear-gradient(135deg, #FBBC04, #f57f17); color: white; border: none; border-radius: 24px; font-weight: 600; box-shadow: 0 4px 12px rgba(251, 188, 4, 0.35); transition: all 0.3s ease;">Tableau</a>
         </div>
       </div>
@@ -466,12 +466,50 @@ export default {
 
 .hero-btn-tertiary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(51, 51, 51, 0.5) !important;
+  box-shadow: 0 8px 20px rgba(31, 111, 235, 0.5) !important;
 }
 
 .hero-btn-accent:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(251, 188, 4, 0.5) !important;
+}
+
+/* Glass Portfolio Button */
+.glass-portfolio-btn {
+  padding: 12px 32px !important;
+  font-size: 1rem !important;
+  border-radius: 24px !important;
+  font-weight: 600 !important;
+  backdrop-filter: blur(10px) !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+/* Light mode glass button */
+.glass-portfolio-btn {
+  background: rgba(0, 0, 0, 0.08) !important;
+  color: #202124 !important;
+  border: 2px solid rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.glass-portfolio-btn:hover {
+  background: rgba(0, 0, 0, 0.12) !important;
+  border-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Dark mode glass button */
+[data-theme="dark"] .glass-portfolio-btn {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: white !important;
+  border: 2px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] .glass-portfolio-btn:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15) !important;
 }
 
 .projects-title {
