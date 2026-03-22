@@ -64,68 +64,44 @@ import EventCard from '../components/Events/EventCard.vue'
 
     <!-- Projects Showcase Section -->
     <div id="featuredProjects" style="margin-top: 40px; padding: 40px 20px;">
-      <h2 class="projects-title" style="font-size: 1.8rem; font-weight: 600; color: #202124; margin-bottom: 40px; text-align: center;">Featured Projects</h2>
+      <div style="position: relative; display: flex; justify-content: center; align-items: center; margin-bottom: 40px; min-height: 50px;">
+        <h2 class="projects-title" style="font-size: 1.8rem; font-weight: 600; color: #202124; margin: 0; text-align: center;">Featured Projects</h2>
+        <div class="search-box-container" style="position: absolute; right: 0;">
+          <input 
+            v-model="searchQuery" 
+            type="text" 
+            placeholder="Search by software/ tools used, skills etc."
+            class="search-input-expandable"
+          />
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+        </div>
+      </div>
       
       <!-- Featured Projects Grid -->
-      <div class="featured-projects-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 60px;">
+      <div v-if="filteredFeaturedProjects.length > 0" class="featured-projects-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 60px;">
       
-      <!-- Project 1: HandsUP -->
-      <!-- First Project -->
-      <RouterLink to="/project/handsup" class="project-card-link">
+      <!-- Featured Projects - Dynamic Loop -->
+      <RouterLink v-for="project in filteredFeaturedProjects" :key="project.id" :to="`/project/${project.id}`" class="project-card-link">
         <div class="project-image-wrapper">
           <img 
-            src="../assets/idp-handsup.png" 
-            alt="HandsUP Project" 
+            :src="getImagePath(project.image)" 
+            :alt="`${project.title} Project`" 
           />
         </div>
         <div class="project-card-overlay">
-          <h3>HandsUP - Interaction Design and Prototyping Project</h3>
-          <p><strong>Duration:</strong> ~12 weeks | <strong>Role:</strong> UX Designer</p>
-        </div>
-      </RouterLink>
-
-      <!-- Second Project -->
-      <RouterLink to="/project/hackathon" class="project-card-link">
-        <div class="project-image-wrapper">
-          <img 
-            src="../assets/googlemaps-carspots.png" 
-            alt="Hackathon Project" 
-          />
-        </div>
-        <div class="project-card-overlay">
-          <h3>Project Management Experience Hackathon</h3>
-          <p><strong>Duration:</strong> 48-hour Hackathon | <strong>Role:</strong> Project Lead</p>
-        </div>
-      </RouterLink>
-
-      <!-- Third Project -->
-      <RouterLink to="/project/gis-solar" class="project-card-link">
-        <div class="project-image-wrapper">
-          <img 
-            src="../assets/gis-solar-farm.png" 
-            alt="GIS Solar Farm Project" 
-          />
-        </div>
-        <div class="project-card-overlay">
-          <h3>GIS-based Multi-criteria Analysis for Urban Planning</h3>
-          <p><strong>Duration:</strong> ~12 weeks | <strong>Role:</strong> Spatial Analysis Lead</p>
-        </div>
-      </RouterLink>
-
-      <!-- Fourth Project -->
-      <RouterLink to="/project/kunyah" class="project-card-link">
-        <div class="project-image-wrapper">
-          <img 
-            src="../assets/kunyah-project.png" 
-            alt="Kunyah Bites Cafe POS System" 
-          />
-        </div>
-        <div class="project-card-overlay">
-          <h3>Kunyah Bites Cafe POS System</h3>
-          <p><strong>Duration:</strong> ~18 weeks | <strong>Role:</strong> UX Designer</p>
+          <h3>{{ project.title }}</h3>
+          <p><strong>Duration:</strong> {{ project.duration }} | <strong>Role:</strong> {{ project.role }}</p>
         </div>
       </RouterLink>
       
+      </div>
+      
+      <!-- No results message -->
+      <div v-else style="text-align: center; padding: 60px 20px;">
+        <p style="font-size: 2rem; font-weight: bold; color: #202124; margin: 0;">Oopsies, I'm still upgrading myself!</p>
       </div>
 
       <!-- Other Design Projects Section -->
@@ -197,6 +173,7 @@ import EventCard from '../components/Events/EventCard.vue'
 <script>
 import { db } from '../firebase/index.js'
 import { RouterLink } from 'vue-router'
+import { projects } from '../data/projects.js'
 
 export default {
   components: {
@@ -206,7 +183,35 @@ export default {
     return {
       pastEvents: [],
       upcomingEvents: [],
-      expandedCards: [false, false]
+      expandedCards: [false, false],
+      searchQuery: '',
+      featuredProjects: projects.slice(0, 4) // Featured projects are the first 4
+    }
+  },
+  computed: {
+    filteredFeaturedProjects() {
+      if (!this.searchQuery.trim()) {
+        return this.featuredProjects
+      }
+      
+      const query = this.searchQuery.toLowerCase()
+      return this.featuredProjects.filter(project => {
+        const searchableText = [
+          project.title,
+          project.category,
+          project.role,
+          project.opportunity,
+          project.challenge,
+          project.roleDetails?.join(' '),
+          project.contributions?.join(' '),
+          project.links?.map(link => link.text).join(' ')
+        ]
+          .filter(Boolean)
+          .join(' ')
+          .toLowerCase()
+        
+        return searchableText.includes(query)
+      })
     }
   },
   created() {
@@ -245,6 +250,9 @@ export default {
     },
     toggleCard(index) {
       this.expandedCards[index] = !this.expandedCards[index]
+    },
+    getImagePath(imageName) {
+      return new URL(`../assets/${imageName}`, import.meta.url).href
     }
   }
 }
@@ -820,5 +828,101 @@ export default {
     padding: 10px 20px !important;
     font-size: 0.95rem !important;
   }
+}
+
+/* Search Input Styling - Expandable */
+.search-box-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-box-container:hover {
+  width: 320px;
+}
+
+.search-input-expandable {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  padding: 12px 54px 12px 14px;
+  border: 2px solid #e8eaed;
+  border-radius: 24px;
+  font-size: 0.95rem;
+  color: #202124;
+  background: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.search-input-expandable::placeholder {
+  color: #999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.search-box-container:hover .search-input-expandable::placeholder {
+  opacity: 1;
+}
+
+.search-input-expandable:hover {
+  border-color: #17a2b8;
+  box-shadow: 0 2px 8px rgba(23, 162, 184, 0.15);
+}
+
+.search-input-expandable:focus {
+  border-color: #17a2b8;
+  box-shadow: 0 4px 12px rgba(23, 162, 184, 0.25);
+  background: #fafbfc;
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;
+  color: #202124;
+  pointer-events: none;
+  z-index: 2;
+  flex-shrink: 0;
+  transition: color 0.3s ease;
+}
+
+.search-box-container:hover .search-icon {
+  color: #17a2b8;
+}
+
+/* Dark mode search input */
+[data-theme="dark"] .search-input-expandable {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .search-input-expandable::placeholder {
+  color: #888;
+}
+
+[data-theme="dark"] .search-input-expandable:hover {
+  border-color: #0dcaf0;
+  box-shadow: 0 2px 8px rgba(13, 202, 240, 0.15);
+}
+
+[data-theme="dark"] .search-input-expandable:focus {
+  border-color: #0dcaf0;
+  box-shadow: 0 4px 12px rgba(13, 202, 240, 0.25);
+  background: #333;
+}
+
+[data-theme="dark"] .search-icon {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .search-box-container:hover .search-icon {
+  color: #0dcaf0;
 }
 </style>

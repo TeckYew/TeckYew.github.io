@@ -20,6 +20,7 @@
       <span><strong>Duration:</strong> {{ project.duration }}</span>
       <span><strong>Role:</strong> {{ project.role }}</span>
       <span><strong>Team:</strong> {{ project.team }}</span>
+      <span v-if="project.tools"><strong>Skills & Tools:</strong> {{ project.tools.join(', ') }}</span>
     </div>
 
     <!-- Project Header with Image -->
@@ -240,7 +241,8 @@ export default {
   margin: 0 auto 60px;
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  column-gap: 30px;
+  row-gap: 8px;
   justify-content: center;
   font-size: 0.95rem;
   color: #999;
