@@ -1,5 +1,4 @@
 <script setup>
-import EventCard from '../components/Events/EventCard.vue'
 </script>
 
 <template>

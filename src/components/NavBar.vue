@@ -1,9 +1,6 @@
 <script setup>
 import { RouterLink, useRoute } from 'vue-router'
-import { getAuth, signOut } from 'firebase/auth'
-import { useToast } from 'vue-toastification'
 import { ref, onMounted } from 'vue'
-// import { auth } from 'firebase'
 const route = useRoute()
 
 // Determine theme synchronously at script load time
@@ -85,31 +82,7 @@ onMounted(() => {
       <div class="nav-links-container" :class="{ active: isNavExpanded }">
         <!-- Top Navigation Links -->
         <ul class="nav-menu">
-          <li class="nav-item" v-if="loggedInObj.loggedIn">
-            <RouterLink
-              class="nav-link"
-              v-if="loggedInObj.userType == 1"
-              to="/UserHome"
-            >
-              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
-              <span>Dashboard</span>
-            </RouterLink>
-            <RouterLink
-              class="nav-link"
-              v-if="loggedInObj.userType == 2"
-              to="/OrgUserHome"
-            >
-              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
-              <span>Dashboard</span>
-            </RouterLink>
-          </li>
-          <li class="nav-item" v-if="loggedInObj.userType != 2">
+          <li class="nav-item">
             <RouterLink class="nav-link" to="/">
               <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -171,47 +144,6 @@ onMounted(() => {
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      isActive: false,
-      loggedIn: true
-    }
-  },
-  methods: {
-    async logout() {
-      const auth = getAuth()
-      const toast = useToast()
-      await signOut(auth)
-        .then(() => {
-          console.log('logout successfully')
-          window.localStorage.clear()
-        })
-        .catch((error) => {
-          // console.log('An error has occurred...')
-          // do nothing
-          console.log('Good bye!')
-        })
-        toast.success('See you again soon!', {
-        position: 'top-right',
-        timeout: 5000,
-        closeOnClick: true,
-        pauseOnFocusLoss: true,
-        pauseOnHover: false,
-        draggable: true,
-        draggablePercent: 1.48,
-        showCloseButtonOnHover: false,
-        hideProgressBar: false,
-        closeButton: 'button',
-        icon: true,
-        rtl: false
-      })
-      this.$router.push('/')
-    }
-  }
-}
-</script>
 <style>
 /* Navbar Container - Centered and Minimalist */
 .navbar-container {

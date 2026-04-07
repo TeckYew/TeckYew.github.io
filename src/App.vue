@@ -9,9 +9,6 @@
 
 <script>
 import { RouterLink, RouterView } from 'vue-router'
-import { query, collection, addDoc, getDocs, where } from 'firebase/firestore'
-import { db } from './firebase/index.js'
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { useRoute } from 'vue-router'
 import NavBar from './components/NavBar.vue'
 import Footer from './components/FooterBanner.vue'
@@ -36,80 +33,8 @@ export default {
   },
   data() {
     return {
-      events: [],
       userLogin: {
-        username: undefined,
-        email: undefined,
-        loggedIn: false,
-        userType: undefined,
-        userid: undefined
-      }
-    }
-  },
-  created() {
-    this.getEvents()
-    let auth = getAuth()
-    console.log(auth)
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log('currently logged in - userid:', user.email)
-        this.getUser(user)
-      } else {
-        console.log('currently not logged in')
-        this.userLogin.loggedIn = false
-        this.userLogin.userType = undefined
-        this.userLogin.userid = undefined
-        window.localStorage.clear()
-      }
-    })
-  },
-  methods: {
-    async getEvents() {
-      // query to get all docs in 'countries' collection
-      const querySnap = await getDocs(query(collection(db, 'userevent')))
-
-      // add each doc to 'countries' array
-      querySnap.forEach((doc) => {
-        this.events.push(doc.data())
-      })
-    },
-    async getUser(user) {
-      const querySnap = await getDocs(
-        query(collection(db, 'users'), where('email', '==', user.email))
-      )
-      if (!querySnap.empty) {
-        // add each doc to 'countries' array
-        querySnap.forEach((doc) => {
-          // this.events.push(doc.data().eventid)
-          this.userLogin.userType = doc.data().userType
-          this.userLogin.userid = doc.id
-          this.userLogin.username = doc.data().name
-          this.userLogin.points = doc.data().points
-        })
-        this.userLogin.loggedIn = true
-        this.userLogin.email = user.email
-        window.localStorage.setItem('email', this.userLogin.email)
-        window.localStorage.setItem('userType', this.userLogin.userType)
-        window.localStorage.setItem('userid', this.userLogin.userid)
-        window.localStorage.setItem('username', this.userLogin.username)
-        window.localStorage.setItem('points', this.userLogin.points)
-        let navList = document.getElementById('nav').classList
-
-        if (this.userLogin.userType == 2) {
-          navList.remove('navbar-light')
-          navList.add('navbar-dark')
-          navList.add('bg-dark')
-          navList.add('bg-dark')
-
-          document.getElementById('grey').classList.add('bg-dark')
-        } else {
-          navList.remove('navbar-dark')
-          navList.remove('bg-dark')
-          navList.add('navbar-light')
-          if (document.getElementById('grey').classList.contains('bg-dark')) {
-            document.getElementById('grey').classList.remove('bg-dark')
-          }
-        }
+        loggedIn: false
       }
     }
   }
