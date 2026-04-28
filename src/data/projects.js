@@ -158,6 +158,47 @@ export const projects = [
     links: [
       { text: 'View Figma', url: 'https://www.figma.com/design/Tc5A7cGJd3ZvPsHkwdyHzQ/Kunyah-Project?node-id=0-1&p=f&t=GE6sYi3JZkNkqCLc-0', color: '#A259FF' }
     ]
+  },
+  {
+    id: 'data-management',
+    category: 'Database Design & Systems',
+    title: 'Data Management - Relational Database System Design',
+    duration: '~4 months',
+    role: 'Database Analyst',
+    team: '1 member',
+    tools: ['MySQL Workbench', 'DBeaver', 'Entity-Relationship Modeling', 'SQL', 'Data Normalization'],
+    image: 'data-management.png',
+    opportunity: 'A case study project requiring the design and implementation of a comprehensive relational database system. The project focused on creating a robust infrastructure to support resource tracking and operational planning, demonstrating the critical role of data architecture in system efficiency and reliability.',
+    challenge: 'How might we design a normalized, scalable relational database that ensures data accuracy, integrity, and supports complex resource tracking and operational planning requirements?',
+    research: {
+      method: 'Requirements Analysis & Entity-Relationship Modeling',
+      painPoints: [
+        'Complex relationships between resources and operational entities',
+        'Need for data normalization to prevent anomalies',
+        'Ensuring referential integrity across multiple tables',
+        'Optimizing query performance for resource tracking'
+      ]
+    },
+    roleDetails: [
+      'Requirements Gathering & Analysis',
+      'Entity-Relationship Modeling using Hoffer-Ramesh-Topi Notation',
+      'Database Schema Design & Normalization',
+      'SQL Implementation & Data Integrity Validation'
+    ],
+    contributions: [
+      'Designed comprehensive Entity-Relationship model capturing all resource dependencies',
+      'Implemented proper normalization (3NF) to eliminate data redundancy',
+      'Created SQL schemas with referential integrity constraints',
+      'Developed efficient database queries for operational planning'
+    ],
+    impact: [
+      { metric: '3NF', label: 'Full Normalization Achieved', icon: '✅' },
+      { metric: '100%', label: 'Data Integrity Maintained', icon: '🔒' }
+    ],
+    keyInsight: 'Proper database design with effective Entity-Relationship modeling and normalization ensures data accuracy and supports scalable operational planning. This project demonstrated how solid data architecture forms the foundation for reliable and efficient system operations.',
+    links: [
+      { text: 'View GitHub', url: 'https://github.com/TeckYew', color: '#1f6feb' }
+    ]
   }
 ]
 

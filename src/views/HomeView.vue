@@ -170,7 +170,6 @@
   </div>
 </template>
 <script>
-import { db } from '../firebase/index.js'
 import { RouterLink } from 'vue-router'
 import { projects } from '../data/projects.js'
 
@@ -184,7 +183,7 @@ export default {
       upcomingEvents: [],
       expandedCards: [false, false],
       searchQuery: '',
-      featuredProjects: projects.slice(0, 4) // Featured projects are the first 4
+      featuredProjects: projects.slice(0, 5) // Featured projects are the first 5
     }
   },
   computed: {
@@ -212,33 +211,6 @@ export default {
         return searchableText.includes(query)
       })
     }
-  },
-  created() {
-    let today = new Date()
-    db.collection('event')
-      .orderBy('datetime')
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          // console.log(doc.id, ' => ', doc.data())
-          let { name, desc, datetime, cat } = doc.data()
-          let eventDate = new Date(datetime['seconds'] * 1000)
-          let eventDetail = {
-            eventId: doc.id,
-            eventTitle: name,
-            eventDesc: desc,
-            eventDate: eventDate,
-            eventType: cat
-          }
-
-          // console.log(doc.data()['name'])
-          if (eventDate > today && this.upcomingEvents.length < 3) {
-            this.upcomingEvents.push(eventDetail)
-          } else {
-            this.pastEvents.push(eventDetail)
-          }
-        })
-      })
   },
   methods: {
     scrollToProjects() {

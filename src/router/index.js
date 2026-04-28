@@ -1,22 +1,8 @@
-// Necessary utility imports
 import { createRouter, createWebHashHistory } from 'vue-router'
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
-
-// Home View
 import HomeView from '../views/HomeView.vue'
-
-// Error View
 import ErrorView from '../views/ErrorVue.vue'
-
-
-
-// Chess Game View
 import ChessView from '../views/ChessView.vue'
-
-// About Me View
 import AboutMeView from '../views/AboutMeView.vue'
-
-// Project Detail View
 import ProjectDetailView from '../views/ProjectDetailView.vue'
 
 const router = createRouter({
@@ -70,33 +56,4 @@ const router = createRouter({
   linkExactActiveClass: 'is-active'
 })
 
-const checkUser = () => {
-  return new Promise((res, rej) => {
-    const state = onAuthStateChanged(
-      getAuth(),
-      (user) => {
-        state()
-        res(user)
-      },
-      rej
-    )
-  })
-}
-
-router.beforeEach(async (to, from, next) => {
-  // if the next route requires authentication
-  if (to.matched.some((route) => route.meta.authReq)) {
-    // check user authentication state
-    if (await checkUser()) {
-      next() // if true, move to the next page
-    } else {
-      // redirect them to login page
-      next('/login?err=logReq')
-    }
-  } else {
-    next() // as per normal if login is not required
-  }
-})
-
-export { checkUser }
 export default router
